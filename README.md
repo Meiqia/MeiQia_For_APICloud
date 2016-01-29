@@ -32,6 +32,7 @@ Description: meChat
 #开源地址
 
 模块源代码：[https://github.com/Meiqia/MeiQia_For_APICloud](https://github.com/Meiqia/MeiQia_For_APICloud)
+
 模块中的美洽UI源代码：[https://github.com/Meiqia/MeiqiaSDK-iOS](https://github.com/Meiqia/MeiqiaSDK-iOS)
 
 #**initMeiQia**<div id="1"></div>
