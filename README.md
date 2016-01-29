@@ -24,7 +24,7 @@ Description: meChat
 
 美洽是一款实现手机用户与企业保持随时随刻沟通的客服工具。本模块封装了美洽的相关接口。使用此模块之前需要先注册美洽获取appkey
 
-![图片说明](/img/docImage/meChat.jpg![enter image description here](https://s3.cn-north-1.amazonaws.com.cn/pics.meiqia.bucket/4f2e9f86df2fd5f8)
+![图片说明](https://s3.cn-north-1.amazonaws.com.cn/pics.meiqia.bucket/4f2e9f86df2fd5f8)
 
 **注册方法如下:**
 
