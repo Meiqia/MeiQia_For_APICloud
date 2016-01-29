@@ -10,14 +10,11 @@ Description: meChat
 
 <div class="outline">
 [initMeChat](#1)
-
-[show](#2)
-
-[setScheduledAgentOrAgentGroup](#3)
-
-[addUserInfo](#4)
-
-[addOtherInfo](#5)
+[setTitleColor](#2)
+[setTitleBarColor](#3)
+[show](#4)
+[setScheduledAgentOrAgentGroup](#5)
+[setClientInfo](#6)
 </div>
 
 #**概述**
@@ -84,8 +81,43 @@ iOS系统，Android系统
 
 可提供的3.0.0及更高版本
 
+#**setTitleColor**<div id="2"></div>
 
-#**show**<div id="2"></div>
+设置美洽聊天界面的标题栏中文字的颜色
+setTitleColor(params)
+
+##示例代码
+```js
+var mq = api.require('meiQia');
+//设置title以及按钮颜色
+var titleColor = {
+    color:"#ffffff"
+};
+mq.setTitleColor(titleColor);
+```
+
+##补充说明
+参数需要是`#FFFFFF`格式的HTML颜色。
+
+#**setTitleBarColor**<div id="3"></div>
+
+设置美洽聊天界面的标题栏背景颜色
+setTitleBarColor(params)
+
+##示例代码
+```js
+var mq = api.require('meiQia');
+//设置标题栏背景颜色
+var titleBarColor = {
+    color:"#00ff00"
+};
+mq.setTitleBarColor(titleBarColor);
+```
+
+##补充说明
+参数需要是`#FFFFFF`格式的HTML颜色。
+
+#**show**<div id="4"></div>
 
 弹出美洽聊天界面
 
@@ -93,12 +125,12 @@ show()
 
 ##示例代码
 ```js
-	var mq = api.require('meiQia');
-	mq.show();
+var mq = api.require('meiQia');
+mq.show();
 ```
 
 ##补充说明
-
+如果需要指定客服`setScheduledAgentOrAgentGroup()`或添加自定义信息`setClientInfo()`，需要执行`show()`前执行。
 
 ##可用性
 
@@ -107,7 +139,7 @@ iOS系统，Android系统
 可提供的3.0.0及更高版本
 
 
-#**setScheduledAgentOrAgentGroup**<div id="3"></div>
+#**setScheduledAgentOrAgentGroup**<div id="5"></div>
 
 指定分配客服与客服组
 
@@ -132,184 +164,81 @@ scheduleRule:
  - 类型：字符串 
  - 默认值：enterprise 
  - 描述：
-	 - none：不转接给任何人
+	 - none：不转接给任何人，让用户留言
 	 - group: 转接给组内的人
 	 - enterprise: 转接给企业其他随机一个人
 
 ##示例代码
 
 ```js
-var obj = api.require('meChat');
-obj.specifyAlloc({
-	groupId: '******',
-	agentId:'*******'
-});
+var mq = api.require('meiQia');
+//设置指定分配给某客服,并且如果客服不在线，则留言而不转接给其他客服
+var scheduleParam = {
+    agentId: "ed55383a0fa82bbe8242ee16477c9ac3",
+    scheduleRule: "none"
+};
+mq.setScheduledAgentOrAgentGroup(scheduleParam);
+
 ```
 
 ##补充说明
 
-agentId和groupId可只传其中一个，也可同时都传。美洽系统将优先分配指定客服，如果客服不在线，则分配到指定的客服组，如果客服组也无人在线，则分配到全部客服。本接口必须在show之前调用
+agentId和agentGroup可只传其中一个，也可同时都传。美洽系统将优先分配指定客服，如果客服不在线，则分配到指定的客服组，如果客服组也无人在线，则分配到全部客服。如果使用该接口，那么需要在show之前调用
 
 ##可用性
 
 iOS系统，Android系统
 
-可提供的1.0.0及更高版本
+可提供的3.0.0及更高版本
 
 
-#**addUserInfo**<div id="4"></div>
+#**setClientInfo**<div id="6"></div>
+
+效果图：
+![效果图](https://s3.cn-north-1.amazonaws.com.cn/pics.meiqia.bucket/7d60384c6f4663d0)
 
 添加规范化用户信息
 
-addUserInfo({params})
+setClientInfo(params)
 
 ##params
 
-realName：
-
-- 类型：字符串
-- 默认值：无
-- 描述：真实姓名，可为空
-
-sex：
-
-- 类型：字符串
-- 默认值：无
-- 描述：性别，可为空
-
-birthday：
-
-- 类型：字符串
-- 默认值：无
-- 描述：生日，可为空
-
-age：
-
-- 类型：字符串
-- 默认值：无
-- 描述：年龄，可为空
-
-job：
-
-- 类型：字符串
-- 默认值：无
-- 描述：职业，可为空
-
-avatar：
-
-- 类型：字符串
-- 默认值：无
-- 描述：头像url，可为空
-
-comment：
-
-- 类型：字符串
-- 默认值：无
-- 描述：备注，可为空
-
-appUserId：
-
-- 类型：字符串
-- 默认值：无
-- 描述：用户识别符，可为空
-
-appUserName：
-
-- 类型：字符串
-- 默认值：无
-- 描述：登陆名，可为空
-
-appNickName：
-
-- 类型：字符串
-- 默认值：无
-- 描述：昵称，可为空
-
-tel：
-
-- 类型：字符串
-- 默认值：无
-- 描述：电话，可为空
-
-email：
-
-- 类型：字符串
-- 默认值：无
-- 描述：邮箱，可为空
-
-address：
-
-- 类型：字符串
-- 默认值：无
-- 描述：地址，可为空
-
-QQ：
-
-- 类型：字符串
-- 默认值：无
-- 描述：qq号，可为空
-
-weibo：
-
-- 类型：字符串
-- 默认值：无
-- 描述：新浪微博ID，可为空
-
-weixin：
-
-- 类型：字符串
-- 默认值：无
-- 描述：微信号，可为空
+|默认参数|描述|
+|----|----|
+|avatar|头像 URL|
+|address|地址|
+|age|年龄|
+|comment|备注|
+|email|邮箱|
+|gender|性别|
+|name|名字|
+|qq|QQ|
+|tel|电话|
+|weibo|微博|
+|weixin|微信|
+|source|顾客来源|
+|tags|标签，数组形式。且必须是企业中**已经存在的标签**|
 
 ##示例代码
 
 ```JS
-var obj = api.require('meChat');
-obj.addUserInfo({
-	realName:'美洽',
-    job:'客服服务',
-	tel:'400-0031-322'
-	});
+var mq = api.require('meiQia');
+//设置用户信息
+var infoParam = {
+    email: "dev@meiqia.com",
+    comment: "这是备注",
+    avatar: "https://app.meiqia.com/images/logo.png",
+    tags: ["付费用户","使用疑问"]
+};
+mq.setClientInfo(infoParam);
 ```
 
 ##补充说明
 
-规范化用户信息将会呗传送到美洽服务端，用于对话时显示给客服人员一作参考。这些参数都是可选的，可以选择其中的一个或者多个传递。此接口必须在show之前执行
+自定义用户信息将会被传送到美洽服务端，用于对话时显示给客服人员一作参考。这些参数都是可选的，可以选择其中的一个或者多个传递。此接口必须在show之前执行。
 
 可用性
 
 iOS系统，Android系统
 
-可提供的1.0.0及更高版本
-
-
-#**addOtherInfo**<div id="5"></div>
-
-添加自定义信息
-
-addOtherInfo({params})
-
-##params
-
-所有参数均为字符串类型，均无默认值，key可自定义
-
-##示例代码
-
-```JS
-var obj = api.require('meChat');
-obj.addOtherInfo({
-	foo:'bar',
-	hello:'world',
-	你好:'世界'
-});
-```
-
-##补充说明
-
-自定义信息会被传送到美洽服务器，用于对话时显示给客服人员以作参考。本接口在show之前调用
-
-##可用性
-
-iOS系统，Android系统
-
-可提供的1.0.0及更高版本
+可提供的3.0.0及更高版本
