@@ -200,6 +200,7 @@ iOS系统，Android系统
 #**setClientInfo**<div id="6"></div>
 
 效果图：
+
 ![效果图](https://s3.cn-north-1.amazonaws.com.cn/pics.meiqia.bucket/7d60384c6f4663d0)
 
 添加规范化用户信息
