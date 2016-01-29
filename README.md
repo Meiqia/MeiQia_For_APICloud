@@ -19,7 +19,7 @@ Description: meChat
 
 #**概述**
 
-美洽是一款实现手机用户与企业保持随时随刻沟通的客服工具。本模块封装了美洽的相关接口。使用此模块之前需要先注册美洽获取appkey
+美洽是一款实现手机用户与企业保持随时随刻沟通的客服工具。本模块封装了美洽的相关接口。使用此模块之前需要先注册美洽获取appkey。
 
 ![图片说明](https://s3.cn-north-1.amazonaws.com.cn/pics.meiqia.bucket/4f2e9f86df2fd5f8)
 
@@ -29,6 +29,10 @@ Description: meChat
 
 注意：本模块在ios上支持最低版本为6.0
 
+#开源地址
+
+模块源代码：[https://github.com/Meiqia/MeiQia_For_APICloud](https://github.com/Meiqia/MeiQia_For_APICloud)
+模块中的美洽UI源代码：[https://github.com/Meiqia/MeiqiaSDK-iOS](https://github.com/Meiqia/MeiqiaSDK-iOS)
 
 #**initMeiQia**<div id="1"></div>
 	
