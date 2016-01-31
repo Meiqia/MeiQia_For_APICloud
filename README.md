@@ -4,7 +4,7 @@ Description: meiQia
 */
 
 <ul id="tab" class="clearfix">
-<li class="active"><a href="#method-content">Method</a></li>
+	<li class="active"><a href="#method-content">Method</a></li>
 </ul>
 <div id="method-content">
 
@@ -98,18 +98,18 @@ var mq = api.require('meiQia');
 
 //配置初始化美洽需要的appkey
 var param = {
-appkey:"33c19c19bd858746b878fcc93166f2e5"
+    appkey:"您的Appkey"
 };
 
 //初始化美洽
 mq.initMeiQia(param, function (ret, err){
-if (ret) {
-//初始化成功
-alert(JSON.stringify(ret));
-}else{
-//初始化失败
-alert(JSON.stringify(err));
-}
+    if (ret) {
+	    //初始化成功
+        alert(JSON.stringify(ret));
+    }else{
+	    //初始化失败
+        alert(JSON.stringify(err));
+    }
 })
 ```
 
@@ -141,11 +141,13 @@ color：
 var mq = api.require('meiQia');
 //设置title以及按钮颜色
 var titleColor = {
-color:"#ffffff"
+    color:"#ffffff"
 };
 mq.setTitleColor(titleColor);
 ```
 
+##补充说明
+参数需要是`#FFFFFF`格式的HTML颜色。
 
 #**setTitleBarColor**<div id="3"></div>
 
@@ -165,10 +167,13 @@ color：
 var mq = api.require('meiQia');
 //设置标题栏背景颜色
 var titleBarColor = {
-color:"#00ff00"
+    color:"#00ff00"
 };
 mq.setTitleBarColor(titleBarColor);
 ```
+
+##补充说明
+参数需要是`#FFFFFF`格式的HTML颜色。
 
 #**show**<div id="4"></div>
 
@@ -214,12 +219,12 @@ agentGroup：
 
 scheduleRule:
 
-- 类型：字符串 
-- 默认值：enterprise 
-- 描述：
-- none：不转接给任何人，让用户留言
-- group: 转接给组内的人
-- enterprise: 转接给企业其他随机一个人
+ - 类型：字符串 
+ - 默认值：enterprise 
+ - 描述：
+	 - none：不转接给任何人，让用户留言
+	 - group: 转接给组内的人
+	 - enterprise: 转接给企业其他随机一个人
 
 ##示例代码
 
@@ -227,8 +232,8 @@ scheduleRule:
 var mq = api.require('meiQia');
 //设置指定分配给某客服,并且如果客服不在线，则留言而不转接给其他客服
 var scheduleParam = {
-agentId: "ed55383a0fa82bbe8242ee16477c9ac3",
-scheduleRule: "none"
+    agentId: "ed55383a0fa82bbe8242ee16477c9ac3",
+    scheduleRule: "none"
 };
 mq.setScheduledAgentOrAgentGroup(scheduleParam);
 
@@ -279,10 +284,10 @@ setClientInfo(params)
 var mq = api.require('meiQia');
 //设置用户信息
 var infoParam = {
-email: "dev@meiqia.com",
-comment: "这是备注",
-avatar: "https://app.meiqia.com/images/logo.png",
-tags: ["付费用户","使用疑问"]
+    email: "dev@meiqia.com",
+    comment: "这是备注",
+    avatar: "https://app.meiqia.com/images/logo.png",
+    tags: ["付费用户","使用疑问"]
 };
 mq.setClientInfo(infoParam);
 ```
