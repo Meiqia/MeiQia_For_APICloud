@@ -1,0 +1,5 @@
+{
+    "name":"meiQia",
+    "class":"MeiQia",
+    "methods":["initMeiQia", "show", "setClientInfo", "setScheduledAgentOrAgentGroup", "setLoginMQClientId", "setLoginCustomizedId", "setTitleColor", "setTitleBarColor"]
+}

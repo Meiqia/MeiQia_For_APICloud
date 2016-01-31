@@ -21,9 +21,9 @@ var mq = api.require('meiQia');
 
 //配置初始化美洽需要的appkey
 var param = {
-    appkey:"登录美洽工作台获取Appkey"
+    appkey:"填写您的Appkey"
 };
-        
+
 //初始化美洽
 mq.initMeiQia(param, function (ret, err){
     if (ret) {
@@ -38,19 +38,41 @@ mq.initMeiQia(param, function (ret, err){
 function show() {
     //设置指定分配给某某客服
    	//var scheduleParam = {
-    //    agentId:"ed55383a0fa82bbe8242ee16477c9ac3"
+    //    agentId:"客服ID"
     //};
     //mq.setScheduledAgentOrAgentGroup(scheduleParam);
 
+    //设置用户信息
+    var infoParam = {
+        email:"dev@meiqia.com",
+        comment:"这是备注",
+        avatar: "https://app.meiqia.com/images/logo.png",
+        tags:["手机APP","北京"],
+        "服务器":"电信一区"
+    };
+    mq.setClientInfo(infoParam);
+    
+    //设置自定义用户Id
+    var customizedIdParam = {
+    id:"10000"
+    };
+    mq.setLoginCustomizedId(customizedIdParam);
+    
+    //设置美洽ID
+    //var clientIdParam = {
+    //    id:"9f0b2d3339edeec591a6e3be5dbafd64"
+    //};
+    //mq.setLoginMQClientId(clientIdParam);
+    
     //设置标题栏背景颜色
     var titleBarColor = {
-        color:"rgb(23,199,208)"
+        color:"#17c7d0"
     };
     mq.setTitleBarColor(titleBarColor);
 
     //设置title以及按钮颜色
     var titleColor = {
-        color:"#fff"
+        color:"#ffffff"
     };
     mq.setTitleColor(titleColor);
 
