@@ -42,7 +42,9 @@
     [MQManager registerDeviceToken:deviceToken];
 }
 
-
+/**
+ *  初始化美洽
+ */
 - (void)initMeiQia:(NSDictionary *)paramDict {
     NSInteger cbId = [paramDict integerValueForKey:@"cbId" defaultValue:-1];
     NSString *appkey = paramDict[@"appkey"];
@@ -58,17 +60,20 @@
     }];
 }
 
-//设置用户信息
+/**
+ *  设置用户信息
+ */
 - (void)setClientInfo:(NSDictionary *)paramDict {
-    NSDictionary *clientInfo = paramDict[@"clientInfo"];
-    if (clientInfo && [clientInfo isKindOfClass:NSDictionary.class]) {
-        [MQManager setClientInfo:clientInfo completion:^(BOOL success, NSError *error) {
+    if (paramDict) {
+        [MQManager setClientInfo:paramDict completion:^(BOOL success, NSError *error) {
             
         }];
     }
 }
 
-//指定分配客服
+/**
+ *  指定分配客服
+ */
 - (void)setScheduledAgentOrAgentGroup:(NSDictionary *)paramDict
 {
     NSString *agentId = paramDict[@"agentId"];
@@ -91,20 +96,48 @@
     [MQManager setScheduledAgentWithAgentId:agentId agentGroupId:AgentGroup scheduleRule:rules];
 }
 
+/**
+ *  设置用户的在美洽的ClientId
+ */
+- (void)setLoginMQClientId:(NSDictionary *)paramDict
+{
+    NSString *_id = paramDict[@"id"];
+    if (_id) {
+        loginMQClientId = _id;
+    }
+}
+
+/**
+ *  设置自定义的用户ID
+ */
+- (void)setLoginCustomizedId:(NSDictionary *)paramDict
+{
+    NSString *_id = paramDict[@"id"];
+    if (_id) {
+        loginCustomizedId = _id;
+    }
+}
+
+/**
+ *  设置NavigationBar的TintColor
+ */
 - (void)setTitleColor:(NSDictionary *)paramDict
 {
     NSString *colorStr = paramDict[@"color"];
     titleColor = [UZAppUtils colorFromNSString:colorStr];
 }
 
+/**
+ *  设置NavigationBar的backgroundColor
+ */
 - (void)setTitleBarColor:(NSDictionary *)paramDict
 {
     NSString *colorStr = paramDict[@"color"];
     setTitleBarColor = [UZAppUtils colorFromNSString:colorStr];
 }
 
+
 - (void)show:(NSDictionary *)paramDict {
-    //    NSInteger cbId = [paramDict integerValueForKey:@"cbId" defaultValue:-1];
     NSString *type = paramDict[@"type"];
     if (!type) type = @"";
     
@@ -114,6 +147,7 @@
     [chatViewManager setLoginMQClientId:loginMQClientId];
     [chatViewManager setLoginCustomizedId:loginCustomizedId];
     
+    //默认使用push
     if ([type.lowercaseString isEqualToString:@"present"]) {
         [chatViewManager presentMQChatViewControllerInViewController:self.viewController];
     }else{
