@@ -16,6 +16,8 @@
     NSString *loginMQClientId;
     UIColor *setTitleBarColor;
     UIColor *titleColor;
+    
+    NSDictionary* clientInfo;
 }
 
 - (id)initWithUZWebView:(UZWebView *)webView_ {
@@ -64,11 +66,7 @@
  *  设置用户信息
  */
 - (void)setClientInfo:(NSDictionary *)paramDict {
-    if (paramDict) {
-        [MQManager setClientInfo:paramDict completion:^(BOOL success, NSError *error) {
-            
-        }];
-    }
+    clientInfo = paramDict;
 }
 
 /**
@@ -141,7 +139,11 @@
     NSString *type = paramDict[@"type"];
     if (!type) type = @"";
     
+    //监听用户上线的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clientOnlineSuccess) name:MQ_CLIENT_ONLINE_SUCCESS_NOTIFICATION object:nil];
+    
     MQChatViewManager *chatViewManager = [MQChatViewManager new];
+    //设置配置
     [chatViewManager setNavigationBarColor:setTitleBarColor];
     [chatViewManager setNavigationBarTintColor:titleColor];
     [chatViewManager setLoginMQClientId:loginMQClientId];
@@ -157,6 +159,16 @@
             //开启滑动返回
             viewController.navigationController.interactivePopGestureRecognizer.enabled = YES;
         }
+    }
+}
+
+- (void)clientOnlineSuccess
+{
+    //上线成功后，上传自定义信息
+    if (clientInfo) {
+        [MQManager setClientInfo:clientInfo completion:^(BOOL success, NSError *error) {
+            clientInfo = nil;
+        }];
     }
 }
 

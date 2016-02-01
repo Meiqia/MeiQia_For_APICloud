@@ -11,7 +11,7 @@
 
 @implementation MQAssetUtil
 
-+ (UIImage *)imageFromBundleWithName:(NSString *)name
++ (UIImage *)bubbleImageFromBundleWithName:(NSString *)name
 {
     return [UIImage imageNamed:[MQAssetUtil resourceWithName:name]];
 }
@@ -23,120 +23,120 @@
 
 + (UIImage *)incomingDefaultAvatarImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQIcon"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQIcon"];
 }
 
 + (UIImage *)outgoingDefaultAvatarImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQIcon"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQIcon"];
 }
 
 + (UIImage *)messageCameraInputImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageCameraInputImageNormalStyleOne"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageCameraInputImageNormalStyleOne"];
 }
 
 + (UIImage *)messageCameraInputHighlightedImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageCameraInputHighlightedImageStyleOne"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageCameraInputHighlightedImageStyleOne"];
 }
 
 + (UIImage *)messageTextInputImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageTextInputImageNormalStyleOne"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageTextInputImageNormalStyleOne"];
 }
 
 + (UIImage *)messageTextInputHighlightedImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageTextInputHighlightedImageStyleOne"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageTextInputHighlightedImageStyleOne"];
 }
 
 + (UIImage *)messageVoiceInputImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageVoiceInputImageNormalStyleOne"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageVoiceInputImageNormalStyleOne"];
 }
 
 + (UIImage *)messageVoiceInputHighlightedImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageVoiceInputHighlightedImageStyleOne"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageVoiceInputHighlightedImageStyleOne"];
 }
 
 + (UIImage *)messageResignKeyboardImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageKeyboardDownImageNormalStyleOne"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageKeyboardDownImageNormalStyleOne"];
 }
 
 + (UIImage *)messageResignKeyboardHighlightedImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageKeyboardDownHighlightedImageStyleOne"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageKeyboardDownHighlightedImageStyleOne"];
 }
 
 + (UIImage *)bubbleIncomingImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubbleIncoming"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubbleIncoming"];
 }
 
 + (UIImage *)bubbleOutgoingImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubbleOutgoing"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubbleOutgoing"];
 }
 
 + (UIImage *)returnCancelImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQNavReturnCancelImage"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQNavReturnCancelImage"];
 }
 
 +(UIImage *)imageLoadErrorImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQImageLoadErrorImage"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQImageLoadErrorImage"];
 }
 
 +(UIImage *)messageWarningImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageWarning"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQMessageWarning"];
 }
 
 + (UIImage *)voiceAnimationGray1
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubble_voice_animation_gray1"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubble_voice_animation_gray1"];
 }
 
 + (UIImage *)voiceAnimationGray2
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubble_voice_animation_gray2"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubble_voice_animation_gray2"];
 }
 
 + (UIImage *)voiceAnimationGray3
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubble_voice_animation_gray3"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubble_voice_animation_gray3"];
 }
 
 + (UIImage *)voiceAnimationGrayError {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubble_incoming_voice_error"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubble_incoming_voice_error"];
 }
 
 + (UIImage *)voiceAnimationGreen1
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubble_voice_animation_green1"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubble_voice_animation_green1"];
 }
 
 + (UIImage *)voiceAnimationGreen2
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubble_voice_animation_green2"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubble_voice_animation_green2"];
 }
 
 + (UIImage *)voiceAnimationGreen3
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubble_voice_animation_green3"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubble_voice_animation_green3"];
 }
 
 + (UIImage *)voiceAnimationGreenError {
-    return [MQAssetUtil imageFromBundleWithName:@"MQBubble_outgoing_voice_error"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQBubble_outgoing_voice_error"];
 }
 
 + (UIImage *)recordBackImage
 {
-    return [MQAssetUtil imageFromBundleWithName:@"MQRecord_back"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:@"MQRecord_back"];
 }
 
 + (UIImage *)recordVolume:(NSInteger)volume
@@ -174,29 +174,7 @@
             imageName = @"MQRecord0";
             break;
     }
-    return [MQAssetUtil imageFromBundleWithName:imageName];
-}
-
-+ (UIImage *)getEvaluationImageWithLevel:(NSInteger)level {
-    NSString *imageName = @"MQEvaluationPositiveImage";
-    switch (level) {
-        case 0:
-            imageName = @"MQEvaluationNegativeImage";
-            break;
-        case 1:
-            imageName = @"MQEvaluationModerateImage";
-            break;
-        case 2:
-            imageName = @"MQEvaluationPositiveImage";
-            break;
-        default:
-            break;
-    }
-    return [MQAssetUtil imageFromBundleWithName:imageName];
-}
-
-+ (UIImage *)getNavigationMoreImage {
-    return [MQAssetUtil imageFromBundleWithName:@"MQMessageNavMoreImage"];
+    return [MQAssetUtil bubbleImageFromBundleWithName:imageName];
 }
 
 @end

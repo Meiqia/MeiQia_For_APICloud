@@ -21,7 +21,7 @@ var mq = api.require('meiQia');
 
 //配置初始化美洽需要的appkey
 var param = {
-    appkey:"填写您的Appkey"
+    appkey:"你的美洽Appkey"
 };
 
 //初始化美洽
@@ -37,10 +37,10 @@ mq.initMeiQia(param, function (ret, err){
 //配置功能参数，并显示美洽窗口
 function show() {
     //设置指定分配给某某客服
-   	//var scheduleParam = {
-    //    agentId:"客服ID"
-    //};
-    //mq.setScheduledAgentOrAgentGroup(scheduleParam);
+   	var scheduleParam = {
+        agentId:"美洽客服的ID"
+    };
+    mq.setScheduledAgentOrAgentGroup(scheduleParam);
 
     //设置用户信息
     var infoParam = {
@@ -54,7 +54,7 @@ function show() {
     
     //设置自定义用户Id
     var customizedIdParam = {
-    id:"10000"
+    id:"id00001"
     };
     mq.setLoginCustomizedId(customizedIdParam);
     

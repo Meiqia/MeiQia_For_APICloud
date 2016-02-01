@@ -45,7 +45,4 @@
 /** 更新frame */
 - (void)updateFrame:(CGRect)frame;
 
-/** 当前是否在录音*/
-- (BOOL)isRecording;
-
 @end
