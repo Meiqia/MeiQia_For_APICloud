@@ -22,19 +22,20 @@ Description: meiQia
 
 #**概述**
 
-美洽是一款实现手机用户与企业保持随时随刻沟通的客服工具。本模块封装了美洽的相关接口。使用此模块之前需要先注册美洽获取appkey。
+注意：本模块最低支持 iOS 6.0，Android 2.3
+
+[美洽](http://meiqia.com/)是一款实现手机用户与企业保持随时随刻沟通的客服工具。本模块封装了[美洽](http://meiqia.com/)的相关接口。使用此模块之前需要先注册美洽获取appkey。
 
 ![图片说明](https://s3.cn-north-1.amazonaws.com.cn/pics.meiqia.bucket/4f2e9f86df2fd5f8)
 
-**注册方法如下:**
+##Appkey获取方法
 
-使用**管理员权限**账号登陆[美洽](https://app.meiqia.com/login)，在 **设置 --> SDK** 页面中，选择 **添加 App 配置** ，根据提示配置App信息，然后添加 APP 即可得到 `appkey` 用于配置。
-
-注意：本模块在ios上支持最低版本为6.0
+使用**管理员权限**账号[登陆美洽](https://app.meiqia.com/login)，在 **设置 --> SDK** 页面中，选择 **添加 App 配置** ，根据提示配置App信息，然后添加 APP 即可得到 `appkey` 用于配置。
 
 #开源地址
 
-模块源代码：[https://github.com/Meiqia/MeiQia_For_APICloud](https://github.com/Meiqia/MeiQia_For_APICloud)
+模块源代码和集成Demo：
+[https://github.com/Meiqia/MeiQia_For_APICloud](https://github.com/Meiqia/MeiQia_For_APICloud)
 
 模块中的美洽UI源代码：
 [https://github.com/Meiqia/MeiqiaSDK-iOS](https://github.com/Meiqia/MeiqiaSDK-iOS) 
@@ -55,25 +56,25 @@ iOS中很多功能需要配置`Info.plist`才能实现。使用美洽模块，�
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-<key>NSAppTransportSecurity</key>
-<dict>
-<key>NSAllowsArbitraryLoads</key>
-<true/>
-<key>NSExceptionDomains</key>
-<dict>
-<key>s3.cn-north-1.amazonaws.com.cn</key>
-<dict>
-<key>NSExceptionRequiresForwardSecrecy</key>
-<false/>
-</dict>
-</dict>
-</dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>s3.cn-north-1.amazonaws.com.cn</key>
+			<dict>
+			<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>
 ```
 
 #**initMeiQia**<div id="1"></div>
-
+	
 初始化美洽
 
 initMeiQia(params, callback)
@@ -98,9 +99,9 @@ var mq = api.require('meiQia');
 
 //配置初始化美洽需要的appkey
 var param = {
-    appkey:"您的Appkey"
+    appkey:"33c19c19bd858746b878fcc93166f2e5"
 };
-
+        
 //初始化美洽
 mq.initMeiQia(param, function (ret, err){
     if (ret) {
@@ -146,8 +147,6 @@ var titleColor = {
 mq.setTitleColor(titleColor);
 ```
 
-##补充说明
-参数需要是`#FFFFFF`格式的HTML颜色。
 
 #**setTitleBarColor**<div id="3"></div>
 
@@ -171,9 +170,6 @@ var titleBarColor = {
 };
 mq.setTitleBarColor(titleBarColor);
 ```
-
-##补充说明
-参数需要是`#FFFFFF`格式的HTML颜色。
 
 #**show**<div id="4"></div>
 
@@ -320,7 +316,7 @@ id：
 var mq = api.require('meiQia');
 //设置美洽ID
 var clientIdParam = {
-id:"9f0b2d3339edeec591a6e3be5dbafd64",
+    id:"9f0b2d3339edeec591a6e3be5dbafd64",
 };
 mq.setLoginMQClientId(clientIdParam);
 ```
@@ -355,7 +351,7 @@ id：
 var mq = api.require('meiQia');
 //设置自定义用户Id
 var customizedIdParam = {
-id:"id00001",
+    id:"id00001",
 };
 mq.setLoginCustomizedId(customizedIdParam);
 ```
