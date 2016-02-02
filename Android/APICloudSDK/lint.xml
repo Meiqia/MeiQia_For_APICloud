@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="HandlerLeak">
+        <ignore path="src/com/apicloud/moduleDemo/InnerGroup.java" />
+        <ignore path="src/com/apicloud/moduleDemo/ScrollPictureView.java" />
+    </issue>
+</lint>
