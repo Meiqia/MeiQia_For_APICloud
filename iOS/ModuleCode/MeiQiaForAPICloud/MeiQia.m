@@ -148,17 +148,16 @@
     [chatViewManager setNavigationBarTintColor:titleColor];
     [chatViewManager setLoginMQClientId:loginMQClientId];
     [chatViewManager setLoginCustomizedId:loginCustomizedId];
+    [chatViewManager enableOutgoingAvatar:NO];
+    
     
     //默认使用push
     if ([type.lowercaseString isEqualToString:@"present"]) {
         [chatViewManager presentMQChatViewControllerInViewController:self.viewController];
     }else{
         MQChatViewController *viewController = [chatViewManager pushMQChatViewControllerInViewController:self.viewController];
-        [self.viewController.navigationController setNavigationBarHidden:NO];
-        if (isIOS7) {
-            //开启滑动返回
-            viewController.navigationController.interactivePopGestureRecognizer.enabled = YES;
-        }
+        viewController.slidBackEnabled = YES;
+        [viewController.navigationController setNavigationBarHidden:NO];
     }
 }
 
