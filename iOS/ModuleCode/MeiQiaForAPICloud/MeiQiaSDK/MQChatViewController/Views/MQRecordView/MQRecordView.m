@@ -7,7 +7,8 @@
 //
 
 #import "MQRecordView.h"
-#import "FBLCDFontView.h"
+#import "MEIQIA_FBLCDFontView.h"
+#import "MQNamespacedDependencies.h"
 #import "MQImageUtil.h"
 #import "MQChatFileUtil.h"
 #import "MQToast.h"
@@ -288,6 +289,10 @@ static NSInteger const kMQMaxRecordVoiceDurationDeviation = 2;
                                   (self.frame.size.height - kMQRecordViewDiameter) / 2,
                                   kMQRecordViewDiameter, kMQRecordViewDiameter);
 
+}
+
+- (BOOL)isRecording {
+    return [audioRecorder isRecording];
 }
 
 @end

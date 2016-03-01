@@ -19,12 +19,15 @@
 #import "MQBundleUtil.h"
 #import "MQImageUtil.h"
 #import <MeiQiaSDK/MQDefinition.h>
+#import "MQEvaluationView.h"
+#import "MQAssetUtil.h"
+#import "MQStringSizeUtil.h"
 
 static CGFloat const kMQChatViewInputBarHeight = 50.0;
 #ifdef INCLUDE_MEIQIA_SDK
-@interface MQChatViewController () <UITableViewDelegate, MQChatViewServiceDelegate, MQInputBarDelegate, UIImagePickerControllerDelegate, MQChatTableViewDelegate, MQChatCellDelegate, MQRecordViewDelegate, MQServiceToViewInterfaceErrorDelegate,UINavigationControllerDelegate>
+@interface MQChatViewController () <UITableViewDelegate, MQChatViewServiceDelegate, MQInputBarDelegate, UIImagePickerControllerDelegate, MQChatTableViewDelegate, MQChatCellDelegate, MQRecordViewDelegate, MQServiceToViewInterfaceErrorDelegate,UINavigationControllerDelegate, MQEvaluationViewDelegate>
 #else
-@interface MQChatViewController () <UITableViewDelegate, MQChatViewServiceDelegate, MQInputBarDelegate, UIImagePickerControllerDelegate, MQChatTableViewDelegate, MQChatCellDelegate, MQRecordViewDelegate,UINavigationControllerDelegate>
+@interface MQChatViewController () <UITableViewDelegate, MQChatViewServiceDelegate, MQInputBarDelegate, UIImagePickerControllerDelegate, MQChatTableViewDelegate, MQChatCellDelegate, MQRecordViewDelegate,UINavigationControllerDelegate, MQEvaluationViewDelegate>
 #endif
 
 @end
@@ -35,6 +38,7 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
     MQChatViewService *chatViewService;
     MQInputBar *chatInputBar;
     MQRecordView *recordView;
+    MQEvaluationView *evaluationView;
     CGSize viewSize;
     BOOL isMQCommunicationFailed;  //判断是否通信没有连接上
     UIStatusBarStyle currentStatusBarStyle;//当前statusBar样式
@@ -58,12 +62,12 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = true;
     currentStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
-    self.navigationController.delegate  = self;
     self.view.backgroundColor = [UIColor whiteColor];
     viewSize = [UIScreen mainScreen].bounds.size;
     [self setNavBar];
     [self initChatTableView];
     [self initchatViewService];
+    [self initEvaluationView];
     [self initInputBar];
     [self initTableViewDataSource];
     chatViewService.chatViewWidth = self.chatTableView.frame.size.width;
@@ -112,10 +116,6 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
     }
 }
 
-- (void)didSelectNavigationRightButton {
-    NSLog(@"click right BarItemButton!");
-}
-
 - (void)addObserver {
 #ifdef INCLUDE_MEIQIA_SDK
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMQCommunicationErrorNotification:) name:MQ_COMMUNICATION_FAILED_NOTIFICATION object:nil];
@@ -124,6 +124,7 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
 }
 
 - (void)removeDelegateAndObserver {
+    self.navigationController.delegate = nil;
     chatViewService.delegate = nil;
     tableDataSource.chatCellDelegate = nil;
     self.chatTableView.chatTableViewDelegate = nil;
@@ -188,6 +189,14 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
     self.inputBarTextView = chatInputBar.textView.internalTextView;
 }
 
+/**
+ * 初始化评价的 alertView
+ */
+- (void)initEvaluationView {
+    evaluationView = [[MQEvaluationView alloc] init];
+    evaluationView.delegate = self;
+}
+
 #pragma 添加消息通知的observer
 - (void)setNotificationObserver {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resignKeyboardFirstResponder:) name:MQChatViewKeyboardResignFirstResponderNotification object:nil];
@@ -223,27 +232,46 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
 
 #pragma 编辑导航栏 - Demo用到的收取消息按钮
 - (void)setNavBar {
-#ifndef INCLUDE_MEIQIA_SDK
     if ([MQChatViewConfig sharedConfig].navBarRightButton) {
         return;
     }
+#ifndef INCLUDE_MEIQIA_SDK
     UIButton *loadMessageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     loadMessageBtn.frame = CGRectMake(0, 0, 62, 22);
     [loadMessageBtn setTitle:@"收取消息" forState:UIControlStateNormal];
     [loadMessageBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     loadMessageBtn.titleLabel.font = [UIFont systemFontOfSize:12.0];
     loadMessageBtn.backgroundColor = [UIColor clearColor];
-    [loadMessageBtn addTarget:self action:@selector(tapLoadMessageBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [loadMessageBtn addTarget:self action:@selector(tapNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:loadMessageBtn];
+#else
+    UIButton *rightNavButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    NSString *btnText = [MQBundleUtil localizedStringForKey:@"meiqia_evaluation_sheet"];
+    UIFont *btnTextFont = [UIFont systemFontOfSize:[UIFont buttonFontSize]];
+    CGFloat btnTextHeight = [MQStringSizeUtil getHeightForText:btnText withFont:btnTextFont andWidth:200];
+    CGFloat btnTextWidth = [MQStringSizeUtil getWidthForText:btnText withFont:btnTextFont andHeight:btnTextHeight];
+    rightNavButton.frame = CGRectMake(0, 0, btnTextWidth, btnTextHeight);
+    rightNavButton.titleLabel.font = btnTextFont;
+    [rightNavButton setTitleColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+    [rightNavButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateDisabled];
+    [rightNavButton setTitle:btnText forState:UIControlStateNormal];
+    [rightNavButton addTarget:self action:@selector(tapNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightNavButton];
+    self.navigationItem.rightBarButtonItem.customView.hidden = YES;
 #endif
 }
 
+- (void)tapNavigationRightBtn:(id)sender {
 #ifndef INCLUDE_MEIQIA_SDK
-- (void)tapLoadMessageBtn:(id)sender {
     [chatViewService loadLastMessage];
     [self chatTableViewScrollToBottomWithAnimated:true];
-}
+    //显示评价
+    [evaluationView showEvaluationAlertView];
+#else
+    [self showEvaluationAlertView];
 #endif
+}
+
 
 #pragma UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -273,6 +301,11 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
 }
 
 #pragma MQChatViewServiceDelegate
+- (void)hideRightBarButtonItem:(BOOL)enabled
+{
+    self.navigationItem.rightBarButtonItem.customView.hidden = enabled;
+}
+
 - (void)didGetHistoryMessagesWithCellNumber:(NSInteger)cellNumber isLoadOver:(BOOL)isLoadOver{
     [self.chatTableView finishLoadingTopRefreshViewWithCellNumber:cellNumber isLoadOver:isLoadOver];
     [self.chatTableView reloadData];
@@ -288,6 +321,15 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
 
 - (void)scrollTableViewToBottom {
     [self chatTableViewScrollToBottomWithAnimated:false];
+}
+
+- (void)showEvaluationAlertView {
+    [chatInputBar.textView resignFirstResponder];
+    [evaluationView showEvaluationAlertView];
+}
+
+- (BOOL)isChatRecording {
+    return [recordView isRecording];
 }
 
 #ifdef INCLUDE_MEIQIA_SDK
@@ -322,7 +364,7 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
     return YES;
 }
 
--(void)sendImageWithSourceType:(UIImagePickerControllerSourceType *)sourceType {
+-(void)sendImageWithSourceType:(UIImagePickerControllerSourceType)sourceType {
     NSString *mediaPermission = [MQChatDeviceUtil isDeviceSupportImageSourceType:(int)sourceType];
     if (!mediaPermission) {
         return;
@@ -331,6 +373,8 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
         [MQToast showToast:[MQBundleUtil localizedStringForKey:mediaPermission] duration:2 window:self.view];
         return;
     }
+    
+    self.navigationController.delegate = self;
     //兼容ipad打不开相册问题，使用队列延迟
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -436,7 +480,7 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
     if (![type isEqualToString:@"public.image"]) {
         return;
     }
-    UIImage *image          = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    UIImage *image          =  [MQImageUtil fixrotation:[info objectForKey:UIImagePickerControllerOriginalImage]];
     [picker dismissViewControllerAnimated:YES completion:^{
         [chatViewService sendImageMessageWithImage:image];
         [self chatTableViewScrollToBottomWithAnimated:true];
@@ -447,6 +491,7 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma UINavigationControllerDelegate 设置当前 statusBarStyle
 -(void)navigationController:(UINavigationController *)navigationController
      willShowViewController:(UIViewController *)viewController
                    animated:(BOOL)animated
@@ -455,6 +500,7 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
     if ([navigationController isKindOfClass:[UIImagePickerController class]]) {
         [UIApplication sharedApplication].statusBarStyle = currentStatusBarStyle;
     }
+    self.navigationController.delegate = nil;
 }
 
 #pragma MQChatCellDelegate
@@ -476,6 +522,12 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
 - (void)didTapMessageInCell:(UITableViewCell *)cell {
     NSIndexPath *indexPath = [self.chatTableView indexPathForCell:cell];
     [chatViewService didTapMessageCellAtIndex:indexPath.row];
+}
+
+#pragma MQEvaluationViewDelegate
+- (void)didSelectLevel:(NSInteger)level comment:(NSString *)comment {
+    NSLog(@"评价 level = %d\n评价内容 = %@", (int)level, comment);
+    [chatViewService sendEvaluationLevel:level comment:comment];
 }
 
 #pragma ios7以下系统的横屏的事件
@@ -558,6 +610,10 @@ static CGFloat const kMQChatViewInputBarHeight = 50.0;
  *  @param isScheduling 是否正在分配客服
  */
 - (void)updateNavBarTitle:(NSString *)title {
+    //如果开发者设定了 title ，则不更新 title
+    if ([MQChatViewConfig sharedConfig].navTitleText) {
+        return;
+    }
     self.navigationItem.title = title;
 }
 
