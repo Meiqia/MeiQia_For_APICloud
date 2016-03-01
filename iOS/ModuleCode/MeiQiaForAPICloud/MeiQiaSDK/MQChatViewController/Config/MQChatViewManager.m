@@ -83,23 +83,17 @@
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:[MQChatViewConfig sharedConfig].navBarRightButton];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-        [[MQChatViewConfig sharedConfig].navBarRightButton addTarget:viewController action:@selector(didSelectNavigationRightButton) forControlEvents:UIControlEventTouchUpInside];
+        [[MQChatViewConfig sharedConfig].navBarRightButton addTarget:viewController action:@selector(tapNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];
 #pragma clang diagnostic pop
         viewController.navigationItem.rightBarButtonItem = rightItem;
     }
     
-    //导航栏标题
-    if ([MQChatViewConfig sharedConfig].navTitleText) {
-        viewController.navigationItem.title = [MQChatViewConfig sharedConfig].navTitleText;
-        if ([MQChatViewConfig sharedConfig].navBarTintColor) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            navigationController.navigationBar.titleTextAttributes = @{
-                                                                       UITextAttributeTextColor : [MQChatViewConfig sharedConfig].navBarTintColor
-                                                                       };
+    navigationController.navigationBar.titleTextAttributes = @{
+                                                               UITextAttributeTextColor : [MQChatViewConfig sharedConfig].navBarTintColor
+                                                               };
 #pragma clang diagnostic pop
-        }
-    }
 }
 
 - (void)disappearMQChatViewController {

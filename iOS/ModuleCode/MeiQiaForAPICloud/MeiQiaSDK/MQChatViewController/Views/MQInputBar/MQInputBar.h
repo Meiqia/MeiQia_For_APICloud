@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HPGrowingTextView.h"
+#import "MEIQIA_HPGrowingTextView.h"
+#import "MQNamespacedDependencies.h"
 #import "MQChatTableView.h"
 
 @protocol MQInputBarDelegate <NSObject>
 @optional
 -(BOOL)sendTextMessage:(NSString*)text;
--(void)sendImageWithSourceType:(UIImagePickerControllerSourceType *)sourceType;
+-(void)sendImageWithSourceType:(UIImagePickerControllerSourceType)sourceType;
 -(void)inputting:(NSString*)content;
 
 -(void)beginRecord:(CGPoint)point;
@@ -26,8 +27,8 @@
 
 @interface MQInputBar : UIView
 
-@property(nonatomic,weak) id<MQInputBarDelegate> delegate;
-@property(nonatomic,strong) HPGrowingTextView* textView;
+@property(nonatomic, weak) id<MQInputBarDelegate> delegate;
+@property(nonatomic, strong) HPGrowingTextView* textView;
 
 - (id)initWithFrame:(CGRect)frame
           superView:(UIView *)inputBarSuperView

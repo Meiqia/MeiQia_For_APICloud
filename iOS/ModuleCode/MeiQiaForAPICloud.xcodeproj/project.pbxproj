@@ -7,85 +7,74 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B0FBC141C5F578C0040E630 /* MeiQiaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0FBB561C5F578C0040E630 /* MeiQiaSDK.framework */; };
-		0B0FBC151C5F578C0040E630 /* MQServiceToViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB591C5F578C0040E630 /* MQServiceToViewInterface.m */; };
-		0B0FBC161C5F578C0040E630 /* MQChatViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB5F1C5F578C0040E630 /* MQChatViewConfig.m */; };
-		0B0FBC171C5F578C0040E630 /* MQChatViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB611C5F578C0040E630 /* MQChatViewManager.m */; };
-		0B0FBC181C5F578C0040E630 /* MQChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB641C5F578C0040E630 /* MQChatViewController.m */; };
-		0B0FBC191C5F578C0040E630 /* MQChatViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB661C5F578C0040E630 /* MQChatViewService.m */; };
-		0B0FBC1A1C5F578C0040E630 /* MQChatViewTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB681C5F578C0040E630 /* MQChatViewTableDataSource.m */; };
-		0B0FBC1B1C5F578C0040E630 /* MQBaseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB6B1C5F578C0040E630 /* MQBaseMessage.m */; };
-		0B0FBC1C1C5F578C0040E630 /* MQEventMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB6D1C5F578C0040E630 /* MQEventMessage.m */; };
-		0B0FBC1D1C5F578C0040E630 /* MQImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB6F1C5F578C0040E630 /* MQImageMessage.m */; };
-		0B0FBC1E1C5F578C0040E630 /* MQTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB711C5F578C0040E630 /* MQTextMessage.m */; };
-		0B0FBC1F1C5F578C0040E630 /* MQVoiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB731C5F578C0040E630 /* MQVoiceMessage.m */; };
-		0B0FBC201C5F578C0040E630 /* MQEventCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB781C5F578C0040E630 /* MQEventCellModel.m */; };
-		0B0FBC211C5F578C0040E630 /* MQImageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB7A1C5F578C0040E630 /* MQImageCellModel.m */; };
-		0B0FBC221C5F578C0040E630 /* MQMessageDateCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB7C1C5F578C0040E630 /* MQMessageDateCellModel.m */; };
-		0B0FBC231C5F578C0040E630 /* MQTextCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB7E1C5F578C0040E630 /* MQTextCellModel.m */; };
-		0B0FBC241C5F578C0040E630 /* MQTipsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB801C5F578C0040E630 /* MQTipsCellModel.m */; };
-		0B0FBC251C5F578C0040E630 /* MQVoiceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB821C5F578C0040E630 /* MQVoiceCellModel.m */; };
-		0B0FBC261C5F578C0040E630 /* MQChatBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB851C5F578C0040E630 /* MQChatBaseCell.m */; };
-		0B0FBC271C5F578C0040E630 /* MQEventMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB871C5F578C0040E630 /* MQEventMessageCell.m */; };
-		0B0FBC281C5F578C0040E630 /* MQImageMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB891C5F578C0040E630 /* MQImageMessageCell.m */; };
-		0B0FBC291C5F578C0040E630 /* MQMessageDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB8B1C5F578C0040E630 /* MQMessageDateCell.m */; };
-		0B0FBC2A1C5F578C0040E630 /* MQTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB8D1C5F578C0040E630 /* MQTextMessageCell.m */; };
-		0B0FBC2B1C5F578C0040E630 /* MQTipsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB8F1C5F578C0040E630 /* MQTipsCell.m */; };
-		0B0FBC2C1C5F578C0040E630 /* MQVoiceMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB911C5F578C0040E630 /* MQVoiceMessageCell.m */; };
-		0B0FBC2D1C5F578C0040E630 /* MQAssetUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB941C5F578C0040E630 /* MQAssetUtil.m */; };
-		0B0FBC2E1C5F578C0040E630 /* MQBundleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB961C5F578C0040E630 /* MQBundleUtil.m */; };
-		0B0FBC2F1C5F578C0040E630 /* MQChatAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB981C5F578C0040E630 /* MQChatAudioPlayer.m */; };
-		0B0FBC301C5F578C0040E630 /* MQChatAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB9A1C5F578C0040E630 /* MQChatAudioRecorder.m */; };
-		0B0FBC311C5F578C0040E630 /* MQChatDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB9C1C5F578C0040E630 /* MQChatDeviceUtil.m */; };
-		0B0FBC321C5F578C0040E630 /* MQChatEmojize.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBB9E1C5F578C0040E630 /* MQChatEmojize.m */; };
-		0B0FBC331C5F578C0040E630 /* MQChatFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBA01C5F578C0040E630 /* MQChatFileUtil.m */; };
-		0B0FBC341C5F578C0040E630 /* MQChatRegexUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBA21C5F578C0040E630 /* MQChatRegexUtil.m */; };
-		0B0FBC351C5F578C0040E630 /* MQDateFormatterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBA41C5F578C0040E630 /* MQDateFormatterUtil.m */; };
-		0B0FBC361C5F578C0040E630 /* MQImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBA61C5F578C0040E630 /* MQImageUtil.m */; };
-		0B0FBC371C5F578C0040E630 /* MQStringSizeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBA81C5F578C0040E630 /* MQStringSizeUtil.m */; };
-		0B0FBC381C5F578C0040E630 /* FBBitmapFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBAC1C5F578C0040E630 /* FBBitmapFont.m */; };
-		0B0FBC391C5F578C0040E630 /* FBBitmapFontView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBAE1C5F578C0040E630 /* FBBitmapFontView.m */; };
-		0B0FBC3A1C5F578C0040E630 /* FBFontSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBB01C5F578C0040E630 /* FBFontSymbol.m */; };
-		0B0FBC3B1C5F578C0040E630 /* FBLCDFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBB21C5F578C0040E630 /* FBLCDFont.m */; };
-		0B0FBC3C1C5F578C0040E630 /* FBLCDFontView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBB41C5F578C0040E630 /* FBLCDFontView.m */; };
-		0B0FBC3D1C5F578C0040E630 /* FBSquareFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBB61C5F578C0040E630 /* FBSquareFont.m */; };
-		0B0FBC3E1C5F578C0040E630 /* FBSquareFontView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBB81C5F578C0040E630 /* FBSquareFontView.m */; };
-		0B0FBC3F1C5F578C0040E630 /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBBB1C5F578C0040E630 /* HPGrowingTextView.m */; };
-		0B0FBC401C5F578C0040E630 /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBBD1C5F578C0040E630 /* HPTextViewInternal.m */; };
-		0B0FBC411C5F578C0040E630 /* MHFacebookImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBC01C5F578C0040E630 /* MHFacebookImageViewer.m */; };
-		0B0FBC421C5F578C0040E630 /* UIImageView+MHFacebookImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBC21C5F578C0040E630 /* UIImageView+MHFacebookImageViewer.m */; };
-		0B0FBC431C5F578C0040E630 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0FBBCD1C5F578C0040E630 /* libopencore-amrnb.a */; };
-		0B0FBC441C5F578C0040E630 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0FBBCE1C5F578C0040E630 /* libopencore-amrwb.a */; };
-		0B0FBC451C5F578C0040E630 /* AmrRecordWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBD01C5F578C0040E630 /* AmrRecordWriter.m */; };
-		0B0FBC461C5F578C0040E630 /* CafRecordWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBD21C5F578C0040E630 /* CafRecordWriter.m */; };
-		0B0FBC471C5F578C0040E630 /* MLAudioMeterObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBD51C5F578C0040E630 /* MLAudioMeterObserver.m */; };
-		0B0FBC481C5F578C0040E630 /* MLAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBD71C5F578C0040E630 /* MLAudioRecorder.m */; };
-		0B0FBC491C5F578C0040E630 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBDA1C5F578C0040E630 /* MKAnnotationView+WebCache.m */; };
-		0B0FBC4A1C5F578C0040E630 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBDC1C5F578C0040E630 /* NSData+ImageContentType.m */; };
-		0B0FBC4B1C5F578C0040E630 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBDE1C5F578C0040E630 /* SDImageCache.m */; };
-		0B0FBC4C1C5F578C0040E630 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBE01C5F578C0040E630 /* SDWebImageCompat.m */; };
-		0B0FBC4D1C5F578C0040E630 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBE21C5F578C0040E630 /* SDWebImageDecoder.m */; };
-		0B0FBC4E1C5F578C0040E630 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBE41C5F578C0040E630 /* SDWebImageDownloader.m */; };
-		0B0FBC4F1C5F578C0040E630 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBE61C5F578C0040E630 /* SDWebImageDownloaderOperation.m */; };
-		0B0FBC501C5F578C0040E630 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBE81C5F578C0040E630 /* SDWebImageManager.m */; };
-		0B0FBC511C5F578C0040E630 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBEB1C5F578C0040E630 /* SDWebImagePrefetcher.m */; };
-		0B0FBC521C5F578C0040E630 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBED1C5F578C0040E630 /* UIButton+WebCache.m */; };
-		0B0FBC531C5F578C0040E630 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBEF1C5F578C0040E630 /* UIImage+GIF.m */; };
-		0B0FBC541C5F578C0040E630 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBF11C5F578C0040E630 /* UIImage+MultiFormat.m */; };
-		0B0FBC551C5F578C0040E630 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBF31C5F578C0040E630 /* UIImage+WebP.m */; };
-		0B0FBC561C5F578C0040E630 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBF51C5F578C0040E630 /* UIImageView+HighlightedWebCache.m */; };
-		0B0FBC571C5F578C0040E630 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBF71C5F578C0040E630 /* UIImageView+WebCache.m */; };
-		0B0FBC581C5F578C0040E630 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBF91C5F578C0040E630 /* UIView+WebCacheOperation.m */; };
-		0B0FBC591C5F578C0040E630 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBBFC1C5F578C0040E630 /* TTTAttributedLabel.m */; };
-		0B0FBC5A1C5F578C0040E630 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBC001C5F578C0040E630 /* amrFileCodec.mm */; };
-		0B0FBC5B1C5F578C0040E630 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBC021C5F578C0040E630 /* wav.mm */; };
-		0B0FBC5C1C5F578C0040E630 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBC041C5F578C0040E630 /* VoiceConverter.mm */; };
-		0B0FBC5D1C5F578C0040E630 /* MQChatTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBC071C5F578C0040E630 /* MQChatTableView.m */; };
-		0B0FBC5E1C5F578C0040E630 /* MQInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBC0A1C5F578C0040E630 /* MQInputBar.m */; };
-		0B0FBC5F1C5F578C0040E630 /* MQPullRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBC0D1C5F578C0040E630 /* MQPullRefreshView.m */; };
-		0B0FBC601C5F578C0040E630 /* MQRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBC101C5F578C0040E630 /* MQRecordView.m */; };
-		0B0FBC611C5F578C0040E630 /* MQToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FBC131C5F578C0040E630 /* MQToast.m */; };
 		0BB7957B1C5A1D5900AB2E83 /* MeiQia.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7957A1C5A1D5900AB2E83 /* MeiQia.m */; };
+		0BBF52831C859024005566C1 /* MeiQiaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBF51DE1C859023005566C1 /* MeiQiaSDK.framework */; };
+		0BBF52841C859024005566C1 /* MQServiceToViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51E11C859023005566C1 /* MQServiceToViewInterface.m */; };
+		0BBF52851C859024005566C1 /* MQChatViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51E71C859023005566C1 /* MQChatViewConfig.m */; };
+		0BBF52861C859024005566C1 /* MQChatViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51E91C859023005566C1 /* MQChatViewManager.m */; };
+		0BBF52871C859024005566C1 /* MQChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51EC1C859023005566C1 /* MQChatViewController.m */; };
+		0BBF52881C859024005566C1 /* MQChatViewService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51EE1C859023005566C1 /* MQChatViewService.m */; };
+		0BBF52891C859024005566C1 /* MQChatViewTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51F01C859023005566C1 /* MQChatViewTableDataSource.m */; };
+		0BBF528A1C859024005566C1 /* MQBaseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51F31C859023005566C1 /* MQBaseMessage.m */; };
+		0BBF528B1C859024005566C1 /* MQEventMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51F51C859023005566C1 /* MQEventMessage.m */; };
+		0BBF528C1C859024005566C1 /* MQImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51F71C859023005566C1 /* MQImageMessage.m */; };
+		0BBF528D1C859024005566C1 /* MQTextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51F91C859023005566C1 /* MQTextMessage.m */; };
+		0BBF528E1C859024005566C1 /* MQVoiceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF51FB1C859023005566C1 /* MQVoiceMessage.m */; };
+		0BBF528F1C859024005566C1 /* MQEventCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52001C859023005566C1 /* MQEventCellModel.m */; };
+		0BBF52901C859024005566C1 /* MQImageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52021C859023005566C1 /* MQImageCellModel.m */; };
+		0BBF52911C859024005566C1 /* MQMessageDateCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52041C859023005566C1 /* MQMessageDateCellModel.m */; };
+		0BBF52921C859024005566C1 /* MQTextCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52061C859023005566C1 /* MQTextCellModel.m */; };
+		0BBF52931C859024005566C1 /* MQTipsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52081C859023005566C1 /* MQTipsCellModel.m */; };
+		0BBF52941C859024005566C1 /* MQVoiceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF520A1C859023005566C1 /* MQVoiceCellModel.m */; };
+		0BBF52951C859024005566C1 /* MQChatBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF520D1C859023005566C1 /* MQChatBaseCell.m */; };
+		0BBF52961C859024005566C1 /* MQEvaluationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF520F1C859023005566C1 /* MQEvaluationCell.m */; };
+		0BBF52971C859024005566C1 /* MQEventMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52111C859023005566C1 /* MQEventMessageCell.m */; };
+		0BBF52981C859024005566C1 /* MQImageMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52131C859023005566C1 /* MQImageMessageCell.m */; };
+		0BBF52991C859024005566C1 /* MQMessageDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52151C859023005566C1 /* MQMessageDateCell.m */; };
+		0BBF529A1C859024005566C1 /* MQTextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52171C859023005566C1 /* MQTextMessageCell.m */; };
+		0BBF529B1C859024005566C1 /* MQTipsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52191C859023005566C1 /* MQTipsCell.m */; };
+		0BBF529C1C859024005566C1 /* MQVoiceMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF521B1C859024005566C1 /* MQVoiceMessageCell.m */; };
+		0BBF529D1C859024005566C1 /* MQAssetUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF521E1C859024005566C1 /* MQAssetUtil.m */; };
+		0BBF529E1C859024005566C1 /* MQBundleUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52201C859024005566C1 /* MQBundleUtil.m */; };
+		0BBF529F1C859024005566C1 /* MQChatAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52221C859024005566C1 /* MQChatAudioPlayer.m */; };
+		0BBF52A01C859024005566C1 /* MQChatAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52241C859024005566C1 /* MQChatAudioRecorder.m */; };
+		0BBF52A11C859024005566C1 /* MQChatDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52261C859024005566C1 /* MQChatDeviceUtil.m */; };
+		0BBF52A21C859024005566C1 /* MQChatEmojize.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52281C859024005566C1 /* MQChatEmojize.m */; };
+		0BBF52A31C859024005566C1 /* MQChatFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF522A1C859024005566C1 /* MQChatFileUtil.m */; };
+		0BBF52A41C859024005566C1 /* MQChatRegexUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF522C1C859024005566C1 /* MQChatRegexUtil.m */; };
+		0BBF52A51C859024005566C1 /* MQDateFormatterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF522E1C859024005566C1 /* MQDateFormatterUtil.m */; };
+		0BBF52A61C859024005566C1 /* MQImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52301C859024005566C1 /* MQImageUtil.m */; };
+		0BBF52A71C859024005566C1 /* MQStringSizeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52321C859024005566C1 /* MQStringSizeUtil.m */; };
+		0BBF52A81C859024005566C1 /* MEIQIA_CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52361C859024005566C1 /* MEIQIA_CustomIOSAlertView.m */; };
+		0BBF52A91C859024005566C1 /* MEIQIA_FBBitmapFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52391C859024005566C1 /* MEIQIA_FBBitmapFont.m */; };
+		0BBF52AA1C859024005566C1 /* MEIQIA_FBBitmapFontView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF523B1C859024005566C1 /* MEIQIA_FBBitmapFontView.m */; };
+		0BBF52AB1C859024005566C1 /* MEIQIA_FBFontSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF523D1C859024005566C1 /* MEIQIA_FBFontSymbol.m */; };
+		0BBF52AC1C859024005566C1 /* MEIQIA_FBLCDFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF523F1C859024005566C1 /* MEIQIA_FBLCDFont.m */; };
+		0BBF52AD1C859024005566C1 /* MEIQIA_FBLCDFontView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52411C859024005566C1 /* MEIQIA_FBLCDFontView.m */; };
+		0BBF52AE1C859024005566C1 /* MEIQIA_FBSquareFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52431C859024005566C1 /* MEIQIA_FBSquareFont.m */; };
+		0BBF52AF1C859024005566C1 /* MEIQIA_FBSquareFontView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52451C859024005566C1 /* MEIQIA_FBSquareFontView.m */; };
+		0BBF52B01C859024005566C1 /* MEIQIA_HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52481C859024005566C1 /* MEIQIA_HPGrowingTextView.m */; };
+		0BBF52B11C859024005566C1 /* MEIQIA_HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF524A1C859024005566C1 /* MEIQIA_HPTextViewInternal.m */; };
+		0BBF52B21C859024005566C1 /* MEIQIA_MHFacebookImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF524D1C859024005566C1 /* MEIQIA_MHFacebookImageViewer.m */; };
+		0BBF52B31C859024005566C1 /* UIImageView+MEIQIA_MHFacebookImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF524F1C859024005566C1 /* UIImageView+MEIQIA_MHFacebookImageViewer.m */; };
+		0BBF52B41C859024005566C1 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBF525A1C859024005566C1 /* libopencore-amrnb.a */; };
+		0BBF52B51C859024005566C1 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBF525B1C859024005566C1 /* libopencore-amrwb.a */; };
+		0BBF52B61C859024005566C1 /* MEIQIA_AmrRecordWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF525E1C859024005566C1 /* MEIQIA_AmrRecordWriter.m */; };
+		0BBF52B71C859024005566C1 /* MEIQIA_CafRecordWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52601C859024005566C1 /* MEIQIA_CafRecordWriter.m */; };
+		0BBF52B81C859024005566C1 /* MEIQIA_MLAudioMeterObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52621C859024005566C1 /* MEIQIA_MLAudioMeterObserver.m */; };
+		0BBF52B91C859024005566C1 /* MEIQIA_MLAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52641C859024005566C1 /* MEIQIA_MLAudioRecorder.m */; };
+		0BBF52BA1C859024005566C1 /* MEIQIA_TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52681C859024005566C1 /* MEIQIA_TTTAttributedLabel.m */; };
+		0BBF52BB1C859024005566C1 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF526C1C859024005566C1 /* amrFileCodec.mm */; };
+		0BBF52BC1C859024005566C1 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF526E1C859024005566C1 /* wav.mm */; };
+		0BBF52BD1C859024005566C1 /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52701C859024005566C1 /* VoiceConverter.mm */; };
+		0BBF52BE1C859024005566C1 /* MQChatTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52731C859024005566C1 /* MQChatTableView.m */; };
+		0BBF52BF1C859024005566C1 /* MQEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52761C859024005566C1 /* MQEvaluationView.m */; };
+		0BBF52C01C859024005566C1 /* MQInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52791C859024005566C1 /* MQInputBar.m */; };
+		0BBF52C11C859024005566C1 /* MQPullRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF527C1C859024005566C1 /* MQPullRefreshView.m */; };
+		0BBF52C21C859024005566C1 /* MQRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF527F1C859024005566C1 /* MQRecordView.m */; };
+		0BBF52C31C859024005566C1 /* MQToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF52821C859024005566C1 /* MQToast.m */; };
+		0BBF52C41C85902F005566C1 /* MeiQiaSDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BBF51DE1C859023005566C1 /* MeiQiaSDK.framework */; };
+		0BBF52C51C85902F005566C1 /* MQChatViewAsset.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BBF51E41C859023005566C1 /* MQChatViewAsset.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -95,173 +84,14 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				0BBF52C41C85902F005566C1 /* MeiQiaSDK.framework in CopyFiles */,
+				0BBF52C51C85902F005566C1 /* MQChatViewAsset.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0B0FBB561C5F578C0040E630 /* MeiQiaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MeiQiaSDK.framework; sourceTree = "<group>"; };
-		0B0FBB581C5F578C0040E630 /* MQServiceToViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQServiceToViewInterface.h; sourceTree = "<group>"; };
-		0B0FBB591C5F578C0040E630 /* MQServiceToViewInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQServiceToViewInterface.m; sourceTree = "<group>"; };
-		0B0FBB5C1C5F578C0040E630 /* MQChatViewAsset.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MQChatViewAsset.bundle; sourceTree = "<group>"; };
-		0B0FBB5E1C5F578C0040E630 /* MQChatViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewConfig.h; sourceTree = "<group>"; };
-		0B0FBB5F1C5F578C0040E630 /* MQChatViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewConfig.m; sourceTree = "<group>"; };
-		0B0FBB601C5F578C0040E630 /* MQChatViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewManager.h; sourceTree = "<group>"; };
-		0B0FBB611C5F578C0040E630 /* MQChatViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewManager.m; sourceTree = "<group>"; };
-		0B0FBB631C5F578C0040E630 /* MQChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewController.h; sourceTree = "<group>"; };
-		0B0FBB641C5F578C0040E630 /* MQChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewController.m; sourceTree = "<group>"; };
-		0B0FBB651C5F578C0040E630 /* MQChatViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewService.h; sourceTree = "<group>"; };
-		0B0FBB661C5F578C0040E630 /* MQChatViewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewService.m; sourceTree = "<group>"; };
-		0B0FBB671C5F578C0040E630 /* MQChatViewTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewTableDataSource.h; sourceTree = "<group>"; };
-		0B0FBB681C5F578C0040E630 /* MQChatViewTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewTableDataSource.m; sourceTree = "<group>"; };
-		0B0FBB6A1C5F578C0040E630 /* MQBaseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQBaseMessage.h; sourceTree = "<group>"; };
-		0B0FBB6B1C5F578C0040E630 /* MQBaseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQBaseMessage.m; sourceTree = "<group>"; };
-		0B0FBB6C1C5F578C0040E630 /* MQEventMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEventMessage.h; sourceTree = "<group>"; };
-		0B0FBB6D1C5F578C0040E630 /* MQEventMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQEventMessage.m; sourceTree = "<group>"; };
-		0B0FBB6E1C5F578C0040E630 /* MQImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQImageMessage.h; sourceTree = "<group>"; };
-		0B0FBB6F1C5F578C0040E630 /* MQImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQImageMessage.m; sourceTree = "<group>"; };
-		0B0FBB701C5F578C0040E630 /* MQTextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTextMessage.h; sourceTree = "<group>"; };
-		0B0FBB711C5F578C0040E630 /* MQTextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTextMessage.m; sourceTree = "<group>"; };
-		0B0FBB721C5F578C0040E630 /* MQVoiceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQVoiceMessage.h; sourceTree = "<group>"; };
-		0B0FBB731C5F578C0040E630 /* MQVoiceMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQVoiceMessage.m; sourceTree = "<group>"; };
-		0B0FBB761C5F578C0040E630 /* MQCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQCellModelProtocol.h; sourceTree = "<group>"; };
-		0B0FBB771C5F578C0040E630 /* MQEventCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEventCellModel.h; sourceTree = "<group>"; };
-		0B0FBB781C5F578C0040E630 /* MQEventCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQEventCellModel.m; sourceTree = "<group>"; };
-		0B0FBB791C5F578C0040E630 /* MQImageCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQImageCellModel.h; sourceTree = "<group>"; };
-		0B0FBB7A1C5F578C0040E630 /* MQImageCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQImageCellModel.m; sourceTree = "<group>"; };
-		0B0FBB7B1C5F578C0040E630 /* MQMessageDateCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQMessageDateCellModel.h; sourceTree = "<group>"; };
-		0B0FBB7C1C5F578C0040E630 /* MQMessageDateCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQMessageDateCellModel.m; sourceTree = "<group>"; };
-		0B0FBB7D1C5F578C0040E630 /* MQTextCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTextCellModel.h; sourceTree = "<group>"; };
-		0B0FBB7E1C5F578C0040E630 /* MQTextCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTextCellModel.m; sourceTree = "<group>"; };
-		0B0FBB7F1C5F578C0040E630 /* MQTipsCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTipsCellModel.h; sourceTree = "<group>"; };
-		0B0FBB801C5F578C0040E630 /* MQTipsCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTipsCellModel.m; sourceTree = "<group>"; };
-		0B0FBB811C5F578C0040E630 /* MQVoiceCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQVoiceCellModel.h; sourceTree = "<group>"; };
-		0B0FBB821C5F578C0040E630 /* MQVoiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQVoiceCellModel.m; sourceTree = "<group>"; };
-		0B0FBB841C5F578C0040E630 /* MQChatBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatBaseCell.h; sourceTree = "<group>"; };
-		0B0FBB851C5F578C0040E630 /* MQChatBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatBaseCell.m; sourceTree = "<group>"; };
-		0B0FBB861C5F578C0040E630 /* MQEventMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEventMessageCell.h; sourceTree = "<group>"; };
-		0B0FBB871C5F578C0040E630 /* MQEventMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQEventMessageCell.m; sourceTree = "<group>"; };
-		0B0FBB881C5F578C0040E630 /* MQImageMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQImageMessageCell.h; sourceTree = "<group>"; };
-		0B0FBB891C5F578C0040E630 /* MQImageMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQImageMessageCell.m; sourceTree = "<group>"; };
-		0B0FBB8A1C5F578C0040E630 /* MQMessageDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQMessageDateCell.h; sourceTree = "<group>"; };
-		0B0FBB8B1C5F578C0040E630 /* MQMessageDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQMessageDateCell.m; sourceTree = "<group>"; };
-		0B0FBB8C1C5F578C0040E630 /* MQTextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTextMessageCell.h; sourceTree = "<group>"; };
-		0B0FBB8D1C5F578C0040E630 /* MQTextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTextMessageCell.m; sourceTree = "<group>"; };
-		0B0FBB8E1C5F578C0040E630 /* MQTipsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTipsCell.h; sourceTree = "<group>"; };
-		0B0FBB8F1C5F578C0040E630 /* MQTipsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTipsCell.m; sourceTree = "<group>"; };
-		0B0FBB901C5F578C0040E630 /* MQVoiceMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQVoiceMessageCell.h; sourceTree = "<group>"; };
-		0B0FBB911C5F578C0040E630 /* MQVoiceMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQVoiceMessageCell.m; sourceTree = "<group>"; };
-		0B0FBB931C5F578C0040E630 /* MQAssetUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQAssetUtil.h; sourceTree = "<group>"; };
-		0B0FBB941C5F578C0040E630 /* MQAssetUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQAssetUtil.m; sourceTree = "<group>"; };
-		0B0FBB951C5F578C0040E630 /* MQBundleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQBundleUtil.h; sourceTree = "<group>"; };
-		0B0FBB961C5F578C0040E630 /* MQBundleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQBundleUtil.m; sourceTree = "<group>"; };
-		0B0FBB971C5F578C0040E630 /* MQChatAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatAudioPlayer.h; sourceTree = "<group>"; };
-		0B0FBB981C5F578C0040E630 /* MQChatAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatAudioPlayer.m; sourceTree = "<group>"; };
-		0B0FBB991C5F578C0040E630 /* MQChatAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatAudioRecorder.h; sourceTree = "<group>"; };
-		0B0FBB9A1C5F578C0040E630 /* MQChatAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatAudioRecorder.m; sourceTree = "<group>"; };
-		0B0FBB9B1C5F578C0040E630 /* MQChatDeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatDeviceUtil.h; sourceTree = "<group>"; };
-		0B0FBB9C1C5F578C0040E630 /* MQChatDeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatDeviceUtil.m; sourceTree = "<group>"; };
-		0B0FBB9D1C5F578C0040E630 /* MQChatEmojize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatEmojize.h; sourceTree = "<group>"; };
-		0B0FBB9E1C5F578C0040E630 /* MQChatEmojize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatEmojize.m; sourceTree = "<group>"; };
-		0B0FBB9F1C5F578C0040E630 /* MQChatFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatFileUtil.h; sourceTree = "<group>"; };
-		0B0FBBA01C5F578C0040E630 /* MQChatFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatFileUtil.m; sourceTree = "<group>"; };
-		0B0FBBA11C5F578C0040E630 /* MQChatRegexUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatRegexUtil.h; sourceTree = "<group>"; };
-		0B0FBBA21C5F578C0040E630 /* MQChatRegexUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatRegexUtil.m; sourceTree = "<group>"; };
-		0B0FBBA31C5F578C0040E630 /* MQDateFormatterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQDateFormatterUtil.h; sourceTree = "<group>"; };
-		0B0FBBA41C5F578C0040E630 /* MQDateFormatterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQDateFormatterUtil.m; sourceTree = "<group>"; };
-		0B0FBBA51C5F578C0040E630 /* MQImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQImageUtil.h; sourceTree = "<group>"; };
-		0B0FBBA61C5F578C0040E630 /* MQImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQImageUtil.m; sourceTree = "<group>"; };
-		0B0FBBA71C5F578C0040E630 /* MQStringSizeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQStringSizeUtil.h; sourceTree = "<group>"; };
-		0B0FBBA81C5F578C0040E630 /* MQStringSizeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQStringSizeUtil.m; sourceTree = "<group>"; };
-		0B0FBBAB1C5F578C0040E630 /* FBBitmapFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBitmapFont.h; sourceTree = "<group>"; };
-		0B0FBBAC1C5F578C0040E630 /* FBBitmapFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBitmapFont.m; sourceTree = "<group>"; };
-		0B0FBBAD1C5F578C0040E630 /* FBBitmapFontView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBitmapFontView.h; sourceTree = "<group>"; };
-		0B0FBBAE1C5F578C0040E630 /* FBBitmapFontView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBitmapFontView.m; sourceTree = "<group>"; };
-		0B0FBBAF1C5F578C0040E630 /* FBFontSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFontSymbol.h; sourceTree = "<group>"; };
-		0B0FBBB01C5F578C0040E630 /* FBFontSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFontSymbol.m; sourceTree = "<group>"; };
-		0B0FBBB11C5F578C0040E630 /* FBLCDFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLCDFont.h; sourceTree = "<group>"; };
-		0B0FBBB21C5F578C0040E630 /* FBLCDFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLCDFont.m; sourceTree = "<group>"; };
-		0B0FBBB31C5F578C0040E630 /* FBLCDFontView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLCDFontView.h; sourceTree = "<group>"; };
-		0B0FBBB41C5F578C0040E630 /* FBLCDFontView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLCDFontView.m; sourceTree = "<group>"; };
-		0B0FBBB51C5F578C0040E630 /* FBSquareFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSquareFont.h; sourceTree = "<group>"; };
-		0B0FBBB61C5F578C0040E630 /* FBSquareFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSquareFont.m; sourceTree = "<group>"; };
-		0B0FBBB71C5F578C0040E630 /* FBSquareFontView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBSquareFontView.h; sourceTree = "<group>"; };
-		0B0FBBB81C5F578C0040E630 /* FBSquareFontView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBSquareFontView.m; sourceTree = "<group>"; };
-		0B0FBBBA1C5F578C0040E630 /* HPGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPGrowingTextView.h; sourceTree = "<group>"; };
-		0B0FBBBB1C5F578C0040E630 /* HPGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPGrowingTextView.m; sourceTree = "<group>"; };
-		0B0FBBBC1C5F578C0040E630 /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
-		0B0FBBBD1C5F578C0040E630 /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
-		0B0FBBBF1C5F578C0040E630 /* MHFacebookImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFacebookImageViewer.h; sourceTree = "<group>"; };
-		0B0FBBC01C5F578C0040E630 /* MHFacebookImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFacebookImageViewer.m; sourceTree = "<group>"; };
-		0B0FBBC11C5F578C0040E630 /* UIImageView+MHFacebookImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MHFacebookImageViewer.h"; sourceTree = "<group>"; };
-		0B0FBBC21C5F578C0040E630 /* UIImageView+MHFacebookImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MHFacebookImageViewer.m"; sourceTree = "<group>"; };
-		0B0FBBC71C5F578C0040E630 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
-		0B0FBBC81C5F578C0040E630 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
-		0B0FBBCA1C5F578C0040E630 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
-		0B0FBBCB1C5F578C0040E630 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
-		0B0FBBCD1C5F578C0040E630 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
-		0B0FBBCE1C5F578C0040E630 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
-		0B0FBBCF1C5F578C0040E630 /* AmrRecordWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmrRecordWriter.h; sourceTree = "<group>"; };
-		0B0FBBD01C5F578C0040E630 /* AmrRecordWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmrRecordWriter.m; sourceTree = "<group>"; };
-		0B0FBBD11C5F578C0040E630 /* CafRecordWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CafRecordWriter.h; sourceTree = "<group>"; };
-		0B0FBBD21C5F578C0040E630 /* CafRecordWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CafRecordWriter.m; sourceTree = "<group>"; };
-		0B0FBBD31C5F578C0040E630 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
-		0B0FBBD41C5F578C0040E630 /* MLAudioMeterObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLAudioMeterObserver.h; sourceTree = "<group>"; };
-		0B0FBBD51C5F578C0040E630 /* MLAudioMeterObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLAudioMeterObserver.m; sourceTree = "<group>"; };
-		0B0FBBD61C5F578C0040E630 /* MLAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLAudioRecorder.h; sourceTree = "<group>"; };
-		0B0FBBD71C5F578C0040E630 /* MLAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLAudioRecorder.m; sourceTree = "<group>"; };
-		0B0FBBD91C5F578C0040E630 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
-		0B0FBBDA1C5F578C0040E630 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
-		0B0FBBDB1C5F578C0040E630 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
-		0B0FBBDC1C5F578C0040E630 /* NSData+ImageContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ImageContentType.m"; sourceTree = "<group>"; };
-		0B0FBBDD1C5F578C0040E630 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
-		0B0FBBDE1C5F578C0040E630 /* SDImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageCache.m; sourceTree = "<group>"; };
-		0B0FBBDF1C5F578C0040E630 /* SDWebImageCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCompat.h; sourceTree = "<group>"; };
-		0B0FBBE01C5F578C0040E630 /* SDWebImageCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageCompat.m; sourceTree = "<group>"; };
-		0B0FBBE11C5F578C0040E630 /* SDWebImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDecoder.h; sourceTree = "<group>"; };
-		0B0FBBE21C5F578C0040E630 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
-		0B0FBBE31C5F578C0040E630 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloader.h; sourceTree = "<group>"; };
-		0B0FBBE41C5F578C0040E630 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloader.m; sourceTree = "<group>"; };
-		0B0FBBE51C5F578C0040E630 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
-		0B0FBBE61C5F578C0040E630 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
-		0B0FBBE71C5F578C0040E630 /* SDWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageManager.h; sourceTree = "<group>"; };
-		0B0FBBE81C5F578C0040E630 /* SDWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageManager.m; sourceTree = "<group>"; };
-		0B0FBBE91C5F578C0040E630 /* SDWebImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageOperation.h; sourceTree = "<group>"; };
-		0B0FBBEA1C5F578C0040E630 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImagePrefetcher.h; sourceTree = "<group>"; };
-		0B0FBBEB1C5F578C0040E630 /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImagePrefetcher.m; sourceTree = "<group>"; };
-		0B0FBBEC1C5F578C0040E630 /* UIButton+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WebCache.h"; sourceTree = "<group>"; };
-		0B0FBBED1C5F578C0040E630 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
-		0B0FBBEE1C5F578C0040E630 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
-		0B0FBBEF1C5F578C0040E630 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
-		0B0FBBF01C5F578C0040E630 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MultiFormat.h"; sourceTree = "<group>"; };
-		0B0FBBF11C5F578C0040E630 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MultiFormat.m"; sourceTree = "<group>"; };
-		0B0FBBF21C5F578C0040E630 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
-		0B0FBBF31C5F578C0040E630 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
-		0B0FBBF41C5F578C0040E630 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
-		0B0FBBF51C5F578C0040E630 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
-		0B0FBBF61C5F578C0040E630 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
-		0B0FBBF71C5F578C0040E630 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
-		0B0FBBF81C5F578C0040E630 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
-		0B0FBBF91C5F578C0040E630 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		0B0FBBFB1C5F578C0040E630 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
-		0B0FBBFC1C5F578C0040E630 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
-		0B0FBBFF1C5F578C0040E630 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
-		0B0FBC001C5F578C0040E630 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
-		0B0FBC011C5F578C0040E630 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
-		0B0FBC021C5F578C0040E630 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
-		0B0FBC031C5F578C0040E630 /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
-		0B0FBC041C5F578C0040E630 /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
-		0B0FBC061C5F578C0040E630 /* MQChatTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatTableView.h; sourceTree = "<group>"; };
-		0B0FBC071C5F578C0040E630 /* MQChatTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatTableView.m; sourceTree = "<group>"; };
-		0B0FBC091C5F578C0040E630 /* MQInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQInputBar.h; sourceTree = "<group>"; };
-		0B0FBC0A1C5F578C0040E630 /* MQInputBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQInputBar.m; sourceTree = "<group>"; };
-		0B0FBC0C1C5F578C0040E630 /* MQPullRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQPullRefreshView.h; sourceTree = "<group>"; };
-		0B0FBC0D1C5F578C0040E630 /* MQPullRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQPullRefreshView.m; sourceTree = "<group>"; };
-		0B0FBC0F1C5F578C0040E630 /* MQRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQRecordView.h; sourceTree = "<group>"; };
-		0B0FBC101C5F578C0040E630 /* MQRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQRecordView.m; sourceTree = "<group>"; };
-		0B0FBC121C5F578C0040E630 /* MQToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQToast.h; sourceTree = "<group>"; };
-		0B0FBC131C5F578C0040E630 /* MQToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQToast.m; sourceTree = "<group>"; };
 		0BB795681C5A0B5F00AB2E83 /* libMeiQiaForAPICloud.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMeiQiaForAPICloud.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BB795751C5A1D2200AB2E83 /* NSDictionaryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryUtils.h; sourceTree = "<group>"; };
 		0BB795761C5A1D2200AB2E83 /* UZAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZAppDelegate.h; sourceTree = "<group>"; };
@@ -269,6 +99,141 @@
 		0BB795781C5A1D2200AB2E83 /* UZModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UZModule.h; sourceTree = "<group>"; };
 		0BB795791C5A1D5900AB2E83 /* MeiQia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeiQia.h; sourceTree = "<group>"; };
 		0BB7957A1C5A1D5900AB2E83 /* MeiQia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeiQia.m; sourceTree = "<group>"; };
+		0BBF51DE1C859023005566C1 /* MeiQiaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MeiQiaSDK.framework; sourceTree = "<group>"; };
+		0BBF51E01C859023005566C1 /* MQServiceToViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQServiceToViewInterface.h; sourceTree = "<group>"; };
+		0BBF51E11C859023005566C1 /* MQServiceToViewInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQServiceToViewInterface.m; sourceTree = "<group>"; };
+		0BBF51E41C859023005566C1 /* MQChatViewAsset.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MQChatViewAsset.bundle; sourceTree = "<group>"; };
+		0BBF51E61C859023005566C1 /* MQChatViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewConfig.h; sourceTree = "<group>"; };
+		0BBF51E71C859023005566C1 /* MQChatViewConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewConfig.m; sourceTree = "<group>"; };
+		0BBF51E81C859023005566C1 /* MQChatViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewManager.h; sourceTree = "<group>"; };
+		0BBF51E91C859023005566C1 /* MQChatViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewManager.m; sourceTree = "<group>"; };
+		0BBF51EB1C859023005566C1 /* MQChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewController.h; sourceTree = "<group>"; };
+		0BBF51EC1C859023005566C1 /* MQChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewController.m; sourceTree = "<group>"; };
+		0BBF51ED1C859023005566C1 /* MQChatViewService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewService.h; sourceTree = "<group>"; };
+		0BBF51EE1C859023005566C1 /* MQChatViewService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewService.m; sourceTree = "<group>"; };
+		0BBF51EF1C859023005566C1 /* MQChatViewTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatViewTableDataSource.h; sourceTree = "<group>"; };
+		0BBF51F01C859023005566C1 /* MQChatViewTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatViewTableDataSource.m; sourceTree = "<group>"; };
+		0BBF51F21C859023005566C1 /* MQBaseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQBaseMessage.h; sourceTree = "<group>"; };
+		0BBF51F31C859023005566C1 /* MQBaseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQBaseMessage.m; sourceTree = "<group>"; };
+		0BBF51F41C859023005566C1 /* MQEventMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEventMessage.h; sourceTree = "<group>"; };
+		0BBF51F51C859023005566C1 /* MQEventMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQEventMessage.m; sourceTree = "<group>"; };
+		0BBF51F61C859023005566C1 /* MQImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQImageMessage.h; sourceTree = "<group>"; };
+		0BBF51F71C859023005566C1 /* MQImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQImageMessage.m; sourceTree = "<group>"; };
+		0BBF51F81C859023005566C1 /* MQTextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTextMessage.h; sourceTree = "<group>"; };
+		0BBF51F91C859023005566C1 /* MQTextMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTextMessage.m; sourceTree = "<group>"; };
+		0BBF51FA1C859023005566C1 /* MQVoiceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQVoiceMessage.h; sourceTree = "<group>"; };
+		0BBF51FB1C859023005566C1 /* MQVoiceMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQVoiceMessage.m; sourceTree = "<group>"; };
+		0BBF51FE1C859023005566C1 /* MQCellModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQCellModelProtocol.h; sourceTree = "<group>"; };
+		0BBF51FF1C859023005566C1 /* MQEventCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEventCellModel.h; sourceTree = "<group>"; };
+		0BBF52001C859023005566C1 /* MQEventCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQEventCellModel.m; sourceTree = "<group>"; };
+		0BBF52011C859023005566C1 /* MQImageCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQImageCellModel.h; sourceTree = "<group>"; };
+		0BBF52021C859023005566C1 /* MQImageCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQImageCellModel.m; sourceTree = "<group>"; };
+		0BBF52031C859023005566C1 /* MQMessageDateCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQMessageDateCellModel.h; sourceTree = "<group>"; };
+		0BBF52041C859023005566C1 /* MQMessageDateCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQMessageDateCellModel.m; sourceTree = "<group>"; };
+		0BBF52051C859023005566C1 /* MQTextCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTextCellModel.h; sourceTree = "<group>"; };
+		0BBF52061C859023005566C1 /* MQTextCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTextCellModel.m; sourceTree = "<group>"; };
+		0BBF52071C859023005566C1 /* MQTipsCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTipsCellModel.h; sourceTree = "<group>"; };
+		0BBF52081C859023005566C1 /* MQTipsCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTipsCellModel.m; sourceTree = "<group>"; };
+		0BBF52091C859023005566C1 /* MQVoiceCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQVoiceCellModel.h; sourceTree = "<group>"; };
+		0BBF520A1C859023005566C1 /* MQVoiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQVoiceCellModel.m; sourceTree = "<group>"; };
+		0BBF520C1C859023005566C1 /* MQChatBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatBaseCell.h; sourceTree = "<group>"; };
+		0BBF520D1C859023005566C1 /* MQChatBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatBaseCell.m; sourceTree = "<group>"; };
+		0BBF520E1C859023005566C1 /* MQEvaluationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEvaluationCell.h; sourceTree = "<group>"; };
+		0BBF520F1C859023005566C1 /* MQEvaluationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQEvaluationCell.m; sourceTree = "<group>"; };
+		0BBF52101C859023005566C1 /* MQEventMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEventMessageCell.h; sourceTree = "<group>"; };
+		0BBF52111C859023005566C1 /* MQEventMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQEventMessageCell.m; sourceTree = "<group>"; };
+		0BBF52121C859023005566C1 /* MQImageMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQImageMessageCell.h; sourceTree = "<group>"; };
+		0BBF52131C859023005566C1 /* MQImageMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQImageMessageCell.m; sourceTree = "<group>"; };
+		0BBF52141C859023005566C1 /* MQMessageDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQMessageDateCell.h; sourceTree = "<group>"; };
+		0BBF52151C859023005566C1 /* MQMessageDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQMessageDateCell.m; sourceTree = "<group>"; };
+		0BBF52161C859023005566C1 /* MQTextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTextMessageCell.h; sourceTree = "<group>"; };
+		0BBF52171C859023005566C1 /* MQTextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTextMessageCell.m; sourceTree = "<group>"; };
+		0BBF52181C859023005566C1 /* MQTipsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQTipsCell.h; sourceTree = "<group>"; };
+		0BBF52191C859023005566C1 /* MQTipsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQTipsCell.m; sourceTree = "<group>"; };
+		0BBF521A1C859023005566C1 /* MQVoiceMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQVoiceMessageCell.h; sourceTree = "<group>"; };
+		0BBF521B1C859024005566C1 /* MQVoiceMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQVoiceMessageCell.m; sourceTree = "<group>"; };
+		0BBF521D1C859024005566C1 /* MQAssetUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQAssetUtil.h; sourceTree = "<group>"; };
+		0BBF521E1C859024005566C1 /* MQAssetUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQAssetUtil.m; sourceTree = "<group>"; };
+		0BBF521F1C859024005566C1 /* MQBundleUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQBundleUtil.h; sourceTree = "<group>"; };
+		0BBF52201C859024005566C1 /* MQBundleUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQBundleUtil.m; sourceTree = "<group>"; };
+		0BBF52211C859024005566C1 /* MQChatAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatAudioPlayer.h; sourceTree = "<group>"; };
+		0BBF52221C859024005566C1 /* MQChatAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatAudioPlayer.m; sourceTree = "<group>"; };
+		0BBF52231C859024005566C1 /* MQChatAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatAudioRecorder.h; sourceTree = "<group>"; };
+		0BBF52241C859024005566C1 /* MQChatAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatAudioRecorder.m; sourceTree = "<group>"; };
+		0BBF52251C859024005566C1 /* MQChatDeviceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatDeviceUtil.h; sourceTree = "<group>"; };
+		0BBF52261C859024005566C1 /* MQChatDeviceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatDeviceUtil.m; sourceTree = "<group>"; };
+		0BBF52271C859024005566C1 /* MQChatEmojize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatEmojize.h; sourceTree = "<group>"; };
+		0BBF52281C859024005566C1 /* MQChatEmojize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatEmojize.m; sourceTree = "<group>"; };
+		0BBF52291C859024005566C1 /* MQChatFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatFileUtil.h; sourceTree = "<group>"; };
+		0BBF522A1C859024005566C1 /* MQChatFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatFileUtil.m; sourceTree = "<group>"; };
+		0BBF522B1C859024005566C1 /* MQChatRegexUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatRegexUtil.h; sourceTree = "<group>"; };
+		0BBF522C1C859024005566C1 /* MQChatRegexUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatRegexUtil.m; sourceTree = "<group>"; };
+		0BBF522D1C859024005566C1 /* MQDateFormatterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQDateFormatterUtil.h; sourceTree = "<group>"; };
+		0BBF522E1C859024005566C1 /* MQDateFormatterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQDateFormatterUtil.m; sourceTree = "<group>"; };
+		0BBF522F1C859024005566C1 /* MQImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQImageUtil.h; sourceTree = "<group>"; };
+		0BBF52301C859024005566C1 /* MQImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQImageUtil.m; sourceTree = "<group>"; };
+		0BBF52311C859024005566C1 /* MQStringSizeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQStringSizeUtil.h; sourceTree = "<group>"; };
+		0BBF52321C859024005566C1 /* MQStringSizeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQStringSizeUtil.m; sourceTree = "<group>"; };
+		0BBF52351C859024005566C1 /* MEIQIA_CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_CustomIOSAlertView.h; sourceTree = "<group>"; };
+		0BBF52361C859024005566C1 /* MEIQIA_CustomIOSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_CustomIOSAlertView.m; sourceTree = "<group>"; };
+		0BBF52381C859024005566C1 /* MEIQIA_FBBitmapFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_FBBitmapFont.h; sourceTree = "<group>"; };
+		0BBF52391C859024005566C1 /* MEIQIA_FBBitmapFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_FBBitmapFont.m; sourceTree = "<group>"; };
+		0BBF523A1C859024005566C1 /* MEIQIA_FBBitmapFontView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_FBBitmapFontView.h; sourceTree = "<group>"; };
+		0BBF523B1C859024005566C1 /* MEIQIA_FBBitmapFontView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_FBBitmapFontView.m; sourceTree = "<group>"; };
+		0BBF523C1C859024005566C1 /* MEIQIA_FBFontSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_FBFontSymbol.h; sourceTree = "<group>"; };
+		0BBF523D1C859024005566C1 /* MEIQIA_FBFontSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_FBFontSymbol.m; sourceTree = "<group>"; };
+		0BBF523E1C859024005566C1 /* MEIQIA_FBLCDFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_FBLCDFont.h; sourceTree = "<group>"; };
+		0BBF523F1C859024005566C1 /* MEIQIA_FBLCDFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_FBLCDFont.m; sourceTree = "<group>"; };
+		0BBF52401C859024005566C1 /* MEIQIA_FBLCDFontView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_FBLCDFontView.h; sourceTree = "<group>"; };
+		0BBF52411C859024005566C1 /* MEIQIA_FBLCDFontView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_FBLCDFontView.m; sourceTree = "<group>"; };
+		0BBF52421C859024005566C1 /* MEIQIA_FBSquareFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_FBSquareFont.h; sourceTree = "<group>"; };
+		0BBF52431C859024005566C1 /* MEIQIA_FBSquareFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_FBSquareFont.m; sourceTree = "<group>"; };
+		0BBF52441C859024005566C1 /* MEIQIA_FBSquareFontView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_FBSquareFontView.h; sourceTree = "<group>"; };
+		0BBF52451C859024005566C1 /* MEIQIA_FBSquareFontView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_FBSquareFontView.m; sourceTree = "<group>"; };
+		0BBF52471C859024005566C1 /* MEIQIA_HPGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_HPGrowingTextView.h; sourceTree = "<group>"; };
+		0BBF52481C859024005566C1 /* MEIQIA_HPGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_HPGrowingTextView.m; sourceTree = "<group>"; };
+		0BBF52491C859024005566C1 /* MEIQIA_HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_HPTextViewInternal.h; sourceTree = "<group>"; };
+		0BBF524A1C859024005566C1 /* MEIQIA_HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_HPTextViewInternal.m; sourceTree = "<group>"; };
+		0BBF524C1C859024005566C1 /* MEIQIA_MHFacebookImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_MHFacebookImageViewer.h; sourceTree = "<group>"; };
+		0BBF524D1C859024005566C1 /* MEIQIA_MHFacebookImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_MHFacebookImageViewer.m; sourceTree = "<group>"; };
+		0BBF524E1C859024005566C1 /* UIImageView+MEIQIA_MHFacebookImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MEIQIA_MHFacebookImageViewer.h"; sourceTree = "<group>"; };
+		0BBF524F1C859024005566C1 /* UIImageView+MEIQIA_MHFacebookImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MEIQIA_MHFacebookImageViewer.m"; sourceTree = "<group>"; };
+		0BBF52541C859024005566C1 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		0BBF52551C859024005566C1 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		0BBF52571C859024005566C1 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		0BBF52581C859024005566C1 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		0BBF525A1C859024005566C1 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		0BBF525B1C859024005566C1 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		0BBF525C1C859024005566C1 /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		0BBF525D1C859024005566C1 /* MEIQIA_AmrRecordWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_AmrRecordWriter.h; sourceTree = "<group>"; };
+		0BBF525E1C859024005566C1 /* MEIQIA_AmrRecordWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_AmrRecordWriter.m; sourceTree = "<group>"; };
+		0BBF525F1C859024005566C1 /* MEIQIA_CafRecordWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_CafRecordWriter.h; sourceTree = "<group>"; };
+		0BBF52601C859024005566C1 /* MEIQIA_CafRecordWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_CafRecordWriter.m; sourceTree = "<group>"; };
+		0BBF52611C859024005566C1 /* MEIQIA_MLAudioMeterObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_MLAudioMeterObserver.h; sourceTree = "<group>"; };
+		0BBF52621C859024005566C1 /* MEIQIA_MLAudioMeterObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_MLAudioMeterObserver.m; sourceTree = "<group>"; };
+		0BBF52631C859024005566C1 /* MEIQIA_MLAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_MLAudioRecorder.h; sourceTree = "<group>"; };
+		0BBF52641C859024005566C1 /* MEIQIA_MLAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_MLAudioRecorder.m; sourceTree = "<group>"; };
+		0BBF52651C859024005566C1 /* MQNamespacedDependencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQNamespacedDependencies.h; sourceTree = "<group>"; };
+		0BBF52671C859024005566C1 /* MEIQIA_TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEIQIA_TTTAttributedLabel.h; sourceTree = "<group>"; };
+		0BBF52681C859024005566C1 /* MEIQIA_TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEIQIA_TTTAttributedLabel.m; sourceTree = "<group>"; };
+		0BBF526B1C859024005566C1 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		0BBF526C1C859024005566C1 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		0BBF526D1C859024005566C1 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		0BBF526E1C859024005566C1 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
+		0BBF526F1C859024005566C1 /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
+		0BBF52701C859024005566C1 /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
+		0BBF52721C859024005566C1 /* MQChatTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQChatTableView.h; sourceTree = "<group>"; };
+		0BBF52731C859024005566C1 /* MQChatTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQChatTableView.m; sourceTree = "<group>"; };
+		0BBF52751C859024005566C1 /* MQEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQEvaluationView.h; sourceTree = "<group>"; };
+		0BBF52761C859024005566C1 /* MQEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQEvaluationView.m; sourceTree = "<group>"; };
+		0BBF52781C859024005566C1 /* MQInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQInputBar.h; sourceTree = "<group>"; };
+		0BBF52791C859024005566C1 /* MQInputBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQInputBar.m; sourceTree = "<group>"; };
+		0BBF527B1C859024005566C1 /* MQPullRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQPullRefreshView.h; sourceTree = "<group>"; };
+		0BBF527C1C859024005566C1 /* MQPullRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQPullRefreshView.m; sourceTree = "<group>"; };
+		0BBF527E1C859024005566C1 /* MQRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQRecordView.h; sourceTree = "<group>"; };
+		0BBF527F1C859024005566C1 /* MQRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQRecordView.m; sourceTree = "<group>"; };
+		0BBF52811C859024005566C1 /* MQToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQToast.h; sourceTree = "<group>"; };
+		0BBF52821C859024005566C1 /* MQToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQToast.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,415 +241,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B0FBC141C5F578C0040E630 /* MeiQiaSDK.framework in Frameworks */,
-				0B0FBC441C5F578C0040E630 /* libopencore-amrwb.a in Frameworks */,
-				0B0FBC431C5F578C0040E630 /* libopencore-amrnb.a in Frameworks */,
+				0BBF52831C859024005566C1 /* MeiQiaSDK.framework in Frameworks */,
+				0BBF52B51C859024005566C1 /* libopencore-amrwb.a in Frameworks */,
+				0BBF52B41C859024005566C1 /* libopencore-amrnb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B0FBB551C5F578C0040E630 /* MeiQiaSDK */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB561C5F578C0040E630 /* MeiQiaSDK.framework */,
-				0B0FBB571C5F578C0040E630 /* MeiqiaSDKViewInterface */,
-				0B0FBB5A1C5F578C0040E630 /* MQChatViewController */,
-			);
-			path = MeiQiaSDK;
-			sourceTree = "<group>";
-		};
-		0B0FBB571C5F578C0040E630 /* MeiqiaSDKViewInterface */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB581C5F578C0040E630 /* MQServiceToViewInterface.h */,
-				0B0FBB591C5F578C0040E630 /* MQServiceToViewInterface.m */,
-			);
-			path = MeiqiaSDKViewInterface;
-			sourceTree = "<group>";
-		};
-		0B0FBB5A1C5F578C0040E630 /* MQChatViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB5B1C5F578C0040E630 /* Assets */,
-				0B0FBB5D1C5F578C0040E630 /* Config */,
-				0B0FBB621C5F578C0040E630 /* Controllers */,
-				0B0FBB691C5F578C0040E630 /* MessageModels */,
-				0B0FBB741C5F578C0040E630 /* TableCells */,
-				0B0FBB921C5F578C0040E630 /* Utils */,
-				0B0FBBA91C5F578C0040E630 /* Vendors */,
-				0B0FBC051C5F578C0040E630 /* Views */,
-			);
-			path = MQChatViewController;
-			sourceTree = "<group>";
-		};
-		0B0FBB5B1C5F578C0040E630 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB5C1C5F578C0040E630 /* MQChatViewAsset.bundle */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		0B0FBB5D1C5F578C0040E630 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB5E1C5F578C0040E630 /* MQChatViewConfig.h */,
-				0B0FBB5F1C5F578C0040E630 /* MQChatViewConfig.m */,
-				0B0FBB601C5F578C0040E630 /* MQChatViewManager.h */,
-				0B0FBB611C5F578C0040E630 /* MQChatViewManager.m */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		0B0FBB621C5F578C0040E630 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB631C5F578C0040E630 /* MQChatViewController.h */,
-				0B0FBB641C5F578C0040E630 /* MQChatViewController.m */,
-				0B0FBB651C5F578C0040E630 /* MQChatViewService.h */,
-				0B0FBB661C5F578C0040E630 /* MQChatViewService.m */,
-				0B0FBB671C5F578C0040E630 /* MQChatViewTableDataSource.h */,
-				0B0FBB681C5F578C0040E630 /* MQChatViewTableDataSource.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		0B0FBB691C5F578C0040E630 /* MessageModels */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB6A1C5F578C0040E630 /* MQBaseMessage.h */,
-				0B0FBB6B1C5F578C0040E630 /* MQBaseMessage.m */,
-				0B0FBB6C1C5F578C0040E630 /* MQEventMessage.h */,
-				0B0FBB6D1C5F578C0040E630 /* MQEventMessage.m */,
-				0B0FBB6E1C5F578C0040E630 /* MQImageMessage.h */,
-				0B0FBB6F1C5F578C0040E630 /* MQImageMessage.m */,
-				0B0FBB701C5F578C0040E630 /* MQTextMessage.h */,
-				0B0FBB711C5F578C0040E630 /* MQTextMessage.m */,
-				0B0FBB721C5F578C0040E630 /* MQVoiceMessage.h */,
-				0B0FBB731C5F578C0040E630 /* MQVoiceMessage.m */,
-			);
-			path = MessageModels;
-			sourceTree = "<group>";
-		};
-		0B0FBB741C5F578C0040E630 /* TableCells */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB751C5F578C0040E630 /* CellModel */,
-				0B0FBB831C5F578C0040E630 /* CellView */,
-			);
-			path = TableCells;
-			sourceTree = "<group>";
-		};
-		0B0FBB751C5F578C0040E630 /* CellModel */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB761C5F578C0040E630 /* MQCellModelProtocol.h */,
-				0B0FBB771C5F578C0040E630 /* MQEventCellModel.h */,
-				0B0FBB781C5F578C0040E630 /* MQEventCellModel.m */,
-				0B0FBB791C5F578C0040E630 /* MQImageCellModel.h */,
-				0B0FBB7A1C5F578C0040E630 /* MQImageCellModel.m */,
-				0B0FBB7B1C5F578C0040E630 /* MQMessageDateCellModel.h */,
-				0B0FBB7C1C5F578C0040E630 /* MQMessageDateCellModel.m */,
-				0B0FBB7D1C5F578C0040E630 /* MQTextCellModel.h */,
-				0B0FBB7E1C5F578C0040E630 /* MQTextCellModel.m */,
-				0B0FBB7F1C5F578C0040E630 /* MQTipsCellModel.h */,
-				0B0FBB801C5F578C0040E630 /* MQTipsCellModel.m */,
-				0B0FBB811C5F578C0040E630 /* MQVoiceCellModel.h */,
-				0B0FBB821C5F578C0040E630 /* MQVoiceCellModel.m */,
-			);
-			path = CellModel;
-			sourceTree = "<group>";
-		};
-		0B0FBB831C5F578C0040E630 /* CellView */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB841C5F578C0040E630 /* MQChatBaseCell.h */,
-				0B0FBB851C5F578C0040E630 /* MQChatBaseCell.m */,
-				0B0FBB861C5F578C0040E630 /* MQEventMessageCell.h */,
-				0B0FBB871C5F578C0040E630 /* MQEventMessageCell.m */,
-				0B0FBB881C5F578C0040E630 /* MQImageMessageCell.h */,
-				0B0FBB891C5F578C0040E630 /* MQImageMessageCell.m */,
-				0B0FBB8A1C5F578C0040E630 /* MQMessageDateCell.h */,
-				0B0FBB8B1C5F578C0040E630 /* MQMessageDateCell.m */,
-				0B0FBB8C1C5F578C0040E630 /* MQTextMessageCell.h */,
-				0B0FBB8D1C5F578C0040E630 /* MQTextMessageCell.m */,
-				0B0FBB8E1C5F578C0040E630 /* MQTipsCell.h */,
-				0B0FBB8F1C5F578C0040E630 /* MQTipsCell.m */,
-				0B0FBB901C5F578C0040E630 /* MQVoiceMessageCell.h */,
-				0B0FBB911C5F578C0040E630 /* MQVoiceMessageCell.m */,
-			);
-			path = CellView;
-			sourceTree = "<group>";
-		};
-		0B0FBB921C5F578C0040E630 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBB931C5F578C0040E630 /* MQAssetUtil.h */,
-				0B0FBB941C5F578C0040E630 /* MQAssetUtil.m */,
-				0B0FBB951C5F578C0040E630 /* MQBundleUtil.h */,
-				0B0FBB961C5F578C0040E630 /* MQBundleUtil.m */,
-				0B0FBB971C5F578C0040E630 /* MQChatAudioPlayer.h */,
-				0B0FBB981C5F578C0040E630 /* MQChatAudioPlayer.m */,
-				0B0FBB991C5F578C0040E630 /* MQChatAudioRecorder.h */,
-				0B0FBB9A1C5F578C0040E630 /* MQChatAudioRecorder.m */,
-				0B0FBB9B1C5F578C0040E630 /* MQChatDeviceUtil.h */,
-				0B0FBB9C1C5F578C0040E630 /* MQChatDeviceUtil.m */,
-				0B0FBB9D1C5F578C0040E630 /* MQChatEmojize.h */,
-				0B0FBB9E1C5F578C0040E630 /* MQChatEmojize.m */,
-				0B0FBB9F1C5F578C0040E630 /* MQChatFileUtil.h */,
-				0B0FBBA01C5F578C0040E630 /* MQChatFileUtil.m */,
-				0B0FBBA11C5F578C0040E630 /* MQChatRegexUtil.h */,
-				0B0FBBA21C5F578C0040E630 /* MQChatRegexUtil.m */,
-				0B0FBBA31C5F578C0040E630 /* MQDateFormatterUtil.h */,
-				0B0FBBA41C5F578C0040E630 /* MQDateFormatterUtil.m */,
-				0B0FBBA51C5F578C0040E630 /* MQImageUtil.h */,
-				0B0FBBA61C5F578C0040E630 /* MQImageUtil.m */,
-				0B0FBBA71C5F578C0040E630 /* MQStringSizeUtil.h */,
-				0B0FBBA81C5F578C0040E630 /* MQStringSizeUtil.m */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		0B0FBBA91C5F578C0040E630 /* Vendors */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBAA1C5F578C0040E630 /* FBDigitalFont */,
-				0B0FBBB91C5F578C0040E630 /* HPTextView */,
-				0B0FBBBE1C5F578C0040E630 /* MHFacebookImageViewer */,
-				0B0FBBC31C5F578C0040E630 /* MLAudioRecorder */,
-				0B0FBBD81C5F578C0040E630 /* SDWebImage */,
-				0B0FBBFA1C5F578C0040E630 /* TTTAttributedLabel */,
-				0B0FBBFD1C5F578C0040E630 /* VoiceConvert */,
-			);
-			path = Vendors;
-			sourceTree = "<group>";
-		};
-		0B0FBBAA1C5F578C0040E630 /* FBDigitalFont */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBAB1C5F578C0040E630 /* FBBitmapFont.h */,
-				0B0FBBAC1C5F578C0040E630 /* FBBitmapFont.m */,
-				0B0FBBAD1C5F578C0040E630 /* FBBitmapFontView.h */,
-				0B0FBBAE1C5F578C0040E630 /* FBBitmapFontView.m */,
-				0B0FBBAF1C5F578C0040E630 /* FBFontSymbol.h */,
-				0B0FBBB01C5F578C0040E630 /* FBFontSymbol.m */,
-				0B0FBBB11C5F578C0040E630 /* FBLCDFont.h */,
-				0B0FBBB21C5F578C0040E630 /* FBLCDFont.m */,
-				0B0FBBB31C5F578C0040E630 /* FBLCDFontView.h */,
-				0B0FBBB41C5F578C0040E630 /* FBLCDFontView.m */,
-				0B0FBBB51C5F578C0040E630 /* FBSquareFont.h */,
-				0B0FBBB61C5F578C0040E630 /* FBSquareFont.m */,
-				0B0FBBB71C5F578C0040E630 /* FBSquareFontView.h */,
-				0B0FBBB81C5F578C0040E630 /* FBSquareFontView.m */,
-			);
-			path = FBDigitalFont;
-			sourceTree = "<group>";
-		};
-		0B0FBBB91C5F578C0040E630 /* HPTextView */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBBA1C5F578C0040E630 /* HPGrowingTextView.h */,
-				0B0FBBBB1C5F578C0040E630 /* HPGrowingTextView.m */,
-				0B0FBBBC1C5F578C0040E630 /* HPTextViewInternal.h */,
-				0B0FBBBD1C5F578C0040E630 /* HPTextViewInternal.m */,
-			);
-			path = HPTextView;
-			sourceTree = "<group>";
-		};
-		0B0FBBBE1C5F578C0040E630 /* MHFacebookImageViewer */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBBF1C5F578C0040E630 /* MHFacebookImageViewer.h */,
-				0B0FBBC01C5F578C0040E630 /* MHFacebookImageViewer.m */,
-				0B0FBBC11C5F578C0040E630 /* UIImageView+MHFacebookImageViewer.h */,
-				0B0FBBC21C5F578C0040E630 /* UIImageView+MHFacebookImageViewer.m */,
-			);
-			path = MHFacebookImageViewer;
-			sourceTree = "<group>";
-		};
-		0B0FBBC31C5F578C0040E630 /* MLAudioRecorder */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBC41C5F578C0040E630 /* amr_en_de */,
-				0B0FBBCF1C5F578C0040E630 /* AmrRecordWriter.h */,
-				0B0FBBD01C5F578C0040E630 /* AmrRecordWriter.m */,
-				0B0FBBD11C5F578C0040E630 /* CafRecordWriter.h */,
-				0B0FBBD21C5F578C0040E630 /* CafRecordWriter.m */,
-				0B0FBBD31C5F578C0040E630 /* Debug.h */,
-				0B0FBBD41C5F578C0040E630 /* MLAudioMeterObserver.h */,
-				0B0FBBD51C5F578C0040E630 /* MLAudioMeterObserver.m */,
-				0B0FBBD61C5F578C0040E630 /* MLAudioRecorder.h */,
-				0B0FBBD71C5F578C0040E630 /* MLAudioRecorder.m */,
-			);
-			path = MLAudioRecorder;
-			sourceTree = "<group>";
-		};
-		0B0FBBC41C5F578C0040E630 /* amr_en_de */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBC51C5F578C0040E630 /* include */,
-				0B0FBBCC1C5F578C0040E630 /* lib */,
-			);
-			path = amr_en_de;
-			sourceTree = "<group>";
-		};
-		0B0FBBC51C5F578C0040E630 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBC61C5F578C0040E630 /* opencore-amrnb */,
-				0B0FBBC91C5F578C0040E630 /* opencore-amrwb */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		0B0FBBC61C5F578C0040E630 /* opencore-amrnb */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBC71C5F578C0040E630 /* interf_dec.h */,
-				0B0FBBC81C5F578C0040E630 /* interf_enc.h */,
-			);
-			path = "opencore-amrnb";
-			sourceTree = "<group>";
-		};
-		0B0FBBC91C5F578C0040E630 /* opencore-amrwb */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBCA1C5F578C0040E630 /* dec_if.h */,
-				0B0FBBCB1C5F578C0040E630 /* if_rom.h */,
-			);
-			path = "opencore-amrwb";
-			sourceTree = "<group>";
-		};
-		0B0FBBCC1C5F578C0040E630 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBCD1C5F578C0040E630 /* libopencore-amrnb.a */,
-				0B0FBBCE1C5F578C0040E630 /* libopencore-amrwb.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		0B0FBBD81C5F578C0040E630 /* SDWebImage */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBD91C5F578C0040E630 /* MKAnnotationView+WebCache.h */,
-				0B0FBBDA1C5F578C0040E630 /* MKAnnotationView+WebCache.m */,
-				0B0FBBDB1C5F578C0040E630 /* NSData+ImageContentType.h */,
-				0B0FBBDC1C5F578C0040E630 /* NSData+ImageContentType.m */,
-				0B0FBBDD1C5F578C0040E630 /* SDImageCache.h */,
-				0B0FBBDE1C5F578C0040E630 /* SDImageCache.m */,
-				0B0FBBDF1C5F578C0040E630 /* SDWebImageCompat.h */,
-				0B0FBBE01C5F578C0040E630 /* SDWebImageCompat.m */,
-				0B0FBBE11C5F578C0040E630 /* SDWebImageDecoder.h */,
-				0B0FBBE21C5F578C0040E630 /* SDWebImageDecoder.m */,
-				0B0FBBE31C5F578C0040E630 /* SDWebImageDownloader.h */,
-				0B0FBBE41C5F578C0040E630 /* SDWebImageDownloader.m */,
-				0B0FBBE51C5F578C0040E630 /* SDWebImageDownloaderOperation.h */,
-				0B0FBBE61C5F578C0040E630 /* SDWebImageDownloaderOperation.m */,
-				0B0FBBE71C5F578C0040E630 /* SDWebImageManager.h */,
-				0B0FBBE81C5F578C0040E630 /* SDWebImageManager.m */,
-				0B0FBBE91C5F578C0040E630 /* SDWebImageOperation.h */,
-				0B0FBBEA1C5F578C0040E630 /* SDWebImagePrefetcher.h */,
-				0B0FBBEB1C5F578C0040E630 /* SDWebImagePrefetcher.m */,
-				0B0FBBEC1C5F578C0040E630 /* UIButton+WebCache.h */,
-				0B0FBBED1C5F578C0040E630 /* UIButton+WebCache.m */,
-				0B0FBBEE1C5F578C0040E630 /* UIImage+GIF.h */,
-				0B0FBBEF1C5F578C0040E630 /* UIImage+GIF.m */,
-				0B0FBBF01C5F578C0040E630 /* UIImage+MultiFormat.h */,
-				0B0FBBF11C5F578C0040E630 /* UIImage+MultiFormat.m */,
-				0B0FBBF21C5F578C0040E630 /* UIImage+WebP.h */,
-				0B0FBBF31C5F578C0040E630 /* UIImage+WebP.m */,
-				0B0FBBF41C5F578C0040E630 /* UIImageView+HighlightedWebCache.h */,
-				0B0FBBF51C5F578C0040E630 /* UIImageView+HighlightedWebCache.m */,
-				0B0FBBF61C5F578C0040E630 /* UIImageView+WebCache.h */,
-				0B0FBBF71C5F578C0040E630 /* UIImageView+WebCache.m */,
-				0B0FBBF81C5F578C0040E630 /* UIView+WebCacheOperation.h */,
-				0B0FBBF91C5F578C0040E630 /* UIView+WebCacheOperation.m */,
-			);
-			path = SDWebImage;
-			sourceTree = "<group>";
-		};
-		0B0FBBFA1C5F578C0040E630 /* TTTAttributedLabel */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBFB1C5F578C0040E630 /* TTTAttributedLabel.h */,
-				0B0FBBFC1C5F578C0040E630 /* TTTAttributedLabel.m */,
-			);
-			path = TTTAttributedLabel;
-			sourceTree = "<group>";
-		};
-		0B0FBBFD1C5F578C0040E630 /* VoiceConvert */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBFE1C5F578C0040E630 /* amrwapper */,
-				0B0FBC031C5F578C0040E630 /* VoiceConverter.h */,
-				0B0FBC041C5F578C0040E630 /* VoiceConverter.mm */,
-			);
-			path = VoiceConvert;
-			sourceTree = "<group>";
-		};
-		0B0FBBFE1C5F578C0040E630 /* amrwapper */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBBFF1C5F578C0040E630 /* amrFileCodec.h */,
-				0B0FBC001C5F578C0040E630 /* amrFileCodec.mm */,
-				0B0FBC011C5F578C0040E630 /* wav.h */,
-				0B0FBC021C5F578C0040E630 /* wav.mm */,
-			);
-			path = amrwapper;
-			sourceTree = "<group>";
-		};
-		0B0FBC051C5F578C0040E630 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBC061C5F578C0040E630 /* MQChatTableView.h */,
-				0B0FBC071C5F578C0040E630 /* MQChatTableView.m */,
-				0B0FBC081C5F578C0040E630 /* MQInputBar */,
-				0B0FBC0B1C5F578C0040E630 /* MQPullRefreshView */,
-				0B0FBC0E1C5F578C0040E630 /* MQRecordView */,
-				0B0FBC111C5F578C0040E630 /* MQToast */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		0B0FBC081C5F578C0040E630 /* MQInputBar */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBC091C5F578C0040E630 /* MQInputBar.h */,
-				0B0FBC0A1C5F578C0040E630 /* MQInputBar.m */,
-			);
-			path = MQInputBar;
-			sourceTree = "<group>";
-		};
-		0B0FBC0B1C5F578C0040E630 /* MQPullRefreshView */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBC0C1C5F578C0040E630 /* MQPullRefreshView.h */,
-				0B0FBC0D1C5F578C0040E630 /* MQPullRefreshView.m */,
-			);
-			path = MQPullRefreshView;
-			sourceTree = "<group>";
-		};
-		0B0FBC0E1C5F578C0040E630 /* MQRecordView */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBC0F1C5F578C0040E630 /* MQRecordView.h */,
-				0B0FBC101C5F578C0040E630 /* MQRecordView.m */,
-			);
-			path = MQRecordView;
-			sourceTree = "<group>";
-		};
-		0B0FBC111C5F578C0040E630 /* MQToast */ = {
-			isa = PBXGroup;
-			children = (
-				0B0FBC121C5F578C0040E630 /* MQToast.h */,
-				0B0FBC131C5F578C0040E630 /* MQToast.m */,
-			);
-			path = MQToast;
-			sourceTree = "<group>";
-		};
 		0BB7955F1C5A0B5F00AB2E83 = {
 			isa = PBXGroup;
 			children = (
@@ -704,7 +269,7 @@
 		0BB7956A1C5A0B5F00AB2E83 /* MeiQiaForAPICloud */ = {
 			isa = PBXGroup;
 			children = (
-				0B0FBB551C5F578C0040E630 /* MeiQiaSDK */,
+				0BBF51DD1C859023005566C1 /* MeiQiaSDK */,
 				0BB795741C5A1D2200AB2E83 /* UZEngine */,
 				0BB795791C5A1D5900AB2E83 /* MeiQia.h */,
 				0BB7957A1C5A1D5900AB2E83 /* MeiQia.m */,
@@ -721,6 +286,388 @@
 				0BB795781C5A1D2200AB2E83 /* UZModule.h */,
 			);
 			path = UZEngine;
+			sourceTree = "<group>";
+		};
+		0BBF51DD1C859023005566C1 /* MeiQiaSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51DE1C859023005566C1 /* MeiQiaSDK.framework */,
+				0BBF51DF1C859023005566C1 /* MeiqiaSDKViewInterface */,
+				0BBF51E21C859023005566C1 /* MQChatViewController */,
+			);
+			path = MeiQiaSDK;
+			sourceTree = "<group>";
+		};
+		0BBF51DF1C859023005566C1 /* MeiqiaSDKViewInterface */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51E01C859023005566C1 /* MQServiceToViewInterface.h */,
+				0BBF51E11C859023005566C1 /* MQServiceToViewInterface.m */,
+			);
+			path = MeiqiaSDKViewInterface;
+			sourceTree = "<group>";
+		};
+		0BBF51E21C859023005566C1 /* MQChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51E31C859023005566C1 /* Assets */,
+				0BBF51E51C859023005566C1 /* Config */,
+				0BBF51EA1C859023005566C1 /* Controllers */,
+				0BBF51F11C859023005566C1 /* MessageModels */,
+				0BBF51FC1C859023005566C1 /* TableCells */,
+				0BBF521C1C859024005566C1 /* Utils */,
+				0BBF52331C859024005566C1 /* Vendors */,
+				0BBF52711C859024005566C1 /* Views */,
+			);
+			path = MQChatViewController;
+			sourceTree = "<group>";
+		};
+		0BBF51E31C859023005566C1 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51E41C859023005566C1 /* MQChatViewAsset.bundle */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		0BBF51E51C859023005566C1 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51E61C859023005566C1 /* MQChatViewConfig.h */,
+				0BBF51E71C859023005566C1 /* MQChatViewConfig.m */,
+				0BBF51E81C859023005566C1 /* MQChatViewManager.h */,
+				0BBF51E91C859023005566C1 /* MQChatViewManager.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		0BBF51EA1C859023005566C1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51EB1C859023005566C1 /* MQChatViewController.h */,
+				0BBF51EC1C859023005566C1 /* MQChatViewController.m */,
+				0BBF51ED1C859023005566C1 /* MQChatViewService.h */,
+				0BBF51EE1C859023005566C1 /* MQChatViewService.m */,
+				0BBF51EF1C859023005566C1 /* MQChatViewTableDataSource.h */,
+				0BBF51F01C859023005566C1 /* MQChatViewTableDataSource.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0BBF51F11C859023005566C1 /* MessageModels */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51F21C859023005566C1 /* MQBaseMessage.h */,
+				0BBF51F31C859023005566C1 /* MQBaseMessage.m */,
+				0BBF51F41C859023005566C1 /* MQEventMessage.h */,
+				0BBF51F51C859023005566C1 /* MQEventMessage.m */,
+				0BBF51F61C859023005566C1 /* MQImageMessage.h */,
+				0BBF51F71C859023005566C1 /* MQImageMessage.m */,
+				0BBF51F81C859023005566C1 /* MQTextMessage.h */,
+				0BBF51F91C859023005566C1 /* MQTextMessage.m */,
+				0BBF51FA1C859023005566C1 /* MQVoiceMessage.h */,
+				0BBF51FB1C859023005566C1 /* MQVoiceMessage.m */,
+			);
+			path = MessageModels;
+			sourceTree = "<group>";
+		};
+		0BBF51FC1C859023005566C1 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51FD1C859023005566C1 /* CellModel */,
+				0BBF520B1C859023005566C1 /* CellView */,
+			);
+			path = TableCells;
+			sourceTree = "<group>";
+		};
+		0BBF51FD1C859023005566C1 /* CellModel */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF51FE1C859023005566C1 /* MQCellModelProtocol.h */,
+				0BBF51FF1C859023005566C1 /* MQEventCellModel.h */,
+				0BBF52001C859023005566C1 /* MQEventCellModel.m */,
+				0BBF52011C859023005566C1 /* MQImageCellModel.h */,
+				0BBF52021C859023005566C1 /* MQImageCellModel.m */,
+				0BBF52031C859023005566C1 /* MQMessageDateCellModel.h */,
+				0BBF52041C859023005566C1 /* MQMessageDateCellModel.m */,
+				0BBF52051C859023005566C1 /* MQTextCellModel.h */,
+				0BBF52061C859023005566C1 /* MQTextCellModel.m */,
+				0BBF52071C859023005566C1 /* MQTipsCellModel.h */,
+				0BBF52081C859023005566C1 /* MQTipsCellModel.m */,
+				0BBF52091C859023005566C1 /* MQVoiceCellModel.h */,
+				0BBF520A1C859023005566C1 /* MQVoiceCellModel.m */,
+			);
+			path = CellModel;
+			sourceTree = "<group>";
+		};
+		0BBF520B1C859023005566C1 /* CellView */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF520C1C859023005566C1 /* MQChatBaseCell.h */,
+				0BBF520D1C859023005566C1 /* MQChatBaseCell.m */,
+				0BBF520E1C859023005566C1 /* MQEvaluationCell.h */,
+				0BBF520F1C859023005566C1 /* MQEvaluationCell.m */,
+				0BBF52101C859023005566C1 /* MQEventMessageCell.h */,
+				0BBF52111C859023005566C1 /* MQEventMessageCell.m */,
+				0BBF52121C859023005566C1 /* MQImageMessageCell.h */,
+				0BBF52131C859023005566C1 /* MQImageMessageCell.m */,
+				0BBF52141C859023005566C1 /* MQMessageDateCell.h */,
+				0BBF52151C859023005566C1 /* MQMessageDateCell.m */,
+				0BBF52161C859023005566C1 /* MQTextMessageCell.h */,
+				0BBF52171C859023005566C1 /* MQTextMessageCell.m */,
+				0BBF52181C859023005566C1 /* MQTipsCell.h */,
+				0BBF52191C859023005566C1 /* MQTipsCell.m */,
+				0BBF521A1C859023005566C1 /* MQVoiceMessageCell.h */,
+				0BBF521B1C859024005566C1 /* MQVoiceMessageCell.m */,
+			);
+			path = CellView;
+			sourceTree = "<group>";
+		};
+		0BBF521C1C859024005566C1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF521D1C859024005566C1 /* MQAssetUtil.h */,
+				0BBF521E1C859024005566C1 /* MQAssetUtil.m */,
+				0BBF521F1C859024005566C1 /* MQBundleUtil.h */,
+				0BBF52201C859024005566C1 /* MQBundleUtil.m */,
+				0BBF52211C859024005566C1 /* MQChatAudioPlayer.h */,
+				0BBF52221C859024005566C1 /* MQChatAudioPlayer.m */,
+				0BBF52231C859024005566C1 /* MQChatAudioRecorder.h */,
+				0BBF52241C859024005566C1 /* MQChatAudioRecorder.m */,
+				0BBF52251C859024005566C1 /* MQChatDeviceUtil.h */,
+				0BBF52261C859024005566C1 /* MQChatDeviceUtil.m */,
+				0BBF52271C859024005566C1 /* MQChatEmojize.h */,
+				0BBF52281C859024005566C1 /* MQChatEmojize.m */,
+				0BBF52291C859024005566C1 /* MQChatFileUtil.h */,
+				0BBF522A1C859024005566C1 /* MQChatFileUtil.m */,
+				0BBF522B1C859024005566C1 /* MQChatRegexUtil.h */,
+				0BBF522C1C859024005566C1 /* MQChatRegexUtil.m */,
+				0BBF522D1C859024005566C1 /* MQDateFormatterUtil.h */,
+				0BBF522E1C859024005566C1 /* MQDateFormatterUtil.m */,
+				0BBF522F1C859024005566C1 /* MQImageUtil.h */,
+				0BBF52301C859024005566C1 /* MQImageUtil.m */,
+				0BBF52311C859024005566C1 /* MQStringSizeUtil.h */,
+				0BBF52321C859024005566C1 /* MQStringSizeUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0BBF52331C859024005566C1 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52341C859024005566C1 /* CustomIOSAlertView */,
+				0BBF52371C859024005566C1 /* FBDigitalFont */,
+				0BBF52461C859024005566C1 /* HPTextView */,
+				0BBF524B1C859024005566C1 /* MHFacebookImageViewer */,
+				0BBF52501C859024005566C1 /* MLAudioRecorder */,
+				0BBF52651C859024005566C1 /* MQNamespacedDependencies.h */,
+				0BBF52661C859024005566C1 /* TTTAttributedLabel */,
+				0BBF52691C859024005566C1 /* VoiceConvert */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		0BBF52341C859024005566C1 /* CustomIOSAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52351C859024005566C1 /* MEIQIA_CustomIOSAlertView.h */,
+				0BBF52361C859024005566C1 /* MEIQIA_CustomIOSAlertView.m */,
+			);
+			path = CustomIOSAlertView;
+			sourceTree = "<group>";
+		};
+		0BBF52371C859024005566C1 /* FBDigitalFont */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52381C859024005566C1 /* MEIQIA_FBBitmapFont.h */,
+				0BBF52391C859024005566C1 /* MEIQIA_FBBitmapFont.m */,
+				0BBF523A1C859024005566C1 /* MEIQIA_FBBitmapFontView.h */,
+				0BBF523B1C859024005566C1 /* MEIQIA_FBBitmapFontView.m */,
+				0BBF523C1C859024005566C1 /* MEIQIA_FBFontSymbol.h */,
+				0BBF523D1C859024005566C1 /* MEIQIA_FBFontSymbol.m */,
+				0BBF523E1C859024005566C1 /* MEIQIA_FBLCDFont.h */,
+				0BBF523F1C859024005566C1 /* MEIQIA_FBLCDFont.m */,
+				0BBF52401C859024005566C1 /* MEIQIA_FBLCDFontView.h */,
+				0BBF52411C859024005566C1 /* MEIQIA_FBLCDFontView.m */,
+				0BBF52421C859024005566C1 /* MEIQIA_FBSquareFont.h */,
+				0BBF52431C859024005566C1 /* MEIQIA_FBSquareFont.m */,
+				0BBF52441C859024005566C1 /* MEIQIA_FBSquareFontView.h */,
+				0BBF52451C859024005566C1 /* MEIQIA_FBSquareFontView.m */,
+			);
+			path = FBDigitalFont;
+			sourceTree = "<group>";
+		};
+		0BBF52461C859024005566C1 /* HPTextView */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52471C859024005566C1 /* MEIQIA_HPGrowingTextView.h */,
+				0BBF52481C859024005566C1 /* MEIQIA_HPGrowingTextView.m */,
+				0BBF52491C859024005566C1 /* MEIQIA_HPTextViewInternal.h */,
+				0BBF524A1C859024005566C1 /* MEIQIA_HPTextViewInternal.m */,
+			);
+			path = HPTextView;
+			sourceTree = "<group>";
+		};
+		0BBF524B1C859024005566C1 /* MHFacebookImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF524C1C859024005566C1 /* MEIQIA_MHFacebookImageViewer.h */,
+				0BBF524D1C859024005566C1 /* MEIQIA_MHFacebookImageViewer.m */,
+				0BBF524E1C859024005566C1 /* UIImageView+MEIQIA_MHFacebookImageViewer.h */,
+				0BBF524F1C859024005566C1 /* UIImageView+MEIQIA_MHFacebookImageViewer.m */,
+			);
+			path = MHFacebookImageViewer;
+			sourceTree = "<group>";
+		};
+		0BBF52501C859024005566C1 /* MLAudioRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52511C859024005566C1 /* amr_en_de */,
+				0BBF525C1C859024005566C1 /* Debug.h */,
+				0BBF525D1C859024005566C1 /* MEIQIA_AmrRecordWriter.h */,
+				0BBF525E1C859024005566C1 /* MEIQIA_AmrRecordWriter.m */,
+				0BBF525F1C859024005566C1 /* MEIQIA_CafRecordWriter.h */,
+				0BBF52601C859024005566C1 /* MEIQIA_CafRecordWriter.m */,
+				0BBF52611C859024005566C1 /* MEIQIA_MLAudioMeterObserver.h */,
+				0BBF52621C859024005566C1 /* MEIQIA_MLAudioMeterObserver.m */,
+				0BBF52631C859024005566C1 /* MEIQIA_MLAudioRecorder.h */,
+				0BBF52641C859024005566C1 /* MEIQIA_MLAudioRecorder.m */,
+			);
+			path = MLAudioRecorder;
+			sourceTree = "<group>";
+		};
+		0BBF52511C859024005566C1 /* amr_en_de */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52521C859024005566C1 /* include */,
+				0BBF52591C859024005566C1 /* lib */,
+			);
+			path = amr_en_de;
+			sourceTree = "<group>";
+		};
+		0BBF52521C859024005566C1 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52531C859024005566C1 /* opencore-amrnb */,
+				0BBF52561C859024005566C1 /* opencore-amrwb */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0BBF52531C859024005566C1 /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52541C859024005566C1 /* interf_dec.h */,
+				0BBF52551C859024005566C1 /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		0BBF52561C859024005566C1 /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52571C859024005566C1 /* dec_if.h */,
+				0BBF52581C859024005566C1 /* if_rom.h */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		0BBF52591C859024005566C1 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF525A1C859024005566C1 /* libopencore-amrnb.a */,
+				0BBF525B1C859024005566C1 /* libopencore-amrwb.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		0BBF52661C859024005566C1 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52671C859024005566C1 /* MEIQIA_TTTAttributedLabel.h */,
+				0BBF52681C859024005566C1 /* MEIQIA_TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
+		0BBF52691C859024005566C1 /* VoiceConvert */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF526A1C859024005566C1 /* amrwapper */,
+				0BBF526F1C859024005566C1 /* VoiceConverter.h */,
+				0BBF52701C859024005566C1 /* VoiceConverter.mm */,
+			);
+			path = VoiceConvert;
+			sourceTree = "<group>";
+		};
+		0BBF526A1C859024005566C1 /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF526B1C859024005566C1 /* amrFileCodec.h */,
+				0BBF526C1C859024005566C1 /* amrFileCodec.mm */,
+				0BBF526D1C859024005566C1 /* wav.h */,
+				0BBF526E1C859024005566C1 /* wav.mm */,
+			);
+			path = amrwapper;
+			sourceTree = "<group>";
+		};
+		0BBF52711C859024005566C1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52721C859024005566C1 /* MQChatTableView.h */,
+				0BBF52731C859024005566C1 /* MQChatTableView.m */,
+				0BBF52741C859024005566C1 /* MQEvaluationView */,
+				0BBF52771C859024005566C1 /* MQInputBar */,
+				0BBF527A1C859024005566C1 /* MQPullRefreshView */,
+				0BBF527D1C859024005566C1 /* MQRecordView */,
+				0BBF52801C859024005566C1 /* MQToast */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0BBF52741C859024005566C1 /* MQEvaluationView */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52751C859024005566C1 /* MQEvaluationView.h */,
+				0BBF52761C859024005566C1 /* MQEvaluationView.m */,
+			);
+			path = MQEvaluationView;
+			sourceTree = "<group>";
+		};
+		0BBF52771C859024005566C1 /* MQInputBar */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52781C859024005566C1 /* MQInputBar.h */,
+				0BBF52791C859024005566C1 /* MQInputBar.m */,
+			);
+			path = MQInputBar;
+			sourceTree = "<group>";
+		};
+		0BBF527A1C859024005566C1 /* MQPullRefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF527B1C859024005566C1 /* MQPullRefreshView.h */,
+				0BBF527C1C859024005566C1 /* MQPullRefreshView.m */,
+			);
+			path = MQPullRefreshView;
+			sourceTree = "<group>";
+		};
+		0BBF527D1C859024005566C1 /* MQRecordView */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF527E1C859024005566C1 /* MQRecordView.h */,
+				0BBF527F1C859024005566C1 /* MQRecordView.m */,
+			);
+			path = MQRecordView;
+			sourceTree = "<group>";
+		};
+		0BBF52801C859024005566C1 /* MQToast */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF52811C859024005566C1 /* MQToast.h */,
+				0BBF52821C859024005566C1 /* MQToast.m */,
+			);
+			path = MQToast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -779,82 +726,69 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B0FBC231C5F578C0040E630 /* MQTextCellModel.m in Sources */,
-				0B0FBC2E1C5F578C0040E630 /* MQBundleUtil.m in Sources */,
-				0B0FBC221C5F578C0040E630 /* MQMessageDateCellModel.m in Sources */,
-				0B0FBC551C5F578C0040E630 /* UIImage+WebP.m in Sources */,
-				0B0FBC421C5F578C0040E630 /* UIImageView+MHFacebookImageViewer.m in Sources */,
-				0B0FBC5E1C5F578C0040E630 /* MQInputBar.m in Sources */,
-				0B0FBC371C5F578C0040E630 /* MQStringSizeUtil.m in Sources */,
-				0B0FBC471C5F578C0040E630 /* MLAudioMeterObserver.m in Sources */,
-				0B0FBC2F1C5F578C0040E630 /* MQChatAudioPlayer.m in Sources */,
-				0B0FBC611C5F578C0040E630 /* MQToast.m in Sources */,
-				0B0FBC351C5F578C0040E630 /* MQDateFormatterUtil.m in Sources */,
-				0B0FBC2D1C5F578C0040E630 /* MQAssetUtil.m in Sources */,
-				0B0FBC5B1C5F578C0040E630 /* wav.mm in Sources */,
-				0B0FBC311C5F578C0040E630 /* MQChatDeviceUtil.m in Sources */,
-				0B0FBC5F1C5F578C0040E630 /* MQPullRefreshView.m in Sources */,
-				0B0FBC341C5F578C0040E630 /* MQChatRegexUtil.m in Sources */,
-				0B0FBC241C5F578C0040E630 /* MQTipsCellModel.m in Sources */,
-				0B0FBC3C1C5F578C0040E630 /* FBLCDFontView.m in Sources */,
-				0B0FBC4A1C5F578C0040E630 /* NSData+ImageContentType.m in Sources */,
-				0B0FBC331C5F578C0040E630 /* MQChatFileUtil.m in Sources */,
-				0B0FBC1B1C5F578C0040E630 /* MQBaseMessage.m in Sources */,
+				0BBF52921C859024005566C1 /* MQTextCellModel.m in Sources */,
+				0BBF52911C859024005566C1 /* MQMessageDateCellModel.m in Sources */,
+				0BBF52B31C859024005566C1 /* UIImageView+MEIQIA_MHFacebookImageViewer.m in Sources */,
+				0BBF52BF1C859024005566C1 /* MQEvaluationView.m in Sources */,
+				0BBF52931C859024005566C1 /* MQTipsCellModel.m in Sources */,
+				0BBF529E1C859024005566C1 /* MQBundleUtil.m in Sources */,
+				0BBF52AC1C859024005566C1 /* MEIQIA_FBLCDFont.m in Sources */,
+				0BBF52C31C859024005566C1 /* MQToast.m in Sources */,
+				0BBF52981C859024005566C1 /* MQImageMessageCell.m in Sources */,
+				0BBF52B71C859024005566C1 /* MEIQIA_CafRecordWriter.m in Sources */,
+				0BBF528A1C859024005566C1 /* MQBaseMessage.m in Sources */,
 				0BB7957B1C5A1D5900AB2E83 /* MeiQia.m in Sources */,
-				0B0FBC521C5F578C0040E630 /* UIButton+WebCache.m in Sources */,
-				0B0FBC591C5F578C0040E630 /* TTTAttributedLabel.m in Sources */,
-				0B0FBC411C5F578C0040E630 /* MHFacebookImageViewer.m in Sources */,
-				0B0FBC2B1C5F578C0040E630 /* MQTipsCell.m in Sources */,
-				0B0FBC3F1C5F578C0040E630 /* HPGrowingTextView.m in Sources */,
-				0B0FBC291C5F578C0040E630 /* MQMessageDateCell.m in Sources */,
-				0B0FBC511C5F578C0040E630 /* SDWebImagePrefetcher.m in Sources */,
-				0B0FBC181C5F578C0040E630 /* MQChatViewController.m in Sources */,
-				0B0FBC4C1C5F578C0040E630 /* SDWebImageCompat.m in Sources */,
-				0B0FBC3B1C5F578C0040E630 /* FBLCDFont.m in Sources */,
-				0B0FBC201C5F578C0040E630 /* MQEventCellModel.m in Sources */,
-				0B0FBC191C5F578C0040E630 /* MQChatViewService.m in Sources */,
-				0B0FBC321C5F578C0040E630 /* MQChatEmojize.m in Sources */,
-				0B0FBC451C5F578C0040E630 /* AmrRecordWriter.m in Sources */,
-				0B0FBC4D1C5F578C0040E630 /* SDWebImageDecoder.m in Sources */,
-				0B0FBC271C5F578C0040E630 /* MQEventMessageCell.m in Sources */,
-				0B0FBC481C5F578C0040E630 /* MLAudioRecorder.m in Sources */,
-				0B0FBC461C5F578C0040E630 /* CafRecordWriter.m in Sources */,
-				0B0FBC251C5F578C0040E630 /* MQVoiceCellModel.m in Sources */,
-				0B0FBC151C5F578C0040E630 /* MQServiceToViewInterface.m in Sources */,
-				0B0FBC281C5F578C0040E630 /* MQImageMessageCell.m in Sources */,
-				0B0FBC5A1C5F578C0040E630 /* amrFileCodec.mm in Sources */,
-				0B0FBC561C5F578C0040E630 /* UIImageView+HighlightedWebCache.m in Sources */,
-				0B0FBC3D1C5F578C0040E630 /* FBSquareFont.m in Sources */,
-				0B0FBC301C5F578C0040E630 /* MQChatAudioRecorder.m in Sources */,
-				0B0FBC361C5F578C0040E630 /* MQImageUtil.m in Sources */,
-				0B0FBC5D1C5F578C0040E630 /* MQChatTableView.m in Sources */,
-				0B0FBC581C5F578C0040E630 /* UIView+WebCacheOperation.m in Sources */,
-				0B0FBC2A1C5F578C0040E630 /* MQTextMessageCell.m in Sources */,
-				0B0FBC4B1C5F578C0040E630 /* SDImageCache.m in Sources */,
-				0B0FBC571C5F578C0040E630 /* UIImageView+WebCache.m in Sources */,
-				0B0FBC391C5F578C0040E630 /* FBBitmapFontView.m in Sources */,
-				0B0FBC1D1C5F578C0040E630 /* MQImageMessage.m in Sources */,
-				0B0FBC531C5F578C0040E630 /* UIImage+GIF.m in Sources */,
-				0B0FBC171C5F578C0040E630 /* MQChatViewManager.m in Sources */,
-				0B0FBC601C5F578C0040E630 /* MQRecordView.m in Sources */,
-				0B0FBC1A1C5F578C0040E630 /* MQChatViewTableDataSource.m in Sources */,
-				0B0FBC1F1C5F578C0040E630 /* MQVoiceMessage.m in Sources */,
-				0B0FBC5C1C5F578C0040E630 /* VoiceConverter.mm in Sources */,
-				0B0FBC3A1C5F578C0040E630 /* FBFontSymbol.m in Sources */,
-				0B0FBC1E1C5F578C0040E630 /* MQTextMessage.m in Sources */,
-				0B0FBC161C5F578C0040E630 /* MQChatViewConfig.m in Sources */,
-				0B0FBC381C5F578C0040E630 /* FBBitmapFont.m in Sources */,
-				0B0FBC541C5F578C0040E630 /* UIImage+MultiFormat.m in Sources */,
-				0B0FBC401C5F578C0040E630 /* HPTextViewInternal.m in Sources */,
-				0B0FBC3E1C5F578C0040E630 /* FBSquareFontView.m in Sources */,
-				0B0FBC2C1C5F578C0040E630 /* MQVoiceMessageCell.m in Sources */,
-				0B0FBC501C5F578C0040E630 /* SDWebImageManager.m in Sources */,
-				0B0FBC4E1C5F578C0040E630 /* SDWebImageDownloader.m in Sources */,
-				0B0FBC1C1C5F578C0040E630 /* MQEventMessage.m in Sources */,
-				0B0FBC4F1C5F578C0040E630 /* SDWebImageDownloaderOperation.m in Sources */,
-				0B0FBC491C5F578C0040E630 /* MKAnnotationView+WebCache.m in Sources */,
-				0B0FBC261C5F578C0040E630 /* MQChatBaseCell.m in Sources */,
-				0B0FBC211C5F578C0040E630 /* MQImageCellModel.m in Sources */,
+				0BBF52A61C859024005566C1 /* MQImageUtil.m in Sources */,
+				0BBF52A41C859024005566C1 /* MQChatRegexUtil.m in Sources */,
+				0BBF52AF1C859024005566C1 /* MEIQIA_FBSquareFontView.m in Sources */,
+				0BBF52871C859024005566C1 /* MQChatViewController.m in Sources */,
+				0BBF529F1C859024005566C1 /* MQChatAudioPlayer.m in Sources */,
+				0BBF528F1C859024005566C1 /* MQEventCellModel.m in Sources */,
+				0BBF52881C859024005566C1 /* MQChatViewService.m in Sources */,
+				0BBF52971C859024005566C1 /* MQEventMessageCell.m in Sources */,
+				0BBF52AB1C859024005566C1 /* MEIQIA_FBFontSymbol.m in Sources */,
+				0BBF529D1C859024005566C1 /* MQAssetUtil.m in Sources */,
+				0BBF52C11C859024005566C1 /* MQPullRefreshView.m in Sources */,
+				0BBF52AE1C859024005566C1 /* MEIQIA_FBSquareFont.m in Sources */,
+				0BBF52BE1C859024005566C1 /* MQChatTableView.m in Sources */,
+				0BBF52B81C859024005566C1 /* MEIQIA_MLAudioMeterObserver.m in Sources */,
+				0BBF52B11C859024005566C1 /* MEIQIA_HPTextViewInternal.m in Sources */,
+				0BBF52941C859024005566C1 /* MQVoiceCellModel.m in Sources */,
+				0BBF52B61C859024005566C1 /* MEIQIA_AmrRecordWriter.m in Sources */,
+				0BBF52AA1C859024005566C1 /* MEIQIA_FBBitmapFontView.m in Sources */,
+				0BBF52841C859024005566C1 /* MQServiceToViewInterface.m in Sources */,
+				0BBF52A51C859024005566C1 /* MQDateFormatterUtil.m in Sources */,
+				0BBF528C1C859024005566C1 /* MQImageMessage.m in Sources */,
+				0BBF52A11C859024005566C1 /* MQChatDeviceUtil.m in Sources */,
+				0BBF52B91C859024005566C1 /* MEIQIA_MLAudioRecorder.m in Sources */,
+				0BBF52861C859024005566C1 /* MQChatViewManager.m in Sources */,
+				0BBF529B1C859024005566C1 /* MQTipsCell.m in Sources */,
+				0BBF52A81C859024005566C1 /* MEIQIA_CustomIOSAlertView.m in Sources */,
+				0BBF529A1C859024005566C1 /* MQTextMessageCell.m in Sources */,
+				0BBF52A91C859024005566C1 /* MEIQIA_FBBitmapFont.m in Sources */,
+				0BBF52891C859024005566C1 /* MQChatViewTableDataSource.m in Sources */,
+				0BBF52BA1C859024005566C1 /* MEIQIA_TTTAttributedLabel.m in Sources */,
+				0BBF52AD1C859024005566C1 /* MEIQIA_FBLCDFontView.m in Sources */,
+				0BBF528E1C859024005566C1 /* MQVoiceMessage.m in Sources */,
+				0BBF52C01C859024005566C1 /* MQInputBar.m in Sources */,
+				0BBF52B21C859024005566C1 /* MEIQIA_MHFacebookImageViewer.m in Sources */,
+				0BBF528D1C859024005566C1 /* MQTextMessage.m in Sources */,
+				0BBF52A01C859024005566C1 /* MQChatAudioRecorder.m in Sources */,
+				0BBF52C21C859024005566C1 /* MQRecordView.m in Sources */,
+				0BBF52B01C859024005566C1 /* MEIQIA_HPGrowingTextView.m in Sources */,
+				0BBF52851C859024005566C1 /* MQChatViewConfig.m in Sources */,
+				0BBF528B1C859024005566C1 /* MQEventMessage.m in Sources */,
+				0BBF52A71C859024005566C1 /* MQStringSizeUtil.m in Sources */,
+				0BBF52951C859024005566C1 /* MQChatBaseCell.m in Sources */,
+				0BBF52BD1C859024005566C1 /* VoiceConverter.mm in Sources */,
+				0BBF52A21C859024005566C1 /* MQChatEmojize.m in Sources */,
+				0BBF52901C859024005566C1 /* MQImageCellModel.m in Sources */,
+				0BBF52961C859024005566C1 /* MQEvaluationCell.m in Sources */,
+				0BBF529C1C859024005566C1 /* MQVoiceMessageCell.m in Sources */,
+				0BBF52BC1C859024005566C1 /* wav.mm in Sources */,
+				0BBF52A31C859024005566C1 /* MQChatFileUtil.m in Sources */,
+				0BBF52991C859024005566C1 /* MQMessageDateCell.m in Sources */,
+				0BBF52BB1C859024005566C1 /* amrFileCodec.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
