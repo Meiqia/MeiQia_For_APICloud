@@ -5,26 +5,34 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ContentResolver;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
+import android.provider.MediaStore;
+import android.support.annotation.ColorRes;
 import android.support.annotation.StringRes;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.meiqia.core.bean.MQAgent;
 import com.meiqia.core.bean.MQMessage;
-import com.meiqia.meiqiasdk.dialog.MQConfirmDialog;
 import com.meiqia.meiqiasdk.model.Agent;
 import com.meiqia.meiqiasdk.model.BaseMessage;
 import com.meiqia.meiqiasdk.model.PhotoMessage;
@@ -32,13 +40,19 @@ import com.meiqia.meiqiasdk.model.TextMessage;
 import com.meiqia.meiqiasdk.model.VoiceMessage;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MQUtils {
-    private static Handler sHandler = new Handler();
+    /**
+     * 键盘切换延时时间
+     */
+    public static final int KEYBOARD_CHANGE_DELAY = 300;
+
+    private static Handler sHandler = new Handler(Looper.getMainLooper());
 
     public static void runInThread(Runnable task) {
         new Thread(task).start();
@@ -154,6 +168,34 @@ public class MQUtils {
         }
         lastClickTime = time;
         return false;
+    }
+
+    /**
+     * @param context
+     * @param bitmap
+     * @param cornerRadius
+     * @return
+     */
+    public static RoundedBitmapDrawable getRoundedDrawable(Context context, Bitmap bitmap, float cornerRadius) {
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), bitmap);
+        roundedBitmapDrawable.setAntiAlias(true);
+        roundedBitmapDrawable.setCornerRadius(cornerRadius);
+        return roundedBitmapDrawable;
+    }
+
+    public static Drawable tintDrawable(Context context, Drawable drawable, @ColorRes int color) {
+        final Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTint(wrappedDrawable, context.getResources().getColor(color));
+        return wrappedDrawable;
+    }
+
+    @SuppressLint("NewApi")
+	public static void setBackground(View v, Drawable bgDrawable) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            v.setBackground(bgDrawable);
+        } else {
+            v.setBackgroundDrawable(bgDrawable);
+        }
     }
 
     /**
@@ -333,90 +375,125 @@ public class MQUtils {
     }
 
     /**
-     * 请求权限
+     * 滚动ListView到底部
      *
-     * @param activity
-     * @param requestCode
-     * @param delegate
-     * @param permissionArr
+     * @param absListView
      */
-    public static void requestPermission(final Activity activity, final int requestCode, String msg, final Delegate delegate, String... permissionArr) {
-        List<String> permissionsNeeded = new ArrayList<>();
-        final List<String> permissionsList = new ArrayList<>();
-
-        for (String permission : permissionArr) {
-            if (!addPermission(activity, permissionsList, permission)) {
-                permissionsNeeded.add(permission.substring(permission.lastIndexOf(".") + 1));
-            }
-        }
-
-        if (permissionsList.size() > 0) {
-            if (permissionsNeeded.size() > 0) {
-                new MQConfirmDialog(activity, activity.getString(MQResUtils.getResStringID( "mq_runtime_permission_tip_title")), msg, new MQConfirmDialog.OnDialogCallback() {
+    public static void scrollListViewToBottom(final AbsListView absListView) {
+        if (absListView != null) {
+            if (absListView.getAdapter() != null && absListView.getAdapter().getCount() > 0) {
+                absListView.post(new Runnable() {
                     @Override
-                    public void onClickConfirm() {
-                        ActivityCompat.requestPermissions(activity, permissionsList.toArray(new String[permissionsList.size()]), requestCode);
+                    public void run() {
+                        absListView.setSelection(absListView.getAdapter().getCount() - 1);
                     }
-
-                    @Override
-                    public void onClickCancel() {
-                        delegate.onPermissionDenied();
-                    }
-                }).show();
-                return;
-            }
-            ActivityCompat.requestPermissions(activity, permissionsList.toArray(new String[permissionsList.size()]), requestCode);
-            return;
-        }
-        delegate.onPermissionGranted();
-    }
-
-    private static boolean addPermission(Activity activity, List<String> permissionsList, String permission) {
-        if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
-            permissionsList.add(permission);
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
-                return false;
+                });
             }
         }
-        return true;
     }
 
     /**
-     * 处理权限结果
+     * 根据Uri获取文件的真实路径
      *
-     * @param permissions
-     * @param grantResults
-     * @param delegate
-     * @param permissionArr
+     * @param uri
+     * @param context
+     * @return
      */
-    public static void handlePermissionResult(String[] permissions, int[] grantResults, Delegate delegate, String... permissionArr) {
-        Map<String, Integer> perms = new HashMap<>();
-        for (String permission : permissionArr) {
-            perms.put(permission, PackageManager.PERMISSION_GRANTED);
+    public static String getRealPathByUri(Context context, Uri uri) {
+        if (ContentResolver.SCHEME_FILE.equals(uri.getScheme())) {
+            return uri.getPath();
         }
 
-        for (int i = 0; i < permissions.length; i++) {
-            perms.put(permissions[i], grantResults[i]);
-        }
-
-        boolean granted = true;
-        for (String permission : permissionArr) {
-            if (perms.get(permission) != PackageManager.PERMISSION_GRANTED) {
-                granted = false;
-                break;
+        try {
+            ContentResolver resolver = context.getContentResolver();
+            String[] proj = new String[]{MediaStore.Images.Media.DATA};
+            Cursor cursor = MediaStore.Images.Media.query(resolver, uri, proj);
+            String realPath = null;
+            if (cursor != null) {
+                int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                if (cursor.getCount() > 0 && cursor.moveToFirst()) {
+                    realPath = cursor.getString(columnIndex);
+                }
+                cursor.close();
             }
-        }
-
-        if (granted) {
-            delegate.onPermissionGranted();
-        } else {
-            delegate.onPermissionDenied();
+            return realPath;
+        } catch (Exception e) {
+            return uri.getPath();
         }
     }
 
-    public interface Delegate {
-        void onPermissionGranted();
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     */
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
 
-        void onPermissionDenied();
+    /**
+     * 获取取屏幕宽度
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenWidth(Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(dm);
+        return dm.widthPixels;
+    }
+
+    /**
+     * 将字符串转成MD5值
+     *
+     * @param string
+     * @return
+     */
+    public static String stringToMD5(String string) {
+        byte[] hash;
+
+        try {
+            hash = MessageDigest.getInstance("MD5").digest(string.getBytes("UTF-8"));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        StringBuilder hex = new StringBuilder(hash.length * 2);
+        for (byte b : hash) {
+            if ((b & 0xFF) < 0x10)
+                hex.append("0");
+            hex.append(Integer.toHexString(b & 0xFF));
+        }
+
+        return hex.toString();
+    }
+
+
+    public static File getImageDir(Context context) {
+        File imageDir = null;
+        if (isExternalStorageWritable()) {
+            String appName = context.getString(context.getApplicationInfo().labelRes);
+            imageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "MeiqiaSDK" + File.separator + appName);
+            if (!imageDir.exists()) {
+                imageDir.mkdirs();
+            }
+        } else {
+            MQUtils.showSafe(context, MQResUtils.getResStringID("mq_no_sdcard"));
+        }
+        return imageDir;
+    }
+
+    /**
+     * 判断外存储是否可写
+     *
+     * @return
+     */
+    public static boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
     }
 }
