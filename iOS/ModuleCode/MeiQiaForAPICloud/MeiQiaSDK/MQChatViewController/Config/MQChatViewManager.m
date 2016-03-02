@@ -83,11 +83,12 @@
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:[MQChatViewConfig sharedConfig].navBarRightButton];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-        [[MQChatViewConfig sharedConfig].navBarRightButton addTarget:viewController action:@selector(tapNavigationRightBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [[MQChatViewConfig sharedConfig].navBarRightButton addTarget:viewController action:@selector(didSelectNavigationRightButton) forControlEvents:UIControlEventTouchUpInside];
 #pragma clang diagnostic pop
         viewController.navigationItem.rightBarButtonItem = rightItem;
     }
     
+    //导航栏标题
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     navigationController.navigationBar.titleTextAttributes = @{
@@ -257,7 +258,7 @@
     }
     chatViewConfig.outgoingDefaultAvatarImage = image;
 #ifdef INCLUDE_MEIQIA_SDK
-    [MQServiceToViewInterface uploadClientAvatar:image completion:^(BOOL success, NSError *error) {
+    [MQServiceToViewInterface uploadClientAvatar:image completion:^(NSString *avatarUrl, NSError *error) {
     }];
 #endif
 }
@@ -412,6 +413,10 @@
         return;
     }
     chatViewConfig.MQClientId = MQClientId;
+}
+
+- (void) setHideEvaluationButton:(BOOL)hide {
+    chatViewConfig.hideEvaluationButton = hide;
 }
 
 #endif
