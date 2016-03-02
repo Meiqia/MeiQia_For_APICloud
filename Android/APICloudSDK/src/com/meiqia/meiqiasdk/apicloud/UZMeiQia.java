@@ -26,6 +26,8 @@ public class UZMeiQia extends UZModule {
 
 	private String customizedId;
 	private String clientId;
+	private int titleColor = MQConfig.DEFAULT;
+	private int titleBarColor = MQConfig.DEFAULT;
 
 	public UZMeiQia(UZWebView webView) {
 		super(webView);
@@ -116,19 +118,19 @@ public class UZMeiQia extends UZModule {
 			intent.putExtra(MQConversationActivity.CLIENT_ID, clientId);
 		}
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra("titleColor", titleColor);
+		intent.putExtra("titleBarColor", titleBarColor);
 		startActivity(intent);
 	}
 
 	public void jsmethod_setTitleColor(final UZModuleContext moduleContext) {
-		MQConfig config = new MQConfig(mContext);
 		String color = moduleContext.optString("color");
-		config.setTitleTextColor(Color.parseColor(color));
+		titleColor = Color.parseColor(color);
 	}
 
 	public void jsmethod_setTitleBarColor(final UZModuleContext moduleContext) {
-		MQConfig config = new MQConfig(mContext);
 		String color = moduleContext.optString("color");
-		config.setTitleBackgroundColor(Color.parseColor(color));
+		titleBarColor = Color.parseColor(color);
 	}
 
 	private void callbackFail(final UZModuleContext moduleContext, int code,

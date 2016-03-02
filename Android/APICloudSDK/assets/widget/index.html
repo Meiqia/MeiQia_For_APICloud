@@ -19,11 +19,9 @@
 		var uzmoduledemo = null;
 		var scrollPicture = null;
 		var meiQia = null;
-		var meiQiaUI = null;
 		apiready = function(){
 	    	uzmoduledemo = api.require('moduleDemo');
 	    	meiQia = api.require('meiQia');
-	    	meiQiaUI = api.require('meiQiaUI');
 	    	scrollPicture = api.require('scrollPicture');
 	    	
 	    var param = {appkey:"a71c257c80dfe883d92a64dca323ec20"};
@@ -38,7 +36,7 @@
         tags:["手机APP","北京"],
         "服务器":"电信一区"
     };
-    meiQia.setClientInfo(infoParam);
+    	meiQia.setClientInfo(infoParam);
 		}
 		
 		function startActivity(){
@@ -47,7 +45,7 @@
 		
 		function startActivityForResult(){
 			var param = {color:"#B452CD"};
-	        meiQiaUI.setTitleBackgroundColor(param);
+			meiQia.setTitleBarColor(param);
 		}
 		
 		function vibrate(){

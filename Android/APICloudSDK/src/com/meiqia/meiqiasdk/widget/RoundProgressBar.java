@@ -1,5 +1,7 @@
 package com.meiqia.meiqiasdk.widget;
 
+import com.meiqia.meiqiasdk.util.MQResUtils;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,7 +11,6 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.meiqia.meiqiasdk.util.MQResUtils;
 
 /**
  * 仿iphone带进度的进度条，线程安全的View，可直接在线程中更新进度

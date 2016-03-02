@@ -46,9 +46,9 @@ public class MQConfirmDialog extends Dialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         dismiss();
-        if (v.getId() == MQResUtils.getResIdID( "tv_confirm_cancel")) {
+        if (v.getId() == MQResUtils.getResIdID("tv_confirm_cancel")) {
             mOnDialogCallback.onClickCancel();
-        } else if (v.getId() == MQResUtils.getResIdID( "tv_confirm_confirm")) {
+        } else if (v.getId() == MQResUtils.getResIdID("tv_confirm_confirm")) {
             mOnDialogCallback.onClickConfirm();
         }
     }
