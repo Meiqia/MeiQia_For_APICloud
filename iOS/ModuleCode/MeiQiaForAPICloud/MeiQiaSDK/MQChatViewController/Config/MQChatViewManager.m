@@ -61,6 +61,13 @@
 {
     if ([MQChatViewConfig sharedConfig].navBarTintColor) {
         navigationController.navigationBar.tintColor = [MQChatViewConfig sharedConfig].navBarTintColor;
+        //导航栏标题
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        navigationController.navigationBar.titleTextAttributes = @{
+                                                                   UITextAttributeTextColor : [MQChatViewConfig sharedConfig].navBarTintColor
+                                                                   };
+#pragma clang diagnostic pop
     }
     if ([MQChatViewConfig sharedConfig].navBarColor) {
         navigationController.navigationBar.barTintColor = [MQChatViewConfig sharedConfig].navBarColor;
@@ -87,14 +94,6 @@
 #pragma clang diagnostic pop
         viewController.navigationItem.rightBarButtonItem = rightItem;
     }
-    
-    //导航栏标题
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    navigationController.navigationBar.titleTextAttributes = @{
-                                                               UITextAttributeTextColor : [MQChatViewConfig sharedConfig].navBarTintColor
-                                                               };
-#pragma clang diagnostic pop
 }
 
 - (void)disappearMQChatViewController {
