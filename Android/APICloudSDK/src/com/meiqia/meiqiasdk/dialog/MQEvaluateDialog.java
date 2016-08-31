@@ -2,6 +2,7 @@ package com.meiqia.meiqiasdk.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -13,12 +14,13 @@ import com.meiqia.meiqiasdk.util.MQResUtils;
 import com.meiqia.meiqiasdk.util.MQUtils;
 
 public class MQEvaluateDialog extends Dialog implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
+    private TextView mTipTv;
     private RadioGroup mContentRg;
     private EditText mContentEt;
     private TextView mConfirmTv;
     private Callback mCallback;
 
-    public MQEvaluateDialog(Activity activity) {
+    public MQEvaluateDialog(Activity activity, String tip) {
         super(activity, MQResUtils.getResStyleID("MQDialog"));
         setContentView(MQResUtils.getResLayoutID("mq_dialog_evaluate"));
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -26,6 +28,7 @@ public class MQEvaluateDialog extends Dialog implements View.OnClickListener, Ra
         setCanceledOnTouchOutside(true);
         setCancelable(true);
 
+        mTipTv = (TextView) findViewById(MQResUtils.getResIdID("tv_evaluate_tip"));
         mContentEt = (EditText) findViewById(MQResUtils.getResIdID("et_evaluate_content"));
         mContentRg = (RadioGroup) findViewById(MQResUtils.getResIdID("rg_evaluate_content"));
         mContentRg.setOnCheckedChangeListener(this);
@@ -33,6 +36,10 @@ public class MQEvaluateDialog extends Dialog implements View.OnClickListener, Ra
         findViewById(MQResUtils.getResIdID("tv_evaluate_cancel")).setOnClickListener(this);
         mConfirmTv = (TextView) findViewById(MQResUtils.getResIdID("tv_evaluate_confirm"));
         mConfirmTv.setOnClickListener(this);
+
+        if (!TextUtils.isEmpty(tip)) {
+            mTipTv.setText(tip);
+        }
     }
 
     @Override

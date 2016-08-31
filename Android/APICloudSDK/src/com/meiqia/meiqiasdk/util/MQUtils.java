@@ -1,16 +1,18 @@
 package com.meiqia.meiqiasdk.util;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -18,26 +20,35 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.meiqia.core.bean.MQAgent;
 import com.meiqia.core.bean.MQMessage;
 import com.meiqia.meiqiasdk.model.Agent;
 import com.meiqia.meiqiasdk.model.BaseMessage;
+import com.meiqia.meiqiasdk.model.FileMessage;
 import com.meiqia.meiqiasdk.model.PhotoMessage;
+import com.meiqia.meiqiasdk.model.RichTextMessage;
+import com.meiqia.meiqiasdk.model.RobotMessage;
 import com.meiqia.meiqiasdk.model.TextMessage;
 import com.meiqia.meiqiasdk.model.VoiceMessage;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -66,19 +77,15 @@ public class MQUtils {
         sHandler.postDelayed(task, delayMillis);
     }
 
-    public static BaseMessage parseMQMessageIntoChatBase(MQMessage message, BaseMessage baseMessage) {
-        int itemType;
-        if (MQMessage.TYPE_FROM_CLIENT.equals(message.getFrom_type())) {
-            itemType = BaseMessage.TYPE_CLIENT;
-        } else {
-            itemType = BaseMessage.TYPE_AGENT;
-        }
+    public static BaseMessage parseMQMessageIntoBaseMessage(MQMessage message, BaseMessage baseMessage) {
         baseMessage.setStatus(message.getStatus());
-        baseMessage.setItemViewType(itemType);
+        baseMessage.setItemViewType(getItemType(message));
         baseMessage.setContent(message.getContent());
         baseMessage.setContentType(message.getContent_type());
         baseMessage.setStatus(message.getStatus());
         baseMessage.setId(message.getId());
+        baseMessage.setType(message.getType());
+        baseMessage.setConversationId(message.getConversation_id());
         baseMessage.setAgentNickname(message.getAgent_nickname());
         baseMessage.setCreatedOn(message.getCreated_on());
         baseMessage.setAvatar(message.getAvatar());
@@ -87,19 +94,44 @@ public class MQUtils {
             ((PhotoMessage) baseMessage).setUrl(message.getMedia_url());
         } else if (MQMessage.TYPE_CONTENT_VOICE.equals(message.getContent_type())) {
             ((VoiceMessage) baseMessage).setUrl(message.getMedia_url());
+        } else if (MQMessage.TYPE_CONTENT_FILE.equals(message.getContent_type())) {
+            FileMessage fileMessage = ((FileMessage) baseMessage);
+            fileMessage.setUrl(message.getMedia_url());
+            fileMessage.setExtra(message.getExtra());
+            updateFileState(fileMessage);
         }
         return baseMessage;
     }
 
-    public static BaseMessage parseMQMessageIntoChatBase(MQMessage message) {
-        BaseMessage baseMessage;
-        int itemType;
-        if (MQMessage.TYPE_FROM_CLIENT.equals(message.getFrom_type())) {
+    private static int getItemType(MQMessage message) {
+        // 如果不是机器人，也不是客户时，默认是客服
+        int itemType = BaseMessage.TYPE_AGENT;
+        if (TextUtils.equals(MQMessage.TYPE_FROM_ROBOT, message.getFrom_type())) {
+            itemType = BaseMessage.TYPE_ROBOT;
+        } else if (MQMessage.TYPE_FROM_CLIENT.equals(message.getFrom_type())) {
             itemType = BaseMessage.TYPE_CLIENT;
-        } else {
-            itemType = BaseMessage.TYPE_AGENT;
+        } else if (MQMessage.TYPE_CONTENT_RICH_TEXT.equals(message.getContent_type())) {
+            itemType = BaseMessage.TYPE_RICH_TEXT;
         }
-        if (MQMessage.TYPE_CONTENT_PHOTO.equals(message.getContent_type())) {
+        return itemType;
+    }
+
+    public static BaseMessage parseMQMessageToBaseMessage(MQMessage message) {
+        BaseMessage baseMessage;
+
+        if (TextUtils.equals(MQMessage.TYPE_FROM_ROBOT, message.getFrom_type())) {
+            RobotMessage robotMessage = new RobotMessage();
+            robotMessage.setContentRobot(message.getContent_robot());
+            robotMessage.setContent(message.getContent());
+            robotMessage.setSubType(message.getSub_type());
+            robotMessage.setQuestionId(message.getQuestion_id());
+            robotMessage.setAlreadyFeedback(message.isAlreadyFeedback());
+            robotMessage.setExtra(message.getExtra());
+            baseMessage = robotMessage;
+        } else if (MQMessage.TYPE_CONTENT_TEXT.equals(message.getContent_type())) {
+            baseMessage = new TextMessage(message.getContent());
+            baseMessage.setContent(message.getContent());
+        } else if (MQMessage.TYPE_CONTENT_PHOTO.equals(message.getContent_type())) {
             // message.getMedia_url() 可能是本地路径
             baseMessage = new PhotoMessage();
             if (isLocalPath(message.getMedia_url())) {
@@ -117,13 +149,33 @@ public class MQUtils {
                 ((VoiceMessage) baseMessage).setUrl(message.getMedia_url());
             }
             baseMessage.setContent("[voice]");
-        } else {
-            baseMessage = new TextMessage(message.getContent());
+        } else if (MQMessage.TYPE_CONTENT_FILE.equals(message.getContent_type())) {
+            baseMessage = new FileMessage(message.getMedia_url());
+            if (isLocalPath(message.getMedia_url())) {
+                ((FileMessage) baseMessage).setLocalPath(message.getMedia_url());
+            } else {
+                ((FileMessage) baseMessage).setUrl(message.getMedia_url());
+            }
+            ((FileMessage) baseMessage).setExtra(message.getExtra());
+            baseMessage.setContent("[file]");
+            baseMessage.setId(message.getId());
+            updateFileState(((FileMessage) baseMessage));
+        } else if (MQMessage.TYPE_CONTENT_RICH_TEXT.equals(message.getContent_type())) {
+            baseMessage = new RichTextMessage();
             baseMessage.setContent(message.getContent());
+            ((RichTextMessage) baseMessage).setExtra(message.getExtra());
+        } else {
+            // TYPE 设置 unknown,在 adapter 渲染内容
+            baseMessage = new TextMessage(message.getContent());
+            baseMessage.setContentType(BaseMessage.TYPE_CONTENT_UNKNOWN);
         }
+
+        baseMessage.setConversationId(message.getConversation_id());
         baseMessage.setStatus(message.getStatus());
-        baseMessage.setItemViewType(itemType);
+        // 注意 type
+        baseMessage.setItemViewType(getItemType(message));
         baseMessage.setContentType(message.getContent_type());
+        baseMessage.setType(message.getType());
         baseMessage.setStatus(message.getStatus());
         baseMessage.setId(message.getId());
         baseMessage.setAgentNickname(message.getAgent_nickname());
@@ -131,6 +183,24 @@ public class MQUtils {
         baseMessage.setAvatar(message.getAvatar());
         baseMessage.setIsRead(message.is_read());
         return baseMessage;
+    }
+
+    public static MQMessage parseBaseMessageToMQMessage(BaseMessage baseMessage) {
+        MQMessage message = new MQMessage(baseMessage.getContentType());
+        message.setConversation_id(baseMessage.getConversationId());
+        message.setStatus(baseMessage.getStatus());
+        message.setContent_type(baseMessage.getContentType());
+        message.setType(baseMessage.getType());
+        message.setStatus(baseMessage.getStatus());
+        message.setId(baseMessage.getId());
+        message.setAgent_nickname(baseMessage.getAgentNickname());
+        message.setCreated_on(baseMessage.getCreatedOn());
+        message.setAvatar(baseMessage.getAvatar());
+        if (baseMessage instanceof FileMessage) {
+            message.setExtra(((FileMessage) baseMessage).getExtra());
+            message.setMedia_url(((FileMessage) baseMessage).getUrl());
+        }
+        return message;
     }
 
     /**
@@ -142,7 +212,7 @@ public class MQUtils {
     public static List<BaseMessage> parseMQMessageToChatBaseList(List<MQMessage> mqMessageList) {
         List<BaseMessage> baseMessages = new ArrayList<BaseMessage>();
         for (MQMessage mqMessage : mqMessageList) {
-            baseMessages.add(parseMQMessageIntoChatBase(mqMessage));
+            baseMessages.add(parseMQMessageToBaseMessage(mqMessage));
         }
         return baseMessages;
     }
@@ -152,6 +222,10 @@ public class MQUtils {
         Agent agent = new Agent();
         agent.setId(mqAgent.getId());
         agent.setNickname(mqAgent.getNickname());
+        agent.setStatus(mqAgent.getStatus());
+        agent.setIsOnline(mqAgent.isOnLine());
+        agent.setPrivilege(mqAgent.getPrivilege());
+        agent.setAvatar(mqAgent.getAvatar());
         return agent;
     }
 
@@ -171,31 +245,129 @@ public class MQUtils {
     }
 
     /**
-     * @param context
-     * @param bitmap
-     * @param cornerRadius
-     * @return
+     * 处理自定义图片和文字颜色
+     *
+     * @param resourceResId 通过资源文件id的形式自定义的id
+     * @param codeResId     通过java代码的方式自定义的id
+     * @param iconIv        要改变tint颜色的图片控件
+     * @param textViews     要改变文字颜色的文本控件
      */
-    public static RoundedBitmapDrawable getRoundedDrawable(Context context, Bitmap bitmap, float cornerRadius) {
-        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), bitmap);
-        roundedBitmapDrawable.setAntiAlias(true);
-        roundedBitmapDrawable.setCornerRadius(cornerRadius);
-        return roundedBitmapDrawable;
+    public static void applyCustomUITextAndImageColor(int resourceResId, int codeResId, ImageView iconIv, TextView... textViews) {
+        Context context = null;
+        if (iconIv != null) {
+            context = iconIv.getContext();
+        }
+        if (textViews != null && textViews.length > 0) {
+            context = textViews[0].getContext();
+        }
+
+        if (context != null) {
+            if (MQConfig.DEFAULT != codeResId) {
+                resourceResId = codeResId;
+            }
+
+            int color = context.getResources().getColor(resourceResId);
+            if (iconIv != null) {
+                iconIv.setColorFilter(color);
+            }
+            if (textViews != null) {
+                for (TextView textView : textViews) {
+                    textView.setTextColor(color);
+                }
+            }
+        }
+    }
+
+    /**
+     * 处理自定义标题文本对其方式
+     *
+     * @param backTv  返回文本控件
+     * @param titleTv 标题文本控件
+     */
+    public static void applyCustomUITitleGravity(TextView backTv, TextView titleTv) {
+        if (MQConfig.ui.MQTitleGravity.LEFT == MQConfig.ui.titleGravity) {
+            RelativeLayout.LayoutParams titleTvParams = (RelativeLayout.LayoutParams) titleTv.getLayoutParams();
+            titleTvParams.addRule(RelativeLayout.RIGHT_OF, MQResUtils.getResIdID("back_rl"));
+            titleTv.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+            if (backTv != null) {
+                backTv.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+     * 处理自定义图片背景色
+     *
+     * @param view          包含背景图片的控件
+     * @param finalResId    默认颜色的资源id
+     * @param resourceResId 通过资源文件id的形式自定义的id
+     * @param codeResId     通过java代码的方式自定义的id
+     */
+    public static void applyCustomUITintDrawable(View view, int finalResId, int resourceResId, int codeResId) {
+        Context context = view.getContext();
+        if (MQConfig.DEFAULT != codeResId) {
+            resourceResId = codeResId;
+        }
+        if (context.getResources().getColor(resourceResId) != context.getResources().getColor(finalResId)) {
+            Drawable tintDrawable = tintDrawable(context, view.getBackground(), resourceResId);
+            setBackground(view, tintDrawable);
+        }
     }
 
     public static Drawable tintDrawable(Context context, Drawable drawable, @ColorRes int color) {
+        if (drawable == null) {
+            return null;
+        }
+
         final Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
         DrawableCompat.setTint(wrappedDrawable, context.getResources().getColor(color));
         return wrappedDrawable;
     }
 
-    @SuppressLint("NewApi")
-	public static void setBackground(View v, Drawable bgDrawable) {
+    public static void setBackground(View v, Drawable bgDrawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             v.setBackground(bgDrawable);
         } else {
             v.setBackgroundDrawable(bgDrawable);
         }
+    }
+
+    public static void tintPressedIndicator(ImageView imageView, @DrawableRes int normalResId, @DrawableRes int pressedResId) {
+        Drawable normal = imageView.getResources().getDrawable(normalResId);
+        Drawable pressed = imageView.getResources().getDrawable(pressedResId);
+        pressed = MQUtils.tintDrawable(imageView.getContext(), pressed, MQResUtils.getResColorID("mq_indicator_selected"));
+        imageView.setImageDrawable(getPressedSelectorDrawable(normal, pressed));
+    }
+
+    /**
+     * 得到点击改变状态的Selector,一般给setBackgroundDrawable使用
+     *
+     * @param normal
+     * @param pressed
+     * @return
+     */
+    public static StateListDrawable getPressedSelectorDrawable(Drawable normal, Drawable pressed) {
+        StateListDrawable bg = new StateListDrawable();
+        bg.addState(new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled}, pressed);
+        bg.addState(new int[]{android.R.attr.state_enabled}, normal);
+        bg.addState(new int[]{}, normal);
+        return bg;
+    }
+    
+    public static StateListDrawable getCheckedSelectorDrawable(Drawable normal, Drawable pressed) {
+        StateListDrawable bg = new StateListDrawable();
+        bg.addState(new int[]{android.R.attr.state_checked, android.R.attr.state_enabled}, pressed);
+        bg.addState(new int[]{android.R.attr.state_enabled}, normal);
+        bg.addState(new int[]{}, normal);
+        return bg;
+    }
+    
+    public static void tintCompoundButton(CompoundButton compoundButton, @DrawableRes int normalResId, @DrawableRes int pressedResId) {
+        Drawable normal = compoundButton.getResources().getDrawable(normalResId);
+        normal = MQUtils.tintDrawable(compoundButton.getContext(), normal, MQResUtils.getResColorID("mq_form_et_bg_normal"));
+        Drawable pressed = compoundButton.getResources().getDrawable(pressedResId);
+        pressed = MQUtils.tintDrawable(compoundButton.getContext(), pressed,MQResUtils.getResColorID("mq_indicator_selected"));
+        compoundButton.setCompoundDrawablesWithIntrinsicBounds(null, null, getCheckedSelectorDrawable(normal, pressed), null);
     }
 
     /**
@@ -226,8 +398,52 @@ public class MQUtils {
         return isFileExist;
     }
 
+    public static boolean updateFileState(FileMessage fileMessage) {
+        boolean isExist = isFileExist(getFileMessageFilePath(fileMessage));
+        if (isExist) {
+            fileMessage.setFileState(FileMessage.FILE_STATE_FINISH);
+        }
+        return isExist;
+    }
+
+    public static void delFile(String path) {
+        if (TextUtils.isEmpty(path)) {
+            return;
+        }
+
+        try {
+            File file = new File(path);
+            if (file.exists()) {
+                file.delete();
+            }
+        } catch (Exception ignore) {
+
+        }
+    }
+
+    public static String getFileMessageFilePath(FileMessage fileMessage) {
+        String path = null;
+        try {
+            JSONObject extraJsonObj = new JSONObject(fileMessage.getExtra());
+            // 命名规则：文件名后面加上消息 id
+            String destFileName = extraJsonObj.optString("filename");
+            int lastIndexOf = destFileName.lastIndexOf(".");
+            String prefix = destFileName.substring(0, lastIndexOf);
+            String suffix = destFileName.substring(lastIndexOf, destFileName.length());
+            destFileName = prefix + fileMessage.getId() + suffix;
+            String destFileDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+            path = destFileDir + "/" + destFileName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return path;
+    }
+
     public static String getPicStorePath(Context ctx) {
         File file = ctx.getExternalFilesDir(null);
+        if (file == null) {
+            file = ctx.getFilesDir();
+        }
         if (!file.exists()) {
             file.mkdir();
         }
@@ -319,8 +535,7 @@ public class MQUtils {
      *
      * @param text
      */
-    @SuppressLint("NewApi")
-	public static void clip(Context context, String text) {
+    public static void clip(Context context, String text) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
             android.text.ClipboardManager clipboardManager = (android.text.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
             clipboardManager.setText(text);
@@ -359,16 +574,15 @@ public class MQUtils {
     /**
      * 打开键盘
      *
-     * @param context
      * @param editText
      */
-    public static void openKeyboard(final Context context, final EditText editText) {
+    public static void openKeyboard(final EditText editText) {
         runInUIThread(new Runnable() {
             @Override
             public void run() {
                 editText.requestFocus();
                 editText.setSelection(editText.getText().toString().length());
-                InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
             }
         }, 300);
@@ -476,7 +690,7 @@ public class MQUtils {
     public static File getImageDir(Context context) {
         File imageDir = null;
         if (isExternalStorageWritable()) {
-            String appName = context.getString(context.getApplicationInfo().labelRes);
+            String appName = context.getApplicationInfo().loadLabel(context.getPackageManager()).toString();
             imageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "MeiqiaSDK" + File.separator + appName);
             if (!imageDir.exists()) {
                 imageDir.mkdirs();
@@ -495,5 +709,50 @@ public class MQUtils {
     public static boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(state);
+    }
+
+    /**
+     * 判断网络是否可用
+     *
+     * @param context
+     * @return
+     */
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager == null) {
+            return false;
+        }
+        NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+        return info != null && info.isAvailable() && info.isConnected();
+    }
+
+    /**
+     * 设置未发送的文本消息
+     *
+     * @param context
+     * @param text
+     */
+    public static void setUnSendTextMessage(Context context, String clientId, String text) {
+        putString(context, "mq_un_send_text_msg" + clientId, text);
+    }
+
+    /**
+     * 获取未发送的文本消息
+     *
+     * @param context
+     * @return
+     */
+    public static String getUnSendTextMessage(Context context, String clientId) {
+        return getString(context, "mq_un_send_text_msg" + clientId, "");
+    }
+
+    public static void putString(Context context, String key, String value) {
+        SharedPreferences.Editor editor = context.getSharedPreferences("MeiqiaSDK", Context.MODE_PRIVATE).edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+
+    public static String getString(Context context, String key, String def) {
+        return context.getSharedPreferences("MeiqiaSDK", Context.MODE_PRIVATE).getString(key, def);
     }
 }

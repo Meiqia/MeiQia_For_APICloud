@@ -1,5 +1,7 @@
 package com.meiqia.meiqiasdk.model;
 
+import android.text.TextUtils;
+
 public class Agent {
 
     private String id;
@@ -17,6 +19,8 @@ public class Agent {
     private String status;
     private String telephone;
     private String weixin;
+    private boolean isOnline;
+    private String privilege;
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
@@ -138,4 +142,27 @@ public class Agent {
         this.token = token;
     }
 
+    public boolean isOffDuty() {
+        return "off_duty".equals(status);
+    }
+
+    public void setIsOnline(boolean isOnline) {
+        this.isOnline = isOnline;
+    }
+
+    public boolean isOnline() {
+        return isOnline;
+    }
+
+    public String getPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(String privilege) {
+        this.privilege = privilege;
+    }
+
+    public boolean isRobot() {
+        return TextUtils.equals("bot", privilege);
+    }
 }
