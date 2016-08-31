@@ -16,7 +16,7 @@ public abstract class MessageReceiver extends BroadcastReceiver {
     private String mConversationId;
 
     public void setConversationId(String conversationId) {
-        this.mConversationId = conversationId;
+        mConversationId = conversationId;
     }
 
     @Override
@@ -34,8 +34,10 @@ public abstract class MessageReceiver extends BroadcastReceiver {
             MQMessage message = messageManager.getMQMessage(msgId);
             if (message != null) {
                 //处理消息，并发送广播
-                baseMessage = MQUtils.parseMQMessageIntoChatBase(message);
-                receiveNewMsg(baseMessage);
+                baseMessage = MQUtils.parseMQMessageToBaseMessage(message);
+                if (baseMessage != null) {
+                    receiveNewMsg(baseMessage);
+                }
             }
         }
 
@@ -55,7 +57,6 @@ public abstract class MessageReceiver extends BroadcastReceiver {
                 addDirectAgentMessageTip(mqAgent.getNickname());
             }
 
-            changeTitleToAgentName(mqAgent.getNickname());
             Agent agent = MQUtils.parseMQAgentToAgent(mqAgent);
             setCurrentAgent(agent);
 
@@ -69,6 +70,16 @@ public abstract class MessageReceiver extends BroadcastReceiver {
             if (conversationId.equals(mConversationId)) {
                 inviteEvaluation();
             }
+        } else if (MQMessageManager.ACTION_AGENT_STATUS_UPDATE_EVENT.equals(action)) {
+            updateAgentOnlineOfflineStatus();
+        } else if (MQMessageManager.ACTION_BLACK_ADD.equals(action)) {
+            blackAdd();
+        } else if (MQMessageManager.ACTION_BLACK_DEL.equals(action)) {
+            blackDel();
+        } else if (TextUtils.equals(MQMessageManager.ACTION_QUEUEING_REMOVE, action)) {
+            removeQueue();
+        } else if (TextUtils.equals(MQMessageManager.ACTION_QUEUEING_INIT_CONV, action)) {
+            queueingInitConv();
         }
     }
 
@@ -76,14 +87,21 @@ public abstract class MessageReceiver extends BroadcastReceiver {
 
     public abstract void changeTitleToInputting();
 
-    public abstract void changeTitleToAgentName(String agentNickname);
-
     public abstract void addDirectAgentMessageTip(String agentNickname);
 
     public abstract void setCurrentAgent(Agent agent);
 
-
     public abstract void inviteEvaluation();
 
     public abstract void setNewConversationId(String newConversationId);
+
+    public abstract void updateAgentOnlineOfflineStatus();
+
+    public abstract void blackAdd();
+
+    public abstract void blackDel();
+
+    public abstract void removeQueue();
+
+    public abstract void queueingInitConv();
 }

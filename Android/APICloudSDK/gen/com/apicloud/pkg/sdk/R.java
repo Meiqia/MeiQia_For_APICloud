@@ -10,316 +10,591 @@ package com.apicloud.pkg.sdk;
 public final class R {
     public static final class anim {
         public static final int mq_loading=0x7f040000;
+        public static final int mq_message_form_enter=0x7f040001;
+        public static final int mq_message_form_exit=0x7f040002;
     }
     public static final class attr {
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int mq_iv_borderColor=0x7f010004;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int mq_iv_borderWidth=0x7f010003;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int mq_iv_cornerRadius=0x7f010001;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mq_iv_isCircle=0x7f010000;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mq_iv_isSquare=0x7f010002;
     }
     public static final class color {
-        public static final int mq_audio_gray=0x7f06001b;
-        public static final int mq_bg_color=0x7f060002;
-        public static final int mq_chat_box_bg=0x7f060008;
-        public static final int mq_chat_text_left=0x7f060006;
-        public static final int mq_chat_text_right=0x7f060007;
-        public static final int mq_dialog_bg_translucent=0x7f060012;
-        public static final int mq_direct_agent_nickname_color=0x7f06000d;
-        public static final int mq_evalute_bad=0x7f06001a;
-        public static final int mq_evalute_enabled=0x7f060015;
-        public static final int mq_evalute_good=0x7f060018;
-        public static final int mq_evalute_hint=0x7f060017;
-        public static final int mq_evalute_medium=0x7f060019;
-        public static final int mq_evalute_not_enabled=0x7f060016;
-        public static final int mq_event_gray=0x7f060003;
-        public static final int mq_input_text=0x7f060005;
-        public static final int mq_item_normal=0x7f060014;
-        public static final int mq_item_pressed=0x7f060013;
-        public static final int mq_leave_msg_tip_bg=0x7f060009;
-        public static final int mq_net_not_work_bg=0x7f06000a;
-        public static final int mq_normal_text_white=0x7f060001;
-        public static final int mq_play_circle_progress=0x7f06000c;
-        public static final int mq_play_circle_round=0x7f06000b;
-        public static final int mq_selector_evalute_button=0x7f06001c;
-        public static final int mq_send_btn_text_color_nor=0x7f060010;
-        public static final int mq_send_btn_text_color_pressed=0x7f06000f;
-        public static final int mq_title_text=0x7f060004;
-        public static final int mq_titlebar_textColor=0x7f060011;
-        public static final int mq_transparent=0x7f06000e;
-        public static final int mq_url_foreground=0x7f060000;
+        public static final int mq_activity_bg=0x7f060002;
+        public static final int mq_activity_title_bg=0x7f060004;
+        public static final int mq_activity_title_textColor=0x7f060003;
+        /** 表单相关 END
+         */
+        public static final int mq_btn_slit_line_bg=0x7f060034;
+        public static final int mq_chat_audio_recorder_icon=0x7f060017;
+        public static final int mq_chat_audio_recorder_tip_textColor=0x7f060016;
+        public static final int mq_chat_direct_agent_nickname_textColor=0x7f060015;
+        /** 开发者在通过覆盖资源文件配置自定义UI时，请不要修改以下的资源 END
+聊天 START
+         */
+        public static final int mq_chat_et_textColor=0x7f06000e;
+        public static final int mq_chat_event_gray=0x7f060014;
+        public static final int mq_chat_left_bubble=0x7f060018;
+        /** 公共的 END
+开发者在通过覆盖资源文件配置自定义UI时，请不要修改以下的资源 START
+         */
+        public static final int mq_chat_left_bubble_final=0x7f06000c;
+        public static final int mq_chat_left_link_textColor=0x7f060010;
+        public static final int mq_chat_left_textColor=0x7f06000f;
+        public static final int mq_chat_right_bubble=0x7f060019;
+        public static final int mq_chat_right_bubble_final=0x7f06000d;
+        public static final int mq_chat_right_link_textColor=0x7f060012;
+        public static final int mq_chat_right_textColor=0x7f060011;
+        public static final int mq_chat_robot_evaluate_textColor=0x7f06001d;
+        public static final int mq_chat_robot_menu_item_textColor=0x7f06001b;
+        public static final int mq_chat_robot_menu_tip_textColor=0x7f06001c;
+        public static final int mq_chat_unread_circle_bg=0x7f060013;
+        /** 图库 END
+进度条 START
+         */
+        public static final int mq_circle_progress_bg=0x7f06002c;
+        public static final int mq_circle_progress_color=0x7f06002d;
+        /** 公共的 START
+         */
+        public static final int mq_colorPrimary=0x7f060000;
+        public static final int mq_colorPrimaryDark=0x7f060001;
+        public static final int mq_error=0x7f060007;
+        public static final int mq_evaluate_bad=0x7f060023;
+        /** 聊天 END
+客服评价 START
+         */
+        public static final int mq_evaluate_enabled=0x7f06001e;
+        public static final int mq_evaluate_good=0x7f060021;
+        public static final int mq_evaluate_hint=0x7f060020;
+        public static final int mq_evaluate_medium=0x7f060022;
+        public static final int mq_evaluate_not_enabled=0x7f06001f;
+        public static final int mq_form_et_bg_focus=0x7f060031;
+        public static final int mq_form_et_bg_normal=0x7f060032;
+        public static final int mq_form_et_textColor=0x7f06002f;
+        public static final int mq_form_et_textColorHint=0x7f060030;
+        public static final int mq_form_shadow=0x7f060033;
+        /** 进度条 END
+表单相关 START
+         */
+        public static final int mq_form_tip_textColor=0x7f06002e;
+        public static final int mq_gray=0x7f060006;
+        public static final int mq_indicator_normal=0x7f06000b;
+        public static final int mq_indicator_selected=0x7f06000a;
+        public static final int mq_item_normal=0x7f060009;
+        public static final int mq_item_pressed=0x7f060008;
+        public static final int mq_loading_progress_centerColor=0x7f060025;
+        public static final int mq_loading_progress_endColor=0x7f060026;
+        /** 客服评价 END
+数据加载 START
+         */
+        public static final int mq_loading_progress_startColor=0x7f060024;
+        /** 数据加载 END
+图库 START
+         */
+        public static final int mq_photo_activity_bg=0x7f060027;
+        public static final int mq_photo_selected_color=0x7f06002b;
+        public static final int mq_photo_send_disabled=0x7f06002a;
+        public static final int mq_photo_send_enabled=0x7f060029;
+        public static final int mq_photo_title_bg=0x7f060028;
+        public static final int mq_selector_evaluate_button=0x7f060035;
+        public static final int mq_top_pop_tip_bg=0x7f06001a;
+        public static final int mq_white=0x7f060005;
     }
     public static final class dimen {
-        public static final int mq_audio_edge=0x7f070010;
-        public static final int mq_audio_textSize=0x7f070011;
+        public static final int mq_audio_edge=0x7f070012;
+        public static final int mq_audio_textSize=0x7f070013;
         public static final int mq_chat_box_height=0x7f070001;
-        public static final int mq_edit_toolbar_height=0x7f07000f;
-        public static final int mq_size_level1=0x7f070003;
-        public static final int mq_size_level10=0x7f07000c;
-        public static final int mq_size_level2=0x7f070004;
-        public static final int mq_size_level3=0x7f070005;
-        public static final int mq_size_level4=0x7f070006;
-        public static final int mq_size_level5=0x7f070007;
-        public static final int mq_size_level6=0x7f070008;
-        public static final int mq_size_level7=0x7f070009;
-        public static final int mq_size_level8=0x7f07000a;
-        public static final int mq_size_level9=0x7f07000b;
-        public static final int mq_textSize_level1=0x7f07000d;
-        public static final int mq_textSize_level2=0x7f07000e;
+        public static final int mq_custom_keyboard_height=0x7f070011;
+        public static final int mq_size_level1=0x7f070004;
+        public static final int mq_size_level10=0x7f07000d;
+        public static final int mq_size_level2=0x7f070005;
+        public static final int mq_size_level3=0x7f070006;
+        public static final int mq_size_level4=0x7f070007;
+        public static final int mq_size_level5=0x7f070008;
+        public static final int mq_size_level6=0x7f070009;
+        public static final int mq_size_level7=0x7f07000a;
+        public static final int mq_size_level8=0x7f07000b;
+        public static final int mq_size_level9=0x7f07000c;
+        public static final int mq_textSize_level1=0x7f07000f;
+        public static final int mq_textSize_level2=0x7f070010;
+        public static final int mq_textSize_rich_text=0x7f07000e;
         public static final int mq_title_height=0x7f070000;
+        public static final int mq_title_left_right_textSize=0x7f070003;
         public static final int mq_titlebar_textSize=0x7f070002;
+        public static final int mq_top_tip_height=0x7f070014;
     }
     public static final class drawable {
-        public static final int mo_scrollpicture_img_switcher_bg=0x7f020000;
-        public static final int mo_scrollpicture_img_switcher_bg0=0x7f020001;
-        public static final int mo_scrollpicture_img_switcher_bg1=0x7f020002;
-        public static final int mo_scrollpicture_img_switcher_bg2=0x7f020003;
-        public static final int mo_scrollpicture_img_switcher_bg3=0x7f020004;
-        public static final int mq_bg_edit_view=0x7f020005;
-        public static final int mq_bg_edit_view_pressed=0x7f020006;
-        public static final int mq_bg_input_box=0x7f020007;
-        public static final int mq_bg_msg_left=0x7f020008;
-        public static final int mq_bg_msg_right=0x7f020009;
-        public static final int mq_bg_title=0x7f02000a;
-        public static final int mq_bg_transparent=0x7f02000b;
-        public static final int mq_camera_btn_background=0x7f02000c;
-        public static final int mq_conversation_edit_bg=0x7f02000d;
-        public static final int mq_emoji_1=0x7f02000e;
-        public static final int mq_emoji_10=0x7f02000f;
-        public static final int mq_emoji_11=0x7f020010;
-        public static final int mq_emoji_12=0x7f020011;
-        public static final int mq_emoji_13=0x7f020012;
-        public static final int mq_emoji_14=0x7f020013;
-        public static final int mq_emoji_15=0x7f020014;
-        public static final int mq_emoji_16=0x7f020015;
-        public static final int mq_emoji_17=0x7f020016;
-        public static final int mq_emoji_18=0x7f020017;
-        public static final int mq_emoji_19=0x7f020018;
-        public static final int mq_emoji_2=0x7f020019;
-        public static final int mq_emoji_20=0x7f02001a;
-        public static final int mq_emoji_21=0x7f02001b;
-        public static final int mq_emoji_22=0x7f02001c;
-        public static final int mq_emoji_23=0x7f02001d;
-        public static final int mq_emoji_24=0x7f02001e;
-        public static final int mq_emoji_25=0x7f02001f;
-        public static final int mq_emoji_26=0x7f020020;
-        public static final int mq_emoji_27=0x7f020021;
-        public static final int mq_emoji_28=0x7f020022;
-        public static final int mq_emoji_29=0x7f020023;
-        public static final int mq_emoji_3=0x7f020024;
-        public static final int mq_emoji_30=0x7f020025;
-        public static final int mq_emoji_31=0x7f020026;
-        public static final int mq_emoji_32=0x7f020027;
-        public static final int mq_emoji_33=0x7f020028;
-        public static final int mq_emoji_34=0x7f020029;
-        public static final int mq_emoji_35=0x7f02002a;
-        public static final int mq_emoji_36=0x7f02002b;
-        public static final int mq_emoji_4=0x7f02002c;
-        public static final int mq_emoji_5=0x7f02002d;
-        public static final int mq_emoji_6=0x7f02002e;
-        public static final int mq_emoji_7=0x7f02002f;
-        public static final int mq_emoji_8=0x7f020030;
-        public static final int mq_emoji_9=0x7f020031;
-        public static final int mq_emoji_btn_background=0x7f020032;
-        public static final int mq_emoji_delete=0x7f020033;
-        public static final int mq_evaluate_bad=0x7f020034;
-        public static final int mq_evaluate_et=0x7f020035;
-        public static final int mq_evaluate_good=0x7f020036;
-        public static final int mq_evaluate_medium=0x7f020037;
-        public static final int mq_evaluate_rb=0x7f020038;
-        public static final int mq_ic_back=0x7f020039;
-        public static final int mq_ic_back_white=0x7f02003a;
-        public static final int mq_ic_camera_active=0x7f02003b;
-        public static final int mq_ic_camera_nor=0x7f02003c;
-        public static final int mq_ic_camera_normal=0x7f02003d;
-        public static final int mq_ic_camera_pressed=0x7f02003e;
-        public static final int mq_ic_camera_selector=0x7f02003f;
-        public static final int mq_ic_download=0x7f020040;
-        public static final int mq_ic_emoji_active=0x7f020041;
-        public static final int mq_ic_emoji_btn_nor=0x7f020042;
-        public static final int mq_ic_emoji_btn_pressed=0x7f020043;
-        public static final int mq_ic_emoji_normal=0x7f020044;
-        public static final int mq_ic_evaluate_active=0x7f020045;
-        public static final int mq_ic_evaluate_normal=0x7f020046;
-        public static final int mq_ic_evaluate_selector=0x7f020047;
-        public static final int mq_ic_image_active=0x7f020048;
-        public static final int mq_ic_image_normal=0x7f020049;
-        public static final int mq_ic_image_selector=0x7f02004a;
-        public static final int mq_ic_keyboard_nor=0x7f02004b;
-        public static final int mq_ic_keyboard_pressed=0x7f02004c;
-        public static final int mq_ic_mic_active=0x7f02004d;
-        public static final int mq_ic_mic_normal=0x7f02004e;
-        public static final int mq_ic_mid_record_mic_nor=0x7f02004f;
-        public static final int mq_ic_mid_record_pressed=0x7f020050;
-        public static final int mq_ic_msg_failed=0x7f020051;
-        public static final int mq_ic_send_icon_grey=0x7f020052;
-        public static final int mq_ic_send_icon_white=0x7f020053;
-        public static final int mq_keyboard_btn_background=0x7f020054;
-        public static final int mq_leave_tip_gradient_line=0x7f020055;
-        public static final int mq_loading_1=0x7f020056;
-        public static final int mq_loading_2=0x7f020057;
-        public static final int mq_loading_3=0x7f020058;
-        public static final int mq_red_circle=0x7f020059;
-        public static final int mq_selector_emotion_indicator=0x7f02005a;
-        public static final int mq_selector_item_bottom=0x7f02005b;
-        public static final int mq_selector_item_bottom_left=0x7f02005c;
-        public static final int mq_selector_item_bottom_right=0x7f02005d;
-        public static final int mq_selector_item_center=0x7f02005e;
-        public static final int mq_selector_item_top=0x7f02005f;
-        public static final int mq_send_text_selector=0x7f020060;
-        public static final int mq_shape_dialog_bg=0x7f020061;
-        public static final int mq_shape_send_back_normal=0x7f020062;
-        public static final int mq_shape_send_back_pressed=0x7f020063;
-        public static final int mq_trans_btn=0x7f020064;
-        public static final int mq_voice_left_normal=0x7f020065;
-        public static final int mq_voice_left_playing=0x7f020066;
-        public static final int mq_voice_left_playing_level1=0x7f020067;
-        public static final int mq_voice_left_playing_level2=0x7f020068;
-        public static final int mq_voice_left_playing_level3=0x7f020069;
-        public static final int mq_voice_level1=0x7f02006a;
-        public static final int mq_voice_level2=0x7f02006b;
-        public static final int mq_voice_level3=0x7f02006c;
-        public static final int mq_voice_level4=0x7f02006d;
-        public static final int mq_voice_level5=0x7f02006e;
-        public static final int mq_voice_level6=0x7f02006f;
-        public static final int mq_voice_level7=0x7f020070;
-        public static final int mq_voice_level8=0x7f020071;
-        public static final int mq_voice_level9=0x7f020072;
-        public static final int mq_voice_right_normal=0x7f020073;
-        public static final int mq_voice_right_playing=0x7f020074;
-        public static final int mq_voice_right_playing_level1=0x7f020075;
-        public static final int mq_voice_right_playing_level2=0x7f020076;
-        public static final int mq_voice_right_playing_level3=0x7f020077;
-        public static final int mq_voice_want_cancel=0x7f020078;
-        public static final int uz_icon=0x7f020079;
-        public static final int uz_splash_bg=0x7f02007a;
+        public static final int mq_anim_redirect_queue=0x7f020000;
+        public static final int mq_anim_voice_left_playing=0x7f020001;
+        public static final int mq_anim_voice_right_playing=0x7f020002;
+        public static final int mq_arrow_right=0x7f020003;
+        public static final int mq_bg_edit_view=0x7f020004;
+        public static final int mq_bg_msg_left=0x7f020005;
+        public static final int mq_bg_msg_right=0x7f020006;
+        public static final int mq_bg_title=0x7f020007;
+        public static final int mq_checkbox_uncheck=0x7f020008;
+        public static final int mq_checkbox_unchecked=0x7f020009;
+        public static final int mq_conversation_edit_bg=0x7f02000a;
+        public static final int mq_emoji_1=0x7f02000b;
+        public static final int mq_emoji_10=0x7f02000c;
+        public static final int mq_emoji_11=0x7f02000d;
+        public static final int mq_emoji_12=0x7f02000e;
+        public static final int mq_emoji_13=0x7f02000f;
+        public static final int mq_emoji_14=0x7f020010;
+        public static final int mq_emoji_15=0x7f020011;
+        public static final int mq_emoji_16=0x7f020012;
+        public static final int mq_emoji_17=0x7f020013;
+        public static final int mq_emoji_18=0x7f020014;
+        public static final int mq_emoji_19=0x7f020015;
+        public static final int mq_emoji_2=0x7f020016;
+        public static final int mq_emoji_20=0x7f020017;
+        public static final int mq_emoji_21=0x7f020018;
+        public static final int mq_emoji_22=0x7f020019;
+        public static final int mq_emoji_23=0x7f02001a;
+        public static final int mq_emoji_24=0x7f02001b;
+        public static final int mq_emoji_25=0x7f02001c;
+        public static final int mq_emoji_26=0x7f02001d;
+        public static final int mq_emoji_27=0x7f02001e;
+        public static final int mq_emoji_28=0x7f02001f;
+        public static final int mq_emoji_29=0x7f020020;
+        public static final int mq_emoji_3=0x7f020021;
+        public static final int mq_emoji_30=0x7f020022;
+        public static final int mq_emoji_31=0x7f020023;
+        public static final int mq_emoji_32=0x7f020024;
+        public static final int mq_emoji_33=0x7f020025;
+        public static final int mq_emoji_34=0x7f020026;
+        public static final int mq_emoji_35=0x7f020027;
+        public static final int mq_emoji_36=0x7f020028;
+        public static final int mq_emoji_4=0x7f020029;
+        public static final int mq_emoji_5=0x7f02002a;
+        public static final int mq_emoji_6=0x7f02002b;
+        public static final int mq_emoji_7=0x7f02002c;
+        public static final int mq_emoji_8=0x7f02002d;
+        public static final int mq_emoji_9=0x7f02002e;
+        public static final int mq_emoji_delete=0x7f02002f;
+        public static final int mq_evaluate_bad=0x7f020030;
+        public static final int mq_evaluate_good=0x7f020031;
+        public static final int mq_evaluate_medium=0x7f020032;
+        public static final int mq_ic_add_img=0x7f020033;
+        public static final int mq_ic_angry_face=0x7f020034;
+        public static final int mq_ic_back=0x7f020035;
+        public static final int mq_ic_back_white=0x7f020036;
+        public static final int mq_ic_camera_active=0x7f020037;
+        public static final int mq_ic_camera_normal=0x7f020038;
+        public static final int mq_ic_cb_checked=0x7f020039;
+        public static final int mq_ic_cb_normal=0x7f02003a;
+        public static final int mq_ic_delete_icon=0x7f02003b;
+        public static final int mq_ic_download=0x7f02003c;
+        public static final int mq_ic_download_gray=0x7f02003d;
+        public static final int mq_ic_emoji_active=0x7f02003e;
+        public static final int mq_ic_emoji_normal=0x7f02003f;
+        public static final int mq_ic_evaluate_active=0x7f020040;
+        public static final int mq_ic_evaluate_normal=0x7f020041;
+        public static final int mq_ic_file=0x7f020042;
+        public static final int mq_ic_gallery_arrow_down=0x7f020043;
+        public static final int mq_ic_gallery_arrow_up=0x7f020044;
+        public static final int mq_ic_gallery_camera=0x7f020045;
+        public static final int mq_ic_holder_avatar=0x7f020046;
+        public static final int mq_ic_holder_dark=0x7f020047;
+        public static final int mq_ic_holder_light=0x7f020048;
+        public static final int mq_ic_image_active=0x7f020049;
+        public static final int mq_ic_image_normal=0x7f02004a;
+        public static final int mq_ic_mic_active=0x7f02004b;
+        public static final int mq_ic_mic_normal=0x7f02004c;
+        public static final int mq_ic_msg_failed=0x7f02004d;
+        public static final int mq_ic_neutral_face=0x7f02004e;
+        public static final int mq_ic_send_icon_grey=0x7f02004f;
+        public static final int mq_ic_send_icon_white=0x7f020050;
+        public static final int mq_ic_smiling_face=0x7f020051;
+        public static final int mq_loading_1=0x7f020052;
+        public static final int mq_loading_2=0x7f020053;
+        public static final int mq_loading_3=0x7f020054;
+        public static final int mq_radio_btn_checked=0x7f020055;
+        public static final int mq_radio_btn_uncheck=0x7f020056;
+        public static final int mq_redirect_queue_00=0x7f020057;
+        public static final int mq_redirect_queue_01=0x7f020058;
+        public static final int mq_redirect_queue_02=0x7f020059;
+        public static final int mq_redirect_queue_03=0x7f02005a;
+        public static final int mq_redirect_queue_04=0x7f02005b;
+        public static final int mq_redirect_queue_05=0x7f02005c;
+        public static final int mq_redirect_queue_06=0x7f02005d;
+        public static final int mq_redirect_queue_07=0x7f02005e;
+        public static final int mq_redirect_queue_08=0x7f02005f;
+        public static final int mq_redirect_queue_09=0x7f020060;
+        public static final int mq_redirect_queue_10=0x7f020061;
+        public static final int mq_redirect_queue_11=0x7f020062;
+        public static final int mq_redirect_queue_12=0x7f020063;
+        public static final int mq_redirect_queue_13=0x7f020064;
+        public static final int mq_redirect_queue_14=0x7f020065;
+        public static final int mq_redirect_queue_15=0x7f020066;
+        public static final int mq_redirect_queue_16=0x7f020067;
+        public static final int mq_redirect_queue_17=0x7f020068;
+        public static final int mq_redirect_queue_18=0x7f020069;
+        public static final int mq_redirect_queue_19=0x7f02006a;
+        public static final int mq_redirect_queue_20=0x7f02006b;
+        public static final int mq_redirect_queue_21=0x7f02006c;
+        public static final int mq_redirect_queue_22=0x7f02006d;
+        public static final int mq_redirect_queue_23=0x7f02006e;
+        public static final int mq_redirect_queue_24=0x7f02006f;
+        public static final int mq_redirect_queue_25=0x7f020070;
+        public static final int mq_redirect_queue_26=0x7f020071;
+        public static final int mq_redirect_queue_27=0x7f020072;
+        public static final int mq_redirect_queue_28=0x7f020073;
+        public static final int mq_redirect_queue_29=0x7f020074;
+        public static final int mq_redirect_queue_30=0x7f020075;
+        public static final int mq_redirect_queue_31=0x7f020076;
+        public static final int mq_rotate_progress_bar=0x7f020077;
+        public static final int mq_rotate_progress_bar_photopicker=0x7f020078;
+        public static final int mq_selector_btn_photo_send=0x7f020079;
+        public static final int mq_selector_checkbox=0x7f02007a;
+        public static final int mq_selector_emotion_indicator=0x7f02007b;
+        public static final int mq_selector_evaluate_et=0x7f02007c;
+        public static final int mq_selector_evaluate_rb=0x7f02007d;
+        public static final int mq_selector_ic_camera=0x7f02007e;
+        public static final int mq_selector_ic_evaluate=0x7f02007f;
+        public static final int mq_selector_ic_image=0x7f020080;
+        public static final int mq_selector_input_bg=0x7f020081;
+        public static final int mq_selector_item_bottom=0x7f020082;
+        public static final int mq_selector_item_bottom_left=0x7f020083;
+        public static final int mq_selector_item_bottom_right=0x7f020084;
+        public static final int mq_selector_item_center=0x7f020085;
+        public static final int mq_selector_item_folder=0x7f020086;
+        public static final int mq_selector_item_top=0x7f020087;
+        public static final int mq_selector_radio_btn=0x7f020088;
+        public static final int mq_shape_agent_status_off_duty=0x7f020089;
+        public static final int mq_shape_agent_status_offline=0x7f02008a;
+        public static final int mq_shape_agent_status_online=0x7f02008b;
+        public static final int mq_shape_bg_rich_text=0x7f02008c;
+        public static final int mq_shape_chat_unread_circle_bg=0x7f02008d;
+        public static final int mq_shape_cursor=0x7f02008e;
+        public static final int mq_shape_dialog_bg=0x7f02008f;
+        public static final int mq_shape_evaluate_angry=0x7f020090;
+        public static final int mq_shape_evaluate_neutral=0x7f020091;
+        public static final int mq_shape_evaluate_smiling=0x7f020092;
+        public static final int mq_shape_leave_tip_gradient_line=0x7f020093;
+        public static final int mq_shape_photo_folder_pw_bg=0x7f020094;
+        public static final int mq_shape_send_back_normal=0x7f020095;
+        public static final int mq_shape_send_back_pressed=0x7f020096;
+        public static final int mq_voice_left_normal=0x7f020097;
+        public static final int mq_voice_left_playing_level1=0x7f020098;
+        public static final int mq_voice_left_playing_level2=0x7f020099;
+        public static final int mq_voice_left_playing_level3=0x7f02009a;
+        public static final int mq_voice_level1=0x7f02009b;
+        public static final int mq_voice_level2=0x7f02009c;
+        public static final int mq_voice_level3=0x7f02009d;
+        public static final int mq_voice_level4=0x7f02009e;
+        public static final int mq_voice_level5=0x7f02009f;
+        public static final int mq_voice_level6=0x7f0200a0;
+        public static final int mq_voice_level7=0x7f0200a1;
+        public static final int mq_voice_level8=0x7f0200a2;
+        public static final int mq_voice_level9=0x7f0200a3;
+        public static final int mq_voice_right_normal=0x7f0200a4;
+        public static final int mq_voice_right_playing_level1=0x7f0200a5;
+        public static final int mq_voice_right_playing_level2=0x7f0200a6;
+        public static final int mq_voice_right_playing_level3=0x7f0200a7;
+        public static final int mq_voice_want_cancel=0x7f0200a8;
     }
     public static final class id {
-        public static final int arl_edit_toolbar_audio=0x7f0a0029;
-        public static final int back_iv=0x7f0a0004;
-        public static final int back_rl=0x7f0a0003;
-        public static final int back_tv=0x7f0a0005;
-        public static final int btn=0x7f0a0001;
-        public static final int camera_select_btn=0x7f0a0011;
-        public static final int chat_box=0x7f0a002b;
-        public static final int chat_foot_ll=0x7f0a0007;
-        public static final int content_pic=0x7f0a002d;
-        public static final int content_text=0x7f0a002c;
-        public static final int content_tv=0x7f0a0036;
-        public static final int conversation_voice_img=0x7f0a0013;
-        public static final int conversation_voice_indicator=0x7f0a0014;
-        public static final int download_iv=0x7f0a0019;
-        public static final int editToolbar=0x7f0a0016;
-        public static final int emoji_select_btn=0x7f0a000d;
-        public static final int emoji_select_img=0x7f0a000e;
-        public static final int emoji_select_indicator=0x7f0a000f;
-        public static final int et_evaluate_content=0x7f0a0023;
-        public static final int evaluate_select_btn=0x7f0a0015;
-        public static final int input_et=0x7f0a000b;
-        public static final int iv_audio_recorder_recorder=0x7f0a0038;
-        public static final int iv_item_emotion_icon=0x7f0a0034;
-        public static final int iv_voice_anim=0x7f0a0030;
-        public static final int ll_edit_toolbar_emotion=0x7f0a0026;
-        public static final int ll_edit_toolbar_indicator=0x7f0a0028;
-        public static final int messages_lv=0x7f0a0009;
-        public static final int mic_select_btn=0x7f0a0012;
-        public static final int photo_iv=0x7f0a0018;
-        public static final int photo_select_btn=0x7f0a0010;
-        public static final int progress_bar=0x7f0a001a;
-        public static final int progressbar=0x7f0a0017;
-        public static final int rb_evaluate_bad=0x7f0a0022;
-        public static final int rb_evaluate_good=0x7f0a0020;
-        public static final int rb_evaluate_medium=0x7f0a0021;
-        public static final int rg_evaluate_content=0x7f0a001f;
-        public static final int rl_voice_container=0x7f0a002e;
-        public static final int send_state=0x7f0a0032;
-        public static final int send_text_btn=0x7f0a000c;
-        public static final int swipe_refresh_layout=0x7f0a0008;
-        public static final int text=0x7f0a0000;
-        public static final int timeTv=0x7f0a0033;
-        public static final int title_rl=0x7f0a0002;
-        public static final int title_tip_tv=0x7f0a000a;
-        public static final int title_tv=0x7f0a0006;
-        public static final int tv_audio_recorder_status=0x7f0a0037;
-        public static final int tv_comfirm_content=0x7f0a001c;
-        public static final int tv_comfirm_title=0x7f0a001b;
-        public static final int tv_confirm_cancel=0x7f0a001d;
-        public static final int tv_confirm_confirm=0x7f0a001e;
-        public static final int tv_evaluate_cancel=0x7f0a0024;
-        public static final int tv_evaluate_confirm=0x7f0a0025;
-        public static final int tv_msg_evaluate_content=0x7f0a0035;
-        public static final int tv_voice_content=0x7f0a002f;
-        public static final int unread_view=0x7f0a0031;
-        public static final int us_avatar_iv=0x7f0a002a;
-        public static final int vp_edit_toolbar_emotion=0x7f0a0027;
+        public static final int arrow_iv=0x7f0a0024;
+        public static final int auth_code_et=0x7f0a004d;
+        public static final int auth_code_iv=0x7f0a004e;
+        public static final int back_iv=0x7f0a0006;
+        public static final int back_rl=0x7f0a0005;
+        public static final int back_tv=0x7f0a0007;
+        public static final int body_rl=0x7f0a0002;
+        public static final int camera_select_btn=0x7f0a0018;
+        public static final int camera_select_iv=0x7f0a0019;
+        public static final int chat_body_rl=0x7f0a000c;
+        public static final int chat_box=0x7f0a003d;
+        public static final int chat_foot_ll=0x7f0a000d;
+        public static final int checkbox=0x7f0a004c;
+        public static final int checkbox_container=0x7f0a004f;
+        public static final int choose_rl=0x7f0a0027;
+        public static final int choose_tv=0x7f0a0028;
+        public static final int container_ll=0x7f0a0003;
+        public static final int content_et=0x7f0a0052;
+        public static final int content_gv=0x7f0a0025;
+        public static final int content_hvp=0x7f0a0026;
+        public static final int content_lv=0x7f0a0071;
+        public static final int content_pic=0x7f0a003f;
+        public static final int content_pic_iv=0x7f0a005f;
+        public static final int content_summary_tv=0x7f0a0060;
+        public static final int content_sv=0x7f0a0001;
+        public static final int content_text=0x7f0a003e;
+        public static final int content_tv=0x7f0a003b;
+        public static final int conversation_voice_img=0x7f0a001b;
+        public static final int conversation_voice_indicator=0x7f0a001c;
+        public static final int count_tv=0x7f0a005b;
+        public static final int customKeyboardLayout=0x7f0a001f;
+        public static final int download_iv=0x7f0a0029;
+        public static final int emoji_select_btn=0x7f0a0013;
+        public static final int emoji_select_img=0x7f0a0014;
+        public static final int emoji_select_indicator=0x7f0a0015;
+        public static final int emotionKeyboardLayout=0x7f0a006a;
+        public static final int et_evaluate_content=0x7f0a0038;
+        public static final int evaluate_select_btn=0x7f0a001d;
+        public static final int evaluate_select_iv=0x7f0a001e;
+        public static final int file_container=0x7f0a0043;
+        public static final int flag_iv=0x7f0a0067;
+        public static final int folder_ll=0x7f0a0023;
+        public static final int ic_msg_evaluate_level=0x7f0a0055;
+        public static final int input_container_ll=0x7f0a0022;
+        public static final int input_et=0x7f0a0011;
+        public static final int iv_item_emotion_keyboard_icon=0x7f0a0047;
+        public static final int iv_recorder_keyboard_anim=0x7f0a006f;
+        public static final int iv_redirect_queue_anim=0x7f0a005c;
+        public static final int iv_robot_avatar=0x7f0a0061;
+        public static final int iv_voice_anim=0x7f0a0042;
+        public static final int ll_emotion_keyboard_indicator=0x7f0a006d;
+        public static final int ll_robot_container=0x7f0a0062;
+        public static final int ll_robot_content=0x7f0a0063;
+        public static final int ll_robot_evaluate=0x7f0a002b;
+        public static final int message_tip_tv=0x7f0a0021;
+        public static final int messages_lv=0x7f0a000f;
+        public static final int mic_select_btn=0x7f0a001a;
+        public static final int mq_file_iv=0x7f0a0048;
+        public static final int mq_file_sub_title_tv=0x7f0a004a;
+        public static final int mq_file_title_tv=0x7f0a0049;
+        public static final int mq_right_iv=0x7f0a004b;
+        public static final int mq_robot_rich_text_container=0x7f0a0065;
+        public static final int name_tv=0x7f0a005a;
+        public static final int photo_iv=0x7f0a0059;
+        public static final int photo_select_btn=0x7f0a0016;
+        public static final int photo_select_iv=0x7f0a0017;
+        public static final int progress_bar=0x7f0a0045;
+        public static final int progressbar=0x7f0a000a;
+        public static final int question_title=0x7f0a0020;
+        public static final int radio_btn_container=0x7f0a0050;
+        public static final int radio_group=0x7f0a0051;
+        public static final int rb_evaluate_bad=0x7f0a0037;
+        public static final int rb_evaluate_good=0x7f0a0035;
+        public static final int rb_evaluate_medium=0x7f0a0036;
+        public static final int recorderKeyboardLayout=0x7f0a006b;
+        public static final int redirect_human_tv=0x7f0a000b;
+        public static final int rg_evaluate_content=0x7f0a0034;
+        public static final int rl_voice_container=0x7f0a0040;
+        public static final int root=0x7f0a0000;
+        public static final int root_ll=0x7f0a0070;
+        public static final int send_state=0x7f0a0046;
+        public static final int send_text_btn=0x7f0a0012;
+        public static final int submit_tv=0x7f0a0009;
+        public static final int swipe_refresh_layout=0x7f0a000e;
+        public static final int timeTv=0x7f0a0054;
+        public static final int tip_tv=0x7f0a0066;
+        public static final int title_rl=0x7f0a0004;
+        public static final int title_tip_tv=0x7f0a0010;
+        public static final int title_tv=0x7f0a0008;
+        public static final int tv_comfirm_content=0x7f0a0030;
+        public static final int tv_comfirm_title=0x7f0a002f;
+        public static final int tv_confirm_cancel=0x7f0a0031;
+        public static final int tv_confirm_confirm=0x7f0a0032;
+        public static final int tv_evaluate_cancel=0x7f0a0039;
+        public static final int tv_evaluate_confirm=0x7f0a003a;
+        public static final int tv_evaluate_tip=0x7f0a0033;
+        public static final int tv_item_redirect_tip=0x7f0a0068;
+        public static final int tv_msg_evaluate_content=0x7f0a0057;
+        public static final int tv_msg_evaluate_level=0x7f0a0056;
+        public static final int tv_no_agent_leave_msg=0x7f0a0058;
+        public static final int tv_recorder_keyboard_status=0x7f0a006e;
+        public static final int tv_redirect_queue_leave_msg=0x7f0a005e;
+        public static final int tv_redirect_queue_tip=0x7f0a005d;
+        public static final int tv_robot_already_feedback=0x7f0a002e;
+        public static final int tv_robot_menu_tip=0x7f0a0064;
+        public static final int tv_robot_useful=0x7f0a002d;
+        public static final int tv_robot_useless=0x7f0a002c;
+        public static final int tv_useless_redirect_redirect_human=0x7f0a0069;
+        public static final int tv_voice_content=0x7f0a0041;
+        public static final int unread_view=0x7f0a0044;
+        public static final int us_avatar_iv=0x7f0a003c;
+        public static final int view_msg_evaluate_level=0x7f0a0053;
+        public static final int vp_emotion_keyboard_content=0x7f0a006c;
+        public static final int webview=0x7f0a002a;
     }
     public static final class layout {
-        public static final int mo_demo_main_activity=0x7f030000;
+        public static final int mq_activity_collect_info=0x7f030000;
         public static final int mq_activity_conversation=0x7f030001;
-        public static final int mq_activity_view_photo=0x7f030002;
-        public static final int mq_dialog_confirm=0x7f030003;
-        public static final int mq_dialog_evaluate=0x7f030004;
-        public static final int mq_edit_toolbar=0x7f030005;
-        public static final int mq_item_chat_left=0x7f030006;
-        public static final int mq_item_chat_right=0x7f030007;
-        public static final int mq_item_chat_time=0x7f030008;
-        public static final int mq_item_emotion=0x7f030009;
-        public static final int mq_item_msg_evaluate=0x7f03000a;
-        public static final int mq_item_msg_tip=0x7f03000b;
-        public static final int mq_layout_audio_recorder=0x7f03000c;
+        public static final int mq_activity_inquiry_form=0x7f030002;
+        public static final int mq_activity_message_form=0x7f030003;
+        public static final int mq_activity_photo_picker=0x7f030004;
+        public static final int mq_activity_photo_picker_preview=0x7f030005;
+        public static final int mq_activity_photo_preview=0x7f030006;
+        public static final int mq_activity_webview=0x7f030007;
+        public static final int mq_dialog_confirm=0x7f030008;
+        public static final int mq_dialog_evaluate=0x7f030009;
+        public static final int mq_dialog_loading=0x7f03000a;
+        public static final int mq_dialog_loading_photopicker=0x7f03000b;
+        public static final int mq_item_chat_left=0x7f03000c;
+        public static final int mq_item_chat_right=0x7f03000d;
+        public static final int mq_item_chat_time=0x7f03000e;
+        public static final int mq_item_emotion_keyboard=0x7f03000f;
+        public static final int mq_item_file_layout=0x7f030010;
+        public static final int mq_item_form_checkbox=0x7f030011;
+        public static final int mq_item_form_inquiry=0x7f030012;
+        public static final int mq_item_form_radio_btn=0x7f030013;
+        public static final int mq_item_form_type_auth_code=0x7f030014;
+        public static final int mq_item_form_type_multiple_choice=0x7f030015;
+        public static final int mq_item_form_type_single_choice=0x7f030016;
+        public static final int mq_item_form_type_text=0x7f030017;
+        public static final int mq_item_msg_evaluate=0x7f030018;
+        public static final int mq_item_msg_tip=0x7f030019;
+        public static final int mq_item_no_agent=0x7f03001a;
+        public static final int mq_item_photo_folder=0x7f03001b;
+        public static final int mq_item_redirect_queue=0x7f03001c;
+        public static final int mq_item_rich_text=0x7f03001d;
+        public static final int mq_item_robot=0x7f03001e;
+        public static final int mq_item_robot_menu=0x7f03001f;
+        public static final int mq_item_square_image=0x7f030020;
+        public static final int mq_item_useless_redirect=0x7f030021;
+        public static final int mq_layout_custom_keyboard=0x7f030022;
+        public static final int mq_layout_emotion_keyboard=0x7f030023;
+        public static final int mq_layout_form_input=0x7f030024;
+        public static final int mq_layout_recorder_keyboard=0x7f030025;
+        public static final int mq_pw_photo_folder=0x7f030026;
+        public static final int mq_top_pop_tip=0x7f030027;
     }
     public static final class raw {
         public static final int mq_new_message=0x7f050000;
         public static final int mq_send_message=0x7f050001;
     }
     public static final class string {
-        public static final int app_name=0x7f080030;
-        public static final int mq_allocate_agent=0x7f08000a;
-        public static final int mq_audio_status_normal=0x7f080024;
-        public static final int mq_audio_status_recording=0x7f080025;
-        public static final int mq_audio_status_want_cancel=0x7f080026;
-        public static final int mq_back=0x7f08001c;
-        public static final int mq_cancel=0x7f080019;
-        public static final int mq_confirm=0x7f080018;
-        public static final int mq_copy_success=0x7f080002;
-        public static final int mq_data_is_loading=0x7f080016;
-        public static final int mq_dialog_select_camera=0x7f080003;
-        public static final int mq_dialog_select_gallery=0x7f080004;
-        public static final int mq_dialog_select_title=0x7f080005;
-        public static final int mq_direct_content=0x7f080017;
-        public static final int mq_download_audio_failure=0x7f080027;
-        public static final int mq_download_img_failure=0x7f08002b;
-        public static final int mq_evaluate_bad=0x7f080020;
-        public static final int mq_evaluate_failure=0x7f080023;
-        public static final int mq_evaluate_good=0x7f08001e;
-        public static final int mq_evaluate_hint=0x7f080021;
-        public static final int mq_evaluate_medium=0x7f08001f;
-        public static final int mq_evaluate_result_prefix=0x7f080022;
-        public static final int mq_evaluate_title=0x7f08001d;
-        public static final int mq_input_hint=0x7f080009;
-        public static final int mq_leave_msg_tips=0x7f08000b;
-        public static final int mq_no_sdcard=0x7f08000d;
-        public static final int mq_permission_denied_tip=0x7f08001b;
-        public static final int mq_photo_not_support=0x7f08000c;
-        public static final int mq_record_cancel=0x7f080010;
-        public static final int mq_record_count_down=0x7f080013;
-        public static final int mq_record_failed=0x7f080011;
-        public static final int mq_record_not_support=0x7f08000e;
-        public static final int mq_record_record_time_is_short=0x7f080012;
-        public static final int mq_record_up_and_cancel=0x7f08000f;
-        public static final int mq_recorder_no_permission=0x7f080028;
-        public static final int mq_recorder_remaining_time=0x7f080029;
-        public static final int mq_runtime_permission_tip=0x7f08001a;
-        public static final int mq_save=0x7f08002f;
-        public static final int mq_save_img_failure=0x7f08002c;
-        public static final int mq_save_img_success=0x7f08002d;
-        public static final int mq_send=0x7f080000;
-        public static final int mq_send_msg=0x7f08002e;
-        public static final int mq_timeline_today=0x7f080014;
-        public static final int mq_timeline_yesterday=0x7f080015;
-        public static final int mq_title_inputting=0x7f080008;
-        public static final int mq_title_leave_msg=0x7f080006;
-        public static final int mq_title_net_not_work=0x7f080001;
-        public static final int mq_title_unknown_error=0x7f080007;
-        public static final int mq_view_photo=0x7f08002a;
+        public static final int app_name=0x7f080066;
+        public static final int mq_add_picture=0x7f080045;
+        public static final int mq_all_image=0x7f080046;
+        public static final int mq_allocate_agent=0x7f080017;
+        public static final int mq_allocate_agent_tip=0x7f08001a;
+        public static final int mq_allocate_queue_tip=0x7f080019;
+        public static final int mq_allocate_queue_title=0x7f080018;
+        public static final int mq_already_feedback=0x7f08005d;
+        public static final int mq_at_least_one_contact=0x7f080048;
+        public static final int mq_audio_status_normal=0x7f080038;
+        public static final int mq_audio_status_recording=0x7f080039;
+        public static final int mq_audio_status_want_cancel=0x7f08003a;
+        public static final int mq_auth_code=0x7f08004e;
+        public static final int mq_back=0x7f080030;
+        public static final int mq_blacklist_tips=0x7f08001d;
+        public static final int mq_cancel=0x7f08002c;
+        public static final int mq_choose=0x7f08004c;
+        public static final int mq_confirm=0x7f08002b;
+        public static final int mq_copy_success=0x7f08000d;
+        public static final int mq_data_is_loading=0x7f080029;
+        public static final int mq_dialog_select_camera=0x7f08000e;
+        public static final int mq_dialog_select_gallery=0x7f08000f;
+        public static final int mq_dialog_select_title=0x7f080010;
+        public static final int mq_direct_content=0x7f08002a;
+        public static final int mq_download_audio_failure=0x7f08003b;
+        public static final int mq_download_complete=0x7f080004;
+        public static final int mq_download_error=0x7f080005;
+        public static final int mq_download_img_failure=0x7f08003f;
+        public static final int mq_downloading=0x7f080003;
+        public static final int mq_email=0x7f080051;
+        public static final int mq_email_hint=0x7f080052;
+        public static final int mq_error_auth_code_wrong=0x7f080014;
+        public static final int mq_error_submit_form=0x7f080013;
+        public static final int mq_evaluate_bad=0x7f080034;
+        public static final int mq_evaluate_failure=0x7f080037;
+        public static final int mq_evaluate_good=0x7f080032;
+        public static final int mq_evaluate_hint=0x7f080035;
+        public static final int mq_evaluate_medium=0x7f080033;
+        public static final int mq_evaluate_result_prefix=0x7f080036;
+        public static final int mq_evaluate_title=0x7f080031;
+        public static final int mq_expire_after=0x7f080000;
+        public static final int mq_expired=0x7f080001;
+        public static final int mq_expired_top_tip=0x7f080002;
+        public static final int mq_hint_input=0x7f08004d;
+        public static final int mq_input_hint=0x7f080016;
+        public static final int mq_inquire_gender_choice=0x7f080065;
+        public static final int mq_leave_msg=0x7f08004f;
+        public static final int mq_leave_msg_hint=0x7f080044;
+        public static final int mq_leave_msg_tips=0x7f08001c;
+        public static final int mq_manual_redirect_tip=0x7f080062;
+        public static final int mq_name=0x7f080059;
+        public static final int mq_name_hint=0x7f08005a;
+        public static final int mq_no_agent_leave_msg_tip=0x7f080060;
+        public static final int mq_no_app_open_file=0x7f08002f;
+        public static final int mq_no_sdcard=0x7f08001f;
+        public static final int mq_param_not_allow_empty=0x7f080047;
+        public static final int mq_permission_denied_tip=0x7f08002e;
+        public static final int mq_phone=0x7f080057;
+        public static final int mq_phone_hint=0x7f080058;
+        public static final int mq_photo_not_support=0x7f08001e;
+        public static final int mq_qq=0x7f080055;
+        public static final int mq_qq_hint=0x7f080056;
+        public static final int mq_queue_leave_msg=0x7f080063;
+        public static final int mq_record_cancel=0x7f080023;
+        public static final int mq_record_count_down=0x7f080026;
+        public static final int mq_record_failed=0x7f080024;
+        public static final int mq_record_not_support=0x7f080021;
+        public static final int mq_record_record_time_is_short=0x7f080025;
+        public static final int mq_record_up_and_cancel=0x7f080022;
+        public static final int mq_recorder_no_permission=0x7f08003c;
+        public static final int mq_recorder_remaining_time=0x7f08003d;
+        public static final int mq_redirect_human=0x7f08005f;
+        public static final int mq_robot_menu_tip=0x7f08005e;
+        public static final int mq_runtime_permission_tip=0x7f08002d;
+        public static final int mq_save=0x7f080043;
+        public static final int mq_save_img_failure=0x7f080040;
+        public static final int mq_save_img_success_folder=0x7f080041;
+        public static final int mq_sdcard_no_permission=0x7f080020;
+        public static final int mq_send=0x7f080006;
+        public static final int mq_send_msg=0x7f080042;
+        public static final int mq_send_robot_msg_time_limit_tip=0x7f08001b;
+        public static final int mq_submit=0x7f08004a;
+        public static final int mq_submit_leave_msg_success=0x7f080050;
+        public static final int mq_take_picture=0x7f080049;
+        public static final int mq_timeline_today=0x7f080027;
+        public static final int mq_timeline_yesterday=0x7f080028;
+        public static final int mq_tip_required_before_submit=0x7f08000c;
+        public static final int mq_title_collect_info=0x7f08000a;
+        public static final int mq_title_inputting=0x7f080015;
+        public static final int mq_title_leave_msg=0x7f080011;
+        public static final int mq_title_net_not_work=0x7f080007;
+        public static final int mq_title_service_support=0x7f080009;
+        public static final int mq_title_submit_btn=0x7f08000b;
+        public static final int mq_title_unknown_error=0x7f080012;
+        public static final int mq_title_webview_rich_text=0x7f080008;
+        public static final int mq_toast_photo_picker_max=0x7f08004b;
+        public static final int mq_unknown_msg_tip=0x7f080064;
+        public static final int mq_useful=0x7f08005c;
+        public static final int mq_useless=0x7f08005b;
+        public static final int mq_useless_redirect_tip=0x7f080061;
+        public static final int mq_view_photo=0x7f08003e;
+        public static final int mq_wechat=0x7f080053;
+        public static final int mq_wechat_hint=0x7f080054;
     }
     public static final class style {
-        public static final int AppTheme=0x7f090020;
+        public static final int AppTheme=0x7f090023;
         public static final int MQAutoMatch=0x7f090007;
         public static final int MQAutoMatch_Horizontal=0x7f090015;
         public static final int MQAutoMatch_Vertical=0x7f090014;
@@ -331,6 +606,9 @@ public final class R {
         public static final int MQClickableItem_Center=0x7f09001e;
         public static final int MQClickableItem_Top=0x7f09001d;
         public static final int MQDialog=0x7f090000;
+        public static final int MQFormDeleteIv=0x7f090020;
+        public static final int MQFormEditText=0x7f090022;
+        public static final int MQFormImageSiv=0x7f090021;
         public static final int MQHLine=0x7f09001a;
         public static final int MQMatchAuto=0x7f090006;
         public static final int MQMatchAuto_Horizontal=0x7f090013;
@@ -353,4 +631,102 @@ public final class R {
         public static final int MQWrapWrap_Horizontal=0x7f09000f;
         public static final int MQWrapWrap_Vertical=0x7f09000e;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a MQImageView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MQImageView_android_src android:src}</code></td><td></td></tr>
+           <tr><td><code>{@link #MQImageView_mq_iv_borderColor com.apicloud.pkg.sdk:mq_iv_borderColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #MQImageView_mq_iv_borderWidth com.apicloud.pkg.sdk:mq_iv_borderWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #MQImageView_mq_iv_cornerRadius com.apicloud.pkg.sdk:mq_iv_cornerRadius}</code></td><td></td></tr>
+           <tr><td><code>{@link #MQImageView_mq_iv_isCircle com.apicloud.pkg.sdk:mq_iv_isCircle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MQImageView_mq_iv_isSquare com.apicloud.pkg.sdk:mq_iv_isSquare}</code></td><td></td></tr>
+           </table>
+           @see #MQImageView_android_src
+           @see #MQImageView_mq_iv_borderColor
+           @see #MQImageView_mq_iv_borderWidth
+           @see #MQImageView_mq_iv_cornerRadius
+           @see #MQImageView_mq_iv_isCircle
+           @see #MQImageView_mq_iv_isSquare
+         */
+        public static final int[] MQImageView = {
+            0x01010119, 0x7f010000, 0x7f010001, 0x7f010002,
+            0x7f010003, 0x7f010004
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#src}
+          attribute's value can be found in the {@link #MQImageView} array.
+          @attr name android:src
+        */
+        public static final int MQImageView_android_src = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.apicloud.pkg.sdk.R.attr#mq_iv_borderColor}
+          attribute's value can be found in the {@link #MQImageView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.apicloud.pkg.sdk:mq_iv_borderColor
+        */
+        public static final int MQImageView_mq_iv_borderColor = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.apicloud.pkg.sdk.R.attr#mq_iv_borderWidth}
+          attribute's value can be found in the {@link #MQImageView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.apicloud.pkg.sdk:mq_iv_borderWidth
+        */
+        public static final int MQImageView_mq_iv_borderWidth = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.apicloud.pkg.sdk.R.attr#mq_iv_cornerRadius}
+          attribute's value can be found in the {@link #MQImageView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.apicloud.pkg.sdk:mq_iv_cornerRadius
+        */
+        public static final int MQImageView_mq_iv_cornerRadius = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.apicloud.pkg.sdk.R.attr#mq_iv_isCircle}
+          attribute's value can be found in the {@link #MQImageView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.apicloud.pkg.sdk:mq_iv_isCircle
+        */
+        public static final int MQImageView_mq_iv_isCircle = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.apicloud.pkg.sdk.R.attr#mq_iv_isSquare}
+          attribute's value can be found in the {@link #MQImageView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.apicloud.pkg.sdk:mq_iv_isSquare
+        */
+        public static final int MQImageView_mq_iv_isSquare = 3;
+    };
 }

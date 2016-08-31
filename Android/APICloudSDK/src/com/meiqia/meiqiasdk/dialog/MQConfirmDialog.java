@@ -1,7 +1,5 @@
 package com.meiqia.meiqiasdk.dialog;
 
-import com.meiqia.meiqiasdk.util.MQResUtils;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -9,6 +7,8 @@ import android.support.annotation.StringRes;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.meiqia.meiqiasdk.util.MQResUtils;
 
 public class MQConfirmDialog extends Dialog implements View.OnClickListener {
     private TextView mTitleTv;

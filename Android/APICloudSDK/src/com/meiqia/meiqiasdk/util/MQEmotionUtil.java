@@ -5,10 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -16,8 +13,7 @@ import java.util.regex.Pattern;
 
 public class MQEmotionUtil {
     public static final String REGEX_EMOJI = ":[\u4e00-\u9fa5\\w]+:";
-    public static final String REGEX_WEBSITE = "([a-zA-Z]+://)?[a-zA-Z\\d-]+(\\.[a-zA-Z\\d-]+)*(\\.[a-zA-Z]+)+(:\\d+)?(/[\\w\\d\\.\\-~!@#$%^&*+?:_/=<>]*)?";
-    public static final String REGEX_GROUP = "(" + REGEX_EMOJI + ")|(" + REGEX_WEBSITE + ")";
+    public static final String REGEX_GROUP = "(" + REGEX_EMOJI + ")";
 
     public static  Map<String, Integer> sEmotionMap;
     public static   String[] sEmotionKeyArr;
@@ -112,12 +108,13 @@ public class MQEmotionUtil {
 
     }
 
+
     public static int getImgByName(String imgName) {
         Integer integer = sEmotionMap.get(imgName);
         return integer == null ? -1 : integer;
     }
 
-    public static SpannableString getEmotionText(Context context, String source) {
+    public static SpannableString getEmotionText(Context context, String source, int emotionSizeDp) {
         SpannableString spannableString = new SpannableString(source);
         Pattern pattern = Pattern.compile(REGEX_GROUP);
         Matcher matcher = pattern.matcher(spannableString);
@@ -127,26 +124,27 @@ public class MQEmotionUtil {
 
         while (matcher.find()) {
             String emojiStr = matcher.group(1);
-            String websiteStr = matcher.group(2);
             // 处理emoji表情
             if (emojiStr != null) {
-                ImageSpan imageSpan = null;
-                int imgRes = getImgByName(emojiStr);
-                Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), imgRes);
-                if (bitmap != null) {
-                    imageSpan = new ImageSpan(context, bitmap);
-                }
+                ImageSpan imageSpan = getImageSpan(context, emojiStr, emotionSizeDp);
                 if (imageSpan != null) {
                     int start = matcher.start(1);
                     spannableString.setSpan(imageSpan, start, start + emojiStr.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             }
-            // 处理网址
-            if (websiteStr != null) {
-                int start = matcher.start(2);
-                spannableString.setSpan(new ForegroundColorSpan(context.getResources().getColor(MQResUtils.getResColorID("mq_url_foreground"))), start, start + websiteStr.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
         }
         return spannableString;
+    }
+
+    public static ImageSpan getImageSpan(Context context, String emojiStr, int emotionSizeDp) {
+        ImageSpan imageSpan = null;
+        int imgRes = getImgByName(emojiStr);
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), imgRes);
+        if (bitmap != null) {
+            int size = MQUtils.dip2px(context, emotionSizeDp);
+            bitmap = Bitmap.createScaledBitmap(bitmap, size, size, true);
+            imageSpan = new ImageSpan(context, bitmap);
+        }
+        return imageSpan;
     }
 }

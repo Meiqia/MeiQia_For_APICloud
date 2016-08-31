@@ -5,12 +5,18 @@ import android.text.TextUtils;
 
 import com.meiqia.core.MQManager;
 import com.meiqia.core.bean.MQAgent;
+import com.meiqia.core.bean.MQEnterpriseConfig;
 import com.meiqia.core.bean.MQMessage;
-import com.meiqia.core.callback.OnEvaluateCallback;
+import com.meiqia.core.callback.OnClientInfoCallback;
+import com.meiqia.core.callback.OnClientPositionInQueueCallback;
 import com.meiqia.core.callback.OnGetMessageListCallback;
+import com.meiqia.core.callback.OnProgressCallback;
 import com.meiqia.meiqiasdk.callback.OnClientOnlineCallback;
+import com.meiqia.meiqiasdk.callback.OnDownloadFileCallback;
+import com.meiqia.meiqiasdk.callback.OnEvaluateRobotAnswerCallback;
 import com.meiqia.meiqiasdk.callback.OnGetMessageListCallBack;
 import com.meiqia.meiqiasdk.callback.OnMessageSendCallback;
+import com.meiqia.meiqiasdk.callback.SimpleCallback;
 import com.meiqia.meiqiasdk.model.Agent;
 import com.meiqia.meiqiasdk.model.BaseMessage;
 import com.meiqia.meiqiasdk.model.PhotoMessage;
@@ -18,6 +24,7 @@ import com.meiqia.meiqiasdk.model.VoiceMessage;
 import com.meiqia.meiqiasdk.util.MQUtils;
 
 import java.util.List;
+import java.util.Map;
 
 public class ControllerImpl implements MQController {
 
@@ -33,14 +40,18 @@ public class ControllerImpl implements MQController {
         com.meiqia.core.callback.OnMessageSendCallback onMQMessageSendCallback = new com.meiqia.core.callback.OnMessageSendCallback() {
             @Override
             public void onSuccess(MQMessage mcMessage, int state) {
-                MQUtils.parseMQMessageIntoChatBase(mcMessage, message);
-                onMessageSendCallback.onSuccess(message, state);
+                MQUtils.parseMQMessageIntoBaseMessage(mcMessage, message);
+                if (onMessageSendCallback != null) {
+                    onMessageSendCallback.onSuccess(message, state);
+                }
             }
 
             @Override
             public void onFailure(MQMessage failureMessage, int code, String response) {
-                MQUtils.parseMQMessageIntoChatBase(failureMessage, message);
-                onMessageSendCallback.onFailure(message, code, response);
+                MQUtils.parseMQMessageIntoBaseMessage(failureMessage, message);
+                if (onMessageSendCallback != null) {
+                    onMessageSendCallback.onFailure(message, code, response);
+                }
             }
         };
 
@@ -63,14 +74,20 @@ public class ControllerImpl implements MQController {
         sendMessage(baseMessage, new OnMessageSendCallback() {
             @Override
             public void onSuccess(BaseMessage message, int state) {
-                onMessageSendCallback.onSuccess(message, state);
+                if (onMessageSendCallback != null) {
+                    onMessageSendCallback.onSuccess(message, state);
+                }
                 // 重发成功后删除之前保存的消息
                 MQManager.getInstance(context).deleteMessage(preId);
             }
 
             @Override
             public void onFailure(BaseMessage failureMessage, int code, String failureInfo) {
-                onMessageSendCallback.onFailure(failureMessage, code, failureInfo);
+                if (onMessageSendCallback != null) {
+                    onMessageSendCallback.onFailure(failureMessage, code, failureInfo);
+                }
+                // 重发失败后删除之前保存的消息
+                MQManager.getInstance(context).deleteMessage(preId);
             }
         });
     }
@@ -81,12 +98,16 @@ public class ControllerImpl implements MQController {
             @Override
             public void onSuccess(List<MQMessage> mqMessageList) {
                 List<BaseMessage> messageList = MQUtils.parseMQMessageToChatBaseList(mqMessageList);
-                onGetMessageListCallBack.onSuccess(messageList);
+                if (onGetMessageListCallBack != null) {
+                    onGetMessageListCallBack.onSuccess(messageList);
+                }
             }
 
             @Override
             public void onFailure(int code, String message) {
-                onGetMessageListCallBack.onFailure(code, message);
+                if (onGetMessageListCallBack != null) {
+                    onGetMessageListCallBack.onFailure(code, message);
+                }
             }
         });
     }
@@ -98,12 +119,16 @@ public class ControllerImpl implements MQController {
             @Override
             public void onSuccess(List<MQMessage> mqMessageList) {
                 List<BaseMessage> messageList = MQUtils.parseMQMessageToChatBaseList(mqMessageList);
-                onGetMessageListCallBack.onSuccess(messageList);
+                if (onGetMessageListCallBack != null) {
+                    onGetMessageListCallBack.onSuccess(messageList);
+                }
             }
 
             @Override
             public void onFailure(int code, String message) {
-                onGetMessageListCallBack.onFailure(code, message);
+                if (onGetMessageListCallBack != null) {
+                    onGetMessageListCallBack.onFailure(code, message);
+                }
             }
         });
     }
@@ -115,12 +140,16 @@ public class ControllerImpl implements MQController {
             public void onSuccess(MQAgent mqAgent, String conversationId, List<MQMessage> conversationMessageList) {
                 Agent agent = MQUtils.parseMQAgentToAgent(mqAgent);
                 List<BaseMessage> messageList = MQUtils.parseMQMessageToChatBaseList(conversationMessageList);
-                onClientOnlineCallback.onSuccess(agent, conversationId, messageList);
+                if (onClientOnlineCallback != null) {
+                    onClientOnlineCallback.onSuccess(agent, conversationId, messageList);
+                }
             }
 
             @Override
             public void onFailure(int code, String message) {
-                onClientOnlineCallback.onFailure(code, message);
+                if (onClientOnlineCallback != null) {
+                    onClientOnlineCallback.onFailure(code, message);
+                }
             }
         };
 
@@ -134,13 +163,108 @@ public class ControllerImpl implements MQController {
     }
 
     @Override
+    public void setClientInfo(Map<String, String> clientInfo, final SimpleCallback onClientInfoCallback) {
+        MQManager.getInstance(context).setClientInfo(clientInfo, new OnClientInfoCallback() {
+            @Override
+            public void onSuccess() {
+                if (onClientInfoCallback != null) {
+                    onClientInfoCallback.onSuccess();
+                }
+            }
+
+            @Override
+            public void onFailure(int code, String message) {
+                if (onClientInfoCallback != null) {
+                    onClientInfoCallback.onFailure(code, message);
+                }
+            }
+        });
+    }
+
+    @Override
     public void sendClientInputtingWithContent(String content) {
         MQManager.getInstance(context).sendClientInputtingWithContent(content);
     }
 
     @Override
-    public void executeEvaluate(String conversationId, int level, String content, OnEvaluateCallback onEvaluateCallback) {
-        MQManager.getInstance(context).executeEvaluate(conversationId, level, content, onEvaluateCallback);
+    public void executeEvaluate(String conversationId, int level, String content, final SimpleCallback simpleCallback) {
+        MQManager.getInstance(context).executeEvaluate(conversationId, level, content, new com.meiqia.core.callback.SimpleCallback() {
+
+            @Override
+            public void onFailure(int code, String message) {
+                if (simpleCallback != null) {
+                    simpleCallback.onFailure(code, message);
+                }
+            }
+
+            @Override
+            public void onSuccess() {
+                if (simpleCallback != null) {
+                    simpleCallback.onSuccess();
+                }
+            }
+        });
+    }
+
+    @Override
+    public Agent getCurrentAgent() {
+        MQAgent mqAgent = MQManager.getInstance(context).getCurrentAgent();
+        return MQUtils.parseMQAgentToAgent(mqAgent);
+    }
+
+    @Override
+    public void updateMessage(long messageId, boolean isRead) {
+        MQManager.getInstance(context).updateMessage(messageId, isRead);
+    }
+
+    @Override
+    public void saveConversationOnStopTime(long stopTime) {
+        MQManager.getInstance(context).saveConversationOnStopTime(stopTime);
+    }
+
+    @Override
+    public void downloadFile(BaseMessage fileMessage, final OnDownloadFileCallback onDownloadFileCallback) {
+        MQMessage message = MQUtils.parseBaseMessageToMQMessage(fileMessage);
+        MQManager.getInstance(context).downloadFile(message, new OnProgressCallback() {
+            @Override
+            public void onSuccess() {
+                if (onDownloadFileCallback == null) {
+                    return;
+                }
+                onDownloadFileCallback.onSuccess(null);
+            }
+
+            @Override
+            public void onProgress(int progress) {
+                if (onDownloadFileCallback == null) {
+                    return;
+                }
+                onDownloadFileCallback.onProgress(progress);
+            }
+
+            @Override
+            public void onFailure(int code, String message) {
+                if (onDownloadFileCallback == null) {
+                    return;
+                }
+                onDownloadFileCallback.onFailure(code, message);
+            }
+        });
+    }
+
+    @Override
+    public void cancelDownload(String url) {
+        MQManager.getInstance(context).cancelDownload(url);
+    }
+
+    @Override
+    public void onConversationClose() {
+        MQManager.getInstance(context).onConversationClose();
+    }
+
+    @Override
+    public void onConversationOpen() {
+        MQManager.getInstance(context).onConversationOpen();
     }
 
     @Override
@@ -148,4 +272,102 @@ public class ControllerImpl implements MQController {
         MQManager.getInstance(context).closeMeiqiaService();
     }
 
+    @Override
+    public void openService() {
+        MQManager.getInstance(context).openMeiqiaService();
+    }
+
+    public void submitMessageForm(String message, List<String> pictures, Map<String, String> customInfoMap, final SimpleCallback simpleCallback) {
+        MQManager.getInstance(context).submitMessageForm(message, pictures, customInfoMap, new com.meiqia.core.callback.SimpleCallback() {
+            @Override
+            public void onFailure(int code, String message) {
+                if (simpleCallback != null) {
+                    simpleCallback.onFailure(code, message);
+                }
+            }
+
+            @Override
+            public void onSuccess() {
+                if (simpleCallback != null) {
+                    simpleCallback.onSuccess();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void refreshEnterpriseConfig(final SimpleCallback simpleCallback) {
+        MQManager.getInstance(context).refreshEnterpriseConfig(new com.meiqia.core.callback.SimpleCallback() {
+            @Override
+            public void onFailure(int code, String message) {
+                if (simpleCallback != null) {
+                    simpleCallback.onFailure(code, message);
+                }
+            }
+
+            @Override
+            public void onSuccess() {
+                if (simpleCallback != null) {
+                    simpleCallback.onSuccess();
+                }
+            }
+        });
+    }
+
+    @Override
+    public MQEnterpriseConfig getEnterpriseConfig() {
+        return MQManager.getInstance(context).getEnterpriseConfig();
+    }
+
+    @Override
+    public void evaluateRobotAnswer(long messageId, long questionId, int useful, final OnEvaluateRobotAnswerCallback onEvaluateRobotAnswerCallback) {
+        MQManager.getInstance(context).evaluateRobotAnswer(messageId, questionId, useful, new com.meiqia.core.callback.OnEvaluateRobotAnswerCallback() {
+            @Override
+            public void onFailure(int code, String message) {
+                if (onEvaluateRobotAnswerCallback != null) {
+                    onEvaluateRobotAnswerCallback.onFailure(code, message);
+                }
+            }
+
+            @Override
+            public void onSuccess(String message) {
+                if (onEvaluateRobotAnswerCallback != null) {
+                    onEvaluateRobotAnswerCallback.onSuccess(message);
+                }
+            }
+        });
+    }
+
+    public void setForceRedirectHuman(boolean isForceRedirectHuman) {
+        MQManager.getInstance(context).setForceRedirectHuman(isForceRedirectHuman);
+    }
+
+    @Override
+    public void getClientPositionInQueue(final OnClientPositionInQueueCallback onClientPositionInQueueCallback) {
+        MQManager.getInstance(context).getClientPositionInQueue(new OnClientPositionInQueueCallback() {
+            @Override
+            public void onSuccess(int position) {
+                if (onClientPositionInQueueCallback != null) {
+                    onClientPositionInQueueCallback.onSuccess(position);
+                }
+            }
+
+            @Override
+            public void onFailure(int code, String message) {
+                if (onClientPositionInQueueCallback != null) {
+                    onClientPositionInQueueCallback.onFailure(code, message);
+                }
+            }
+        });
+    }
+
+    @Override
+    public boolean getIsWaitingInQueue() {
+        return MQManager.getInstance(context).getIsWaitingInQueue();
+    }
+
+    @Override
+    public String getCurrentClientId() {
+        return MQManager.getInstance(context).getCurrentClientId();
+    }
 }

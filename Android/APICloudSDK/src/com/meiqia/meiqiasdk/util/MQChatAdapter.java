@@ -1,55 +1,46 @@
 package com.meiqia.meiqiasdk.util;
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
-import com.meiqia.core.MQManager;
-import com.meiqia.core.bean.MQMessage;
 import com.meiqia.meiqiasdk.activity.MQConversationActivity;
-import com.meiqia.meiqiasdk.activity.MQViewPhotoActivity;
-import com.meiqia.meiqiasdk.model.AgentChangeMessage;
+import com.meiqia.meiqiasdk.activity.MQPhotoPreviewActivity;
+import com.meiqia.meiqiasdk.chatitem.MQRichTextItem;
 import com.meiqia.meiqiasdk.model.BaseMessage;
 import com.meiqia.meiqiasdk.model.EvaluateMessage;
-import com.meiqia.meiqiasdk.model.PhotoMessage;
+import com.meiqia.meiqiasdk.model.FileMessage;
+import com.meiqia.meiqiasdk.model.RedirectQueueMessage;
+import com.meiqia.meiqiasdk.model.RobotMessage;
+import com.meiqia.meiqiasdk.model.InitiativeRedirectMessage;
 import com.meiqia.meiqiasdk.model.VoiceMessage;
-import com.meiqia.meiqiasdk.widget.CircleImageView;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.meiqia.meiqiasdk.widget.MQRedirectQueueItem;
+import com.meiqia.meiqiasdk.model.RichTextMessage;
+import com.meiqia.meiqiasdk.chatitem.MQAgentItem;
+import com.meiqia.meiqiasdk.chatitem.MQBaseBubbleItem;
+import com.meiqia.meiqiasdk.chatitem.MQClientItem;
+import com.meiqia.meiqiasdk.chatitem.MQEvaluateItem;
+import com.meiqia.meiqiasdk.chatitem.MQNoAgentItem;
+import com.meiqia.meiqiasdk.chatitem.MQRobotItem;
+import com.meiqia.meiqiasdk.chatitem.MQTimeItem;
+import com.meiqia.meiqiasdk.chatitem.MQTipItem;
+import com.meiqia.meiqiasdk.chatitem.MQInitiativeRedirectItem;
 
 import java.io.File;
 import java.util.List;
 
-public class MQChatAdapter extends BaseAdapter {
-
+public class MQChatAdapter extends BaseAdapter implements MQBaseBubbleItem.Callback {
     private static final String TAG = MQChatAdapter.class.getSimpleName();
 
-    private MQConversationActivity mqConversationActivity;
-    private List<BaseMessage> mcMessageList;
-    private ListView listView;
-
-    // ImageLoader
-    private ImageLoader imageLoader;
+    private MQConversationActivity mConversationActivity;
+    private List<BaseMessage> mMessageList;
+    private ListView mListView;
 
     private static final int NO_POSITION = -1;
     private int mCurrentPlayingItemPosition = NO_POSITION;
     private int mCurrentDownloadingItemPosition = NO_POSITION;
-    private int mMinItemWidth;
-    private int mMaxItemWidth;
 
     private Runnable mNotifyDataSetChangedRunnable = new Runnable() {
         @Override
@@ -58,35 +49,31 @@ public class MQChatAdapter extends BaseAdapter {
         }
     };
 
-    public MQChatAdapter(MQConversationActivity mqConversationActivity, List<BaseMessage> mcMessageList, ListView listView) {
-        this.mqConversationActivity = mqConversationActivity;
-        this.mcMessageList = mcMessageList;
-        this.listView = listView;
-        this.imageLoader = ImageLoader.getInstance();
-        int screenWidth = MQUtils.getScreenWidth(listView.getContext());
-        mMaxItemWidth = (int) (screenWidth * 0.5f);
-        mMinItemWidth = (int) (screenWidth * 0.18f);
+    public MQChatAdapter(MQConversationActivity conversationActivity, List<BaseMessage> messageList, ListView listView) {
+        mConversationActivity = conversationActivity;
+        mMessageList = messageList;
+        mListView = listView;
     }
 
     public void addMQMessage(BaseMessage baseMessage) {
-        mcMessageList.add(baseMessage);
+        mMessageList.add(baseMessage);
         notifyDataSetChanged();
     }
 
     public void addMQMessage(BaseMessage baseMessage, int location) {
-        mcMessageList.add(location, baseMessage);
+        mMessageList.add(location, baseMessage);
         notifyDataSetChanged();
     }
 
     public void loadMoreMessage(List<BaseMessage> baseMessages) {
-        mcMessageList.addAll(0, baseMessages);
+        mMessageList.addAll(0, baseMessages);
         notifyDataSetChanged();
         downloadAndNotifyDataSetChanged(baseMessages);
     }
 
     @Override
     public int getItemViewType(int position) {
-        return mcMessageList.get(position).getItemViewType();
+        return mMessageList.get(position).getItemViewType();
     }
 
     @Override
@@ -96,7 +83,7 @@ public class MQChatAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mcMessageList.size();
+        return mMessageList.size();
     }
 
     @Override
@@ -111,408 +98,66 @@ public class MQChatAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+        final BaseMessage mcMessage = mMessageList.get(position);
 
-        final BaseMessage mcMessage = mcMessageList.get(position);
-        ViewHolder viewHolder = null;
-        TimeViewHolder timeViewHolder = null;
-        TipViewHolder tipViewHolder = null;
-        EveluateViewHolder eveluateViewHolder = null;
-
-        //根据 type 创建不同的 ViewHolder，并缓存
         if (convertView == null) {
             switch (getItemViewType(position)) {
                 case BaseMessage.TYPE_AGENT:
-                    viewHolder = new ViewHolder();
-                    convertView = LayoutInflater.from(mqConversationActivity).inflate(MQResUtils.getResLayoutID("mq_item_chat_left"), null);
-                    viewHolder.contentText = (TextView) convertView.findViewById(MQResUtils.getResIdID("content_text"));
-                    viewHolder.contentImage = (ImageView) convertView.findViewById(MQResUtils.getResIdID("content_pic"));
-                    viewHolder.voiceContentTv = (TextView) convertView.findViewById(MQResUtils.getResIdID("tv_voice_content"));
-                    viewHolder.voiceAnimIv = (ImageView) convertView.findViewById(MQResUtils.getResIdID("iv_voice_anim"));
-                    viewHolder.voiceContainerRl = convertView.findViewById(MQResUtils.getResIdID("rl_voice_container"));
-                    viewHolder.usAvatar = (CircleImageView) convertView.findViewById(MQResUtils.getResIdID("us_avatar_iv"));
-                    viewHolder.unreadCircle = convertView.findViewById(MQResUtils.getResIdID("unread_view"));
-                    // tint
-                    configChatBubbleBg(viewHolder.contentText, true);
-                    configChatBubbleBg(viewHolder.voiceContainerRl, true);
-                    configChatBubbleTextColor(viewHolder.contentText, true);
-                    convertView.setTag(viewHolder);
+                    convertView = new MQAgentItem(mConversationActivity, this);
                     break;
                 case BaseMessage.TYPE_CLIENT:
-                    viewHolder = new ViewHolder();
-                    convertView = LayoutInflater.from(mqConversationActivity).inflate(MQResUtils.getResLayoutID("mq_item_chat_right"), null);
-                    viewHolder.contentText = (TextView) convertView.findViewById(MQResUtils.getResIdID("content_text"));
-                    viewHolder.contentImage = (ImageView) convertView.findViewById(MQResUtils.getResIdID("content_pic"));
-                    viewHolder.voiceContentTv = (TextView) convertView.findViewById(MQResUtils.getResIdID("tv_voice_content"));
-                    viewHolder.voiceAnimIv = (ImageView) convertView.findViewById(MQResUtils.getResIdID("iv_voice_anim"));
-                    viewHolder.voiceContainerRl = convertView.findViewById(MQResUtils.getResIdID("rl_voice_container"));
-                    viewHolder.sendingProgressBar = (ProgressBar) convertView.findViewById(MQResUtils.getResIdID("progress_bar"));
-                    viewHolder.sendState = (ImageView) convertView.findViewById(MQResUtils.getResIdID("send_state"));
-                    // tint
-                    configChatBubbleBg(viewHolder.contentText, false);
-                    configChatBubbleBg(viewHolder.voiceContainerRl, false);
-                    configChatBubbleTextColor(viewHolder.contentText, false);
-                    convertView.setTag(viewHolder);
+                    convertView = new MQClientItem(mConversationActivity, this);
                     break;
                 case BaseMessage.TYPE_TIME:
-                    timeViewHolder = new TimeViewHolder();
-                    convertView = LayoutInflater.from(mqConversationActivity).inflate(MQResUtils.getResLayoutID("mq_item_chat_time"), null);
-                    timeViewHolder.timeTv = (TextView) convertView.findViewById(MQResUtils.getResIdID("timeTv"));
-                    convertView.setTag(timeViewHolder);
+                    convertView = new MQTimeItem(mConversationActivity);
                     break;
                 case BaseMessage.TYPE_TIP:
-                    tipViewHolder = new TipViewHolder();
-                    convertView = LayoutInflater.from(mqConversationActivity).inflate(MQResUtils.getResLayoutID("mq_item_msg_tip"), null, false);
-                    tipViewHolder.contentTv = (TextView) convertView.findViewById(MQResUtils.getResIdID("content_tv"));
-                    convertView.setTag(tipViewHolder);
+                    convertView = new MQTipItem(mConversationActivity);
                     break;
                 case BaseMessage.TYPE_EVALUATE:
-                    eveluateViewHolder = new EveluateViewHolder();
-                    convertView = LayoutInflater.from(mqConversationActivity).inflate(MQResUtils.getResLayoutID("mq_item_msg_evaluate"), null, false);
-                    eveluateViewHolder.contentTv = (TextView) convertView.findViewById(MQResUtils.getResIdID("tv_msg_evaluate_content"));
-                    convertView.setTag(eveluateViewHolder);
+                    convertView = new MQEvaluateItem(mConversationActivity);
                     break;
-            }
-        } else {
-            switch (getItemViewType(position)) {
-                case BaseMessage.TYPE_AGENT:
-                    viewHolder = (ViewHolder) convertView.getTag();
+                case BaseMessage.TYPE_ROBOT:
+                    convertView = new MQRobotItem(mConversationActivity, mConversationActivity);
                     break;
-                case BaseMessage.TYPE_CLIENT:
-                    viewHolder = (ViewHolder) convertView.getTag();
+                case BaseMessage.TYPE_NO_AGENT_TIP:
+                    convertView = new MQNoAgentItem(mConversationActivity);
                     break;
-                case BaseMessage.TYPE_TIME:
-                    timeViewHolder = (TimeViewHolder) convertView.getTag();
+                case BaseMessage.TYPE_INITIATIVE_REDIRECT_TIP:
+                    convertView = new MQInitiativeRedirectItem(mConversationActivity);
                     break;
-                case BaseMessage.TYPE_TIP:
-                    tipViewHolder = (TipViewHolder) convertView.getTag();
+                case BaseMessage.TYPE_QUEUE_TIP:
+                    convertView = new MQRedirectQueueItem(mConversationActivity, mConversationActivity);
                     break;
-                case BaseMessage.TYPE_EVALUATE:
-                    eveluateViewHolder = (EveluateViewHolder) convertView.getTag();
+                case BaseMessage.TYPE_RICH_TEXT:
+                    convertView = new MQRichTextItem(mConversationActivity);
                     break;
             }
         }
 
-        //显示对话时间
-        if (getItemViewType(position) == BaseMessage.TYPE_TIME) {
-            timeViewHolder.timeTv.setText(MQTimeUtils.parseTime(mcMessage.getCreatedOn()));
-        }
-        //显示对话 Tip
-        else if (getItemViewType(position) == BaseMessage.TYPE_TIP) {
-            if (mcMessage instanceof AgentChangeMessage) {
-                setDirectionMessageContent(mcMessage.getAgentNickname(), tipViewHolder.contentTv);
-            } else {
-                tipViewHolder.contentTv.setText(MQResUtils.getResStringID("mq_leave_msg_tips"));
-            }
-        }
-        // 显示评价消息
-        else if (getItemViewType(position) == BaseMessage.TYPE_EVALUATE) {
-            handleBindEvaluateItem(eveluateViewHolder, (EvaluateMessage) mcMessage);
-        }
-        //显示消息：文字、图片、语音
-        else if (getItemViewType(position) == BaseMessage.TYPE_AGENT || getItemViewType(position) == BaseMessage.TYPE_CLIENT) {
-            // 文字
-            if (MQMessage.TYPE_CONTENT_TEXT.equals(mcMessage.getContentType())) {
-                viewHolder.contentText.setVisibility(View.VISIBLE);
-                viewHolder.contentImage.setVisibility(View.GONE);
-                viewHolder.voiceContainerRl.setVisibility(View.GONE);
-                if (!TextUtils.isEmpty(mcMessage.getContent())) {
-                    viewHolder.contentText.setText(MQEmotionUtil.getEmotionText(mqConversationActivity, mcMessage.getContent()));
-                }
-
-            }
-            // 图片
-            else if (MQMessage.TYPE_CONTENT_PHOTO.equals(mcMessage.getContentType())) {
-                viewHolder.contentText.setVisibility(View.GONE);
-                viewHolder.voiceContainerRl.setVisibility(View.GONE);
-
-                String path = ((PhotoMessage) mcMessage).getLocalPath();
-                boolean isLocalImageExist = MQUtils.isFileExist(path);
-
-                String url;
-                if (isLocalImageExist) {
-                    url = "file://" + ((PhotoMessage) mcMessage).getLocalPath();
-                } else {
-                    url = ((PhotoMessage) mcMessage).getUrl();
-                }
-                final ViewHolder finalViewHolder = viewHolder;
-                imageLoader.displayImage(url, viewHolder.contentImage, new SimpleImageLoadingListener() {
-                    @Override
-                    public void onLoadingComplete(final String imageUri, View view, Bitmap loadedImage) {
-                        if (loadedImage != null) {
-                            if (listView.getLastVisiblePosition() == (listView.getCount() - 1)) {
-                                listView.setSelection(getCount() - 1);
-                            }
-
-                            view.setOnClickListener(new OnClickListener() {
-
-                                @Override
-                                public void onClick(View arg0) {
-                                    mqConversationActivity.startActivity(MQViewPhotoActivity.newInstance(mqConversationActivity, MQUtils.getImageDir(mqConversationActivity), imageUri));
-                                }
-                            });
-                            finalViewHolder.contentImage.setImageDrawable(MQUtils.getRoundedDrawable(mqConversationActivity, loadedImage, 8f));
-                        }
-                    }
-                });
-                viewHolder.contentImage.setVisibility(View.VISIBLE);
-
-            }
-            //语音
-            else if (MQMessage.TYPE_CONTENT_VOICE.equals(mcMessage.getContentType())) {
-                handleBindVoiceItem(viewHolder, (VoiceMessage) mcMessage, position);
-            }
-            //显示客服头像
-            if (getItemViewType(position) == BaseMessage.TYPE_AGENT) {
-                imageLoader.displayImage(mcMessage.getAvatar(), viewHolder.usAvatar);
-            }
-            //显示发送状态：发送中、发送失败
-            else if (getItemViewType(position) == BaseMessage.TYPE_CLIENT) {
-                if (viewHolder.sendingProgressBar != null) {
-                    if (MQMessage.STATE_SENDING.equals(mcMessage.getStatus())) {
-                        viewHolder.sendingProgressBar.setVisibility(View.VISIBLE);
-                        viewHolder.sendState.setVisibility(View.GONE);
-                    } else if (MQMessage.STATE_ARRIVE.equals(mcMessage.getStatus())) {
-                        viewHolder.sendingProgressBar.setVisibility(View.GONE);
-                        viewHolder.sendState.setVisibility(View.GONE);
-                    } else if (MQMessage.STATE_FAILED.equals(mcMessage.getStatus())) {
-                        viewHolder.sendingProgressBar.setVisibility(View.GONE);
-                        viewHolder.sendState.setVisibility(View.VISIBLE);
-                        viewHolder.sendState.setBackgroundResource(MQResUtils.getResDrawableID("mq_ic_msg_failed"));
-                        viewHolder.sendState.setOnClickListener(new FailedMessageOnClickListener(mcMessage));
-                        viewHolder.sendState.setTag(mcMessage.getId());
-                    }
-                }
-            }
+        if (getItemViewType(position) == BaseMessage.TYPE_AGENT) {
+            ((MQAgentItem) convertView).setMessage(mcMessage, position, mConversationActivity);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_CLIENT) {
+            ((MQClientItem) convertView).setMessage(mcMessage, position, mConversationActivity);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_NO_AGENT_TIP) {
+            ((MQNoAgentItem) convertView).setCallback(mConversationActivity);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_ROBOT) {
+            ((MQRobotItem) convertView).setMessage((RobotMessage) mcMessage, mConversationActivity);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_INITIATIVE_REDIRECT_TIP) {
+            ((MQInitiativeRedirectItem) convertView).setMessage((InitiativeRedirectMessage) mcMessage, mConversationActivity);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_TIME) {
+            ((MQTimeItem) convertView).setMessage(mcMessage);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_TIP) {
+            ((MQTipItem) convertView).setMessage(mcMessage);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_EVALUATE) {
+            ((MQEvaluateItem) convertView).setMessage((EvaluateMessage) mcMessage);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_QUEUE_TIP) {
+            ((MQRedirectQueueItem) convertView).setMessage((RedirectQueueMessage) mcMessage);
+        } else if (getItemViewType(position) == BaseMessage.TYPE_RICH_TEXT) {
+            ((MQRichTextItem) convertView).setMessage((RichTextMessage) mcMessage, mConversationActivity);
         }
 
         return convertView;
-    }
-
-    private void setDirectionMessageContent(String agentNickName, TextView tipTv) {
-        if (agentNickName != null) {
-            String text = String.format(tipTv.getResources().getString(MQResUtils.getResStringID("mq_direct_content")), agentNickName);
-            int start = text.indexOf(agentNickName);
-            SpannableStringBuilder style = new SpannableStringBuilder(text);
-            style.setSpan(new ForegroundColorSpan(tipTv.getResources().getColor(MQResUtils.getResColorID("mq_direct_agent_nickname_color"))), start, start + agentNickName.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-            tipTv.setText(style);
-        }
-    }
-
-    static class ViewHolder {
-        TextView contentText;
-        ImageView contentImage;
-        TextView voiceContentTv;
-        ImageView voiceAnimIv;
-        View voiceContainerRl;
-        ProgressBar sendingProgressBar;
-        ImageView sendState;
-        CircleImageView usAvatar;
-        View unreadCircle;
-    }
-
-    static class TimeViewHolder {
-        TextView timeTv;
-    }
-
-    static class TipViewHolder {
-        TextView contentTv;
-    }
-
-    static class EveluateViewHolder {
-        TextView contentTv;
-    }
-
-    private class FailedMessageOnClickListener implements OnClickListener {
-
-        private BaseMessage failedMessage;
-
-        public FailedMessageOnClickListener(BaseMessage failedMessage) {
-            this.failedMessage = failedMessage;
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (!MQUtils.isFastClick()) {
-                failedMessage.setStatus(BaseMessage.STATE_SENDING);
-                notifyDataSetChanged();
-                mqConversationActivity.resendMessage(failedMessage);
-            }
-        }
-
-    }
-
-    /**
-     * 处理绑定声音类型的数据item
-     *
-     * @param eveluateViewHolder
-     * @param evaluateMessage
-     */
-    private void handleBindEvaluateItem(EveluateViewHolder eveluateViewHolder, EvaluateMessage evaluateMessage) {
-        String prefix = mqConversationActivity.getString(MQResUtils.getResStringID("mq_evaluate_result_prefix"));
-        Resources resources = mqConversationActivity.getResources();
-        String evaluateResult = resources.getString(MQResUtils.getResStringID("mq_evaluate_good"));
-        int evaluateColor = resources.getColor(MQResUtils.getResColorID("mq_evalute_good"));
-        if (evaluateMessage.getLevel() == EvaluateMessage.EVALUATE_MEDIUM) {
-            evaluateColor = resources.getColor(MQResUtils.getResColorID("mq_evalute_medium"));
-            evaluateResult = resources.getString(MQResUtils.getResStringID("mq_evaluate_medium"));
-        } else if (evaluateMessage.getLevel() == EvaluateMessage.EVALUATE_BAD) {
-            evaluateColor = resources.getColor(MQResUtils.getResColorID("mq_evalute_bad"));
-            evaluateResult = resources.getString(MQResUtils.getResStringID("mq_evaluate_bad"));
-        }
-        SpannableStringBuilder contentSsb = new SpannableStringBuilder(prefix + evaluateResult);
-        contentSsb.setSpan(new ForegroundColorSpan(evaluateColor), prefix.length(), contentSsb.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        eveluateViewHolder.contentTv.setText(contentSsb);
-    }
-
-    /**
-     * 处理绑定声音类型的数据item
-     *
-     * @param viewHolder
-     * @param voiceMessage
-     * @param position
-     */
-    private void handleBindVoiceItem(ViewHolder viewHolder, final VoiceMessage voiceMessage, final int position) {
-        viewHolder.contentText.setVisibility(View.GONE);
-        viewHolder.contentImage.setVisibility(View.GONE);
-        viewHolder.voiceContainerRl.setVisibility(View.VISIBLE);
-
-        viewHolder.voiceContainerRl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleClickVoiceBtn(voiceMessage, position);
-            }
-        });
-
-        // 处理录音文本和控件长度
-        String duration = voiceMessage.getDuration() == VoiceMessage.NO_DURATION ? "" : voiceMessage.getDuration() + "s";
-        viewHolder.voiceContentTv.setText(duration);
-        ViewGroup.LayoutParams layoutParams = viewHolder.voiceContainerRl.getLayoutParams();
-        if (voiceMessage.getDuration() == VoiceMessage.NO_DURATION) {
-            viewHolder.voiceContentTv.setText("");
-            layoutParams.width = mMinItemWidth;
-        } else {
-            viewHolder.voiceContentTv.setText(voiceMessage.getDuration() + "\"");
-            layoutParams.width = (int) (mMinItemWidth + (mMaxItemWidth / 60f * voiceMessage.getDuration()));
-        }
-        viewHolder.voiceContainerRl.setLayoutParams(layoutParams);
-
-
-        // 刷新录音播放状态
-        if (mCurrentPlayingItemPosition != position) {
-            if (voiceMessage.getItemViewType() == BaseMessage.TYPE_AGENT) {
-                viewHolder.voiceAnimIv.setImageResource(MQResUtils.getResDrawableID("mq_voice_left_normal"));
-            } else {
-                viewHolder.voiceAnimIv.setImageResource(MQResUtils.getResDrawableID("mq_voice_right_normal"));
-            }
-        } else {
-            if (voiceMessage.getItemViewType() == BaseMessage.TYPE_AGENT) {
-                viewHolder.voiceAnimIv.setImageResource(MQResUtils.getResDrawableID("mq_voice_left_playing"));
-            } else {
-                viewHolder.voiceAnimIv.setImageResource(MQResUtils.getResDrawableID("mq_voice_right_playing"));
-            }
-            AnimationDrawable animationDrawable = (AnimationDrawable) viewHolder.voiceAnimIv.getDrawable();
-            animationDrawable.start();
-        }
-
-        // 语音未读显示 小红点
-        if (viewHolder.unreadCircle != null) {
-            if (!voiceMessage.isRead()) {
-                viewHolder.unreadCircle.setVisibility(View.VISIBLE);
-            } else {
-                viewHolder.unreadCircle.setVisibility(View.GONE);
-            }
-        }
-    }
-
-    /**
-     * 处理播放录音按钮的点击事件
-     *
-     * @param voiceMessage
-     * @param position
-     */
-    private void handleClickVoiceBtn(VoiceMessage voiceMessage, int position) {
-        if (TextUtils.isEmpty(voiceMessage.getLocalPath())) {
-            stopPlayVoice();
-
-            downloadAndPlayVoice(voiceMessage, position);
-            return;
-        }
-
-        if (MQAudioPlayerManager.isPlaying() && mCurrentPlayingItemPosition == position) {
-            // 如果正在播放录音，并且当前正在播放录音的item是当前item，则停止播放录音
-
-            stopPlayVoice();
-        } else {
-            startPlayVoiceAndRefreshList(voiceMessage, position);
-        }
-    }
-
-    /**
-     * 停止播放录音
-     */
-    public void stopPlayVoice() {
-        MQAudioPlayerManager.stop();
-        mCurrentPlayingItemPosition = NO_POSITION;
-        notifyDataSetChanged();
-    }
-
-    /**
-     * 开始播放录音，并更新数据列表
-     *
-     * @param voiceMessage
-     * @param position
-     */
-    private void startPlayVoiceAndRefreshList(VoiceMessage voiceMessage, int position) {
-        MQAudioPlayerManager.playSound(voiceMessage.getLocalPath(), new MQAudioPlayerManager.Callback() {
-            @Override
-            public void onError() {
-                mCurrentPlayingItemPosition = NO_POSITION;
-                notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCompletion() {
-                mCurrentPlayingItemPosition = NO_POSITION;
-                notifyDataSetChanged();
-            }
-        });
-
-        // 设置已读状态
-        voiceMessage.setIsRead(true);
-        MQManager.getInstance(mqConversationActivity).updateMessage(voiceMessage.getId(), true);
-
-        mCurrentPlayingItemPosition = position;
-        notifyDataSetChanged();
-    }
-
-    /**
-     * 下载录音文件，并设置录音时长
-     *
-     * @param voiceMessage
-     */
-    private void downloadAndPlayVoice(final VoiceMessage voiceMessage, final int position) {
-        mCurrentDownloadingItemPosition = position;
-        MQDownloadManager.getInstance(mqConversationActivity).downloadVoice(voiceMessage.getUrl(), new MQDownloadManager.Callback() {
-            @Override
-            public void onSuccess(File file) {
-                setVoiceMessageDuration(voiceMessage, file.getAbsolutePath());
-
-                listView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        // 如果该文件对应的数据item的索引等于当前正在下载文件的索引，则播放录音
-                        if (mCurrentDownloadingItemPosition == position) {
-                            startPlayVoiceAndRefreshList(voiceMessage, position);
-                        }
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure() {
-                MQUtils.showSafe(mqConversationActivity, MQResUtils.getResStringID("mq_download_audio_failure"));
-            }
-        });
     }
 
     public void downloadAndNotifyDataSetChanged(List<BaseMessage> baseMessages) {
@@ -530,7 +175,7 @@ public class MQChatAdapter extends BaseAdapter {
                 if (localFile != null && localFile.exists()) {
                     voiceFile = localFile;
                 } else {
-                    voiceFile = MQAudioRecorderManager.getCachedVoiceFileByUrl(mqConversationActivity, voiceMessage.getUrl());
+                    voiceFile = MQAudioRecorderManager.getCachedVoiceFileByUrl(mConversationActivity, voiceMessage.getUrl());
                 }
 
                 // 如果声音文件已经存在则不下载
@@ -538,11 +183,11 @@ public class MQChatAdapter extends BaseAdapter {
                     setVoiceMessageDuration(voiceMessage, voiceFile.getAbsolutePath());
                     notifyDataSetChanged();
                 } else {
-                    MQDownloadManager.getInstance(mqConversationActivity).downloadVoice(voiceMessage.getUrl(), new MQDownloadManager.Callback() {
+                    MQDownloadManager.getInstance(mConversationActivity).downloadVoice(voiceMessage.getUrl(), new MQDownloadManager.Callback() {
                         @Override
                         public void onSuccess(File file) {
                             setVoiceMessageDuration(voiceMessage, file.getAbsolutePath());
-                            listView.post(mNotifyDataSetChangedRunnable);
+                            mListView.post(mNotifyDataSetChangedRunnable);
                         }
 
                         @Override
@@ -554,43 +199,86 @@ public class MQChatAdapter extends BaseAdapter {
         }
     }
 
-    /**
-     * 设置录音本地文件地址和时长
-     *
-     * @param voiceMessage
-     * @param audioFilePath
-     */
-    private void setVoiceMessageDuration(VoiceMessage voiceMessage, String audioFilePath) {
+    @Override
+    public void setVoiceMessageDuration(VoiceMessage voiceMessage, String audioFilePath) {
         voiceMessage.setLocalPath(audioFilePath);
-        voiceMessage.setDuration(MQAudioPlayerManager.getDurationByFilePath(mqConversationActivity, audioFilePath));
+        voiceMessage.setDuration(MQAudioPlayerManager.getDurationByFilePath(mConversationActivity, audioFilePath));
     }
 
-    /**
-     * 如果开发者有配置气泡的颜色，改变气泡颜色
-     *
-     * @param view
-     * @param isLeft
-     */
-    private void configChatBubbleBg(View view, boolean isLeft) {
-        if (isLeft && (MQConfig.bgColorChatBubbleLeft != MQConfig.DEFAULT)) {
-            Drawable tintDrawable = MQUtils.tintDrawable(mqConversationActivity, view.getBackground(), MQConfig.bgColorChatBubbleLeft);
-            MQUtils.setBackground(view, tintDrawable);
-        }
-        if (!isLeft && (MQConfig.bgColorChatBubbleRight != MQConfig.DEFAULT)) {
-            Drawable tintDrawable = MQUtils.tintDrawable(mqConversationActivity, view.getBackground(), MQConfig.bgColorChatBubbleRight);
-            MQUtils.setBackground(view, tintDrawable);
-        }
+    @Override
+    public void scrollContentToBottom() {
+        mConversationActivity.scrollContentToBottom();
     }
 
-    /**
-     * 如果开发者有配置气泡内文字的颜色，改变气泡文字的颜色
-     */
-    private void configChatBubbleTextColor(TextView textView, boolean isLeft) {
-        if (isLeft && (MQConfig.textColorChatBubbleLeft != MQConfig.DEFAULT)) {
-            textView.setTextColor(mqConversationActivity.getResources().getColor(MQConfig.textColorChatBubbleLeft));
-        }
-        if (!isLeft && (MQConfig.textColorChatBubbleRight != MQConfig.DEFAULT)) {
-            textView.setTextColor(mqConversationActivity.getResources().getColor(MQConfig.textColorChatBubbleRight));
-        }
+    @Override
+    public boolean isLastItemAndVisible(int position) {
+        return position == mListView.getLastVisiblePosition() && mListView.getLastVisiblePosition() == getCount() - 1;
+    }
+
+    @Override
+    public void photoPreview(String url) {
+        mConversationActivity.startActivity(MQPhotoPreviewActivity.newIntent(mConversationActivity, MQUtils.getImageDir(mConversationActivity), url));
+    }
+
+    @Override
+    public void startPlayVoiceAndRefreshList(VoiceMessage voiceMessage, int position) {
+        MQAudioPlayerManager.playSound(voiceMessage.getLocalPath(), new MQAudioPlayerManager.Callback() {
+            @Override
+            public void onError() {
+                mCurrentPlayingItemPosition = NO_POSITION;
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCompletion() {
+                mCurrentPlayingItemPosition = NO_POSITION;
+                notifyDataSetChanged();
+            }
+        });
+
+        // 设置已读状态
+        voiceMessage.setIsRead(true);
+        MQConfig.getController(mConversationActivity).updateMessage(voiceMessage.getId(), true);
+
+        mCurrentPlayingItemPosition = position;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void stopPlayVoice() {
+        MQAudioPlayerManager.stop();
+        mCurrentPlayingItemPosition = NO_POSITION;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void setCurrentDownloadingItemPosition(int currentPlayingItemPosition) {
+        mCurrentPlayingItemPosition = currentPlayingItemPosition;
+    }
+
+    @Override
+    public int getCurrentDownloadingItemPosition() {
+        return mCurrentDownloadingItemPosition;
+    }
+
+    @Override
+    public int getCurrentPlayingItemPosition() {
+        return mCurrentPlayingItemPosition;
+    }
+
+    @Override
+    public void resendFailedMessage(BaseMessage failedMessage) {
+        notifyDataSetInvalidated();
+        mConversationActivity.resendMessage(failedMessage);
+    }
+
+    @Override
+    public void onFileMessageDownloadFailure(FileMessage fileMessage, int code, String message) {
+        mConversationActivity.onFileMessageDownloadFailure(fileMessage, code, message);
+    }
+
+    @Override
+    public void onFileMessageExpired(FileMessage fileMessage) {
+        mConversationActivity.onFileMessageExpired(fileMessage);
     }
 }

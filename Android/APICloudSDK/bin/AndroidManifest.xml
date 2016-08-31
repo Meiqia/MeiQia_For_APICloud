@@ -35,8 +35,8 @@
     
     <application android:name="com.uzmap.pkg.uzapp.UZApplication"
         android:allowBackup="true"
-        android:icon="@drawable/uz_icon"
-        android:label="@string/app_name"
+        android:icon="@drawable/mq_emoji_1"
+        android:label="MyApp"
 		android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
         <meta-data android:name="uz_version" android:value="1.2.0" />
@@ -57,7 +57,7 @@
         	android:screenOrientation="portrait"
         	android:configChanges="orientation|locale" />
         
-        <!-- 聊天界面 -->
+        <!--聊天界面-->
         <activity
             android:name="com.meiqia.meiqiasdk.activity.MQConversationActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -65,14 +65,67 @@
             android:screenOrientation="portrait"
             android:theme="@style/MQTheme"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        
+
+        <!--图片查看界面-->
         <activity
-            android:name="com.meiqia.meiqiasdk.activity.MQViewPhotoActivity"
+            android:name="com.meiqia.meiqiasdk.activity.MQPhotoPreviewActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/MQTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!--图片选择界面-->
+        <activity
+            android:name="com.meiqia.meiqiasdk.activity.MQPhotoPickerActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--图片选择预览界面-->
+        <activity
+            android:name="com.meiqia.meiqiasdk.activity.MQPhotoPickerPreviewActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <!--留言表单界面-->
+        <activity
+            android:name="com.meiqia.meiqiasdk.activity.MQMessageFormActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!--WebView 界面-->
+        <activity
+            android:name="com.meiqia.meiqiasdk.activity.MQWebViewActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!--询前表单-->
+        <activity
+            android:name="com.meiqia.meiqiasdk.activity.MQInquiryFormActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <activity
+            android:name="com.meiqia.meiqiasdk.activity.MQCollectInfoActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/MQTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <service android:name="com.meiqia.core.MeiQiaService" />
     </application>

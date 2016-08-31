@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MQMatchMatch"
-    android:background="@color/mq_bg_color"
+    android:background="@color/mq_activity_bg"
     android:clickable="true">
 
     <RelativeLayout
@@ -31,8 +31,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/back_iv"
                 android:text="@string/mq_back"
-                android:textColor="@color/mq_title_text"
-                android:textSize="16dp"
+                android:textColor="@color/mq_activity_title_textColor"
+                android:textSize="@dimen/mq_title_left_right_textSize"
                 tools:text="返回" />
         </RelativeLayout>
 
@@ -40,20 +40,36 @@
             android:id="@+id/title_tv"
             style="@style/MQWrapMatch"
             android:layout_centerHorizontal="true"
+            android:drawablePadding="@dimen/mq_size_level1"
             android:gravity="center"
             android:maxWidth="175dp"
             android:singleLine="true"
-            android:textColor="@color/mq_title_text"
+            android:textColor="@color/mq_activity_title_textColor"
             android:textSize="@dimen/mq_titlebar_textSize"
             tools:text="AgentNameAgentNameAgentNameAgentNameAgentNameAgentName" />
+
+        <TextView
+            android:id="@+id/redirect_human_tv"
+            style="@style/MQWrapMatch"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/mq_size_level3"
+            android:paddingRight="@dimen/mq_size_level3"
+            android:text="@string/mq_redirect_human"
+            android:textColor="@color/mq_activity_title_textColor"
+            android:textSize="@dimen/mq_title_left_right_textSize"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/chat_body_rl"
         style="@style/MQMatchMatch"
         android:layout_above="@+id/chat_foot_ll"
         android:layout_below="@id/title_rl"
-        android:background="@color/mq_bg_color">
+        android:background="@color/mq_activity_bg">
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
@@ -63,7 +79,7 @@
                 android:id="@+id/messages_lv"
                 style="@style/MQMatchMatch"
                 android:layout_below="@+id/title_tip_tv"
-                android:background="@color/mq_bg_color"
+                android:background="@color/mq_activity_bg"
                 android:cacheColorHint="#00000000"
                 android:divider="#00000000"
                 android:listSelector="@android:color/transparent"
@@ -90,11 +106,12 @@
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
+            android:hint="@string/mq_send_msg"
             android:maxLines="5"
             android:minHeight="40dp"
-            android:textColor="@color/mq_chat_text_left"
+            android:textColor="@color/mq_chat_et_textColor"
+            android:textCursorDrawable="@drawable/mq_shape_cursor"
             android:textSize="@dimen/mq_textSize_level2"
-            android:hint="@string/mq_send_msg"
             tools:text="测试文本" />
 
 
@@ -135,7 +152,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="4dp"
                         android:layout_alignParentBottom="true"
-                        android:background="#ff17c7d1"
+                        android:background="@color/mq_indicator_selected"
                         android:visibility="gone" />
                 </RelativeLayout>
 
@@ -146,10 +163,11 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/photo_select_iv"
                         android:layout_width="@dimen/mq_size_level6"
                         android:layout_height="@dimen/mq_size_level6"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/mq_ic_image_selector" />
+                        android:src="@drawable/mq_selector_ic_image" />
 
                 </RelativeLayout>
 
@@ -159,10 +177,11 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                        android:id="@+id/camera_select_iv"
                         android:layout_width="@dimen/mq_size_level6"
                         android:layout_height="@dimen/mq_size_level6"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/mq_ic_camera_selector" />
+                        android:src="@drawable/mq_selector_ic_camera" />
 
                 </RelativeLayout>
 
@@ -183,35 +202,39 @@
                         android:layout_width="match_parent"
                         android:layout_height="4dp"
                         android:layout_alignParentBottom="true"
-                        android:background="#ff17c7d1"
+                        android:background="@color/mq_indicator_selected"
                         android:visibility="gone" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/evaluate_select_btn"
                     android:layout_width="48dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <ImageView
+                        android:id="@+id/evaluate_select_iv"
                         android:layout_width="@dimen/mq_size_level6"
                         android:layout_height="@dimen/mq_size_level6"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/mq_ic_evaluate_selector" />
+                        android:src="@drawable/mq_selector_ic_evaluate" />
 
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
 
-        <com.meiqia.meiqiasdk.widget.MQEditToolbar
-            android:id="@+id/editToolbar"
+        <com.meiqia.meiqiasdk.widget.MQCustomKeyboardLayout
+            android:id="@+id/customKeyboardLayout"
             style="@style/MQMatchWrap" />
     </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressbar"
-        android:layout_width="20dp"
+        style="?android:progressBarStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:indeterminateDrawable="@anim/mq_loading" />
+        android:indeterminateDrawable="@drawable/mq_rotate_progress_bar" />
 
 </RelativeLayout>

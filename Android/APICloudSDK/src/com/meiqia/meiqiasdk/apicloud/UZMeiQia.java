@@ -17,6 +17,7 @@ import com.meiqia.core.MQManager;
 import com.meiqia.core.callback.OnClientInfoCallback;
 import com.meiqia.core.callback.OnInitCallback;
 import com.meiqia.meiqiasdk.activity.MQConversationActivity;
+import com.meiqia.meiqiasdk.imageloader.MQUILImageLoader;
 import com.meiqia.meiqiasdk.util.MQConfig;
 import com.uzmap.pkg.uzcore.UZWebView;
 import com.uzmap.pkg.uzcore.uzmodule.UZModule;
@@ -28,6 +29,7 @@ public class UZMeiQia extends UZModule {
 	private String clientId;
 	private int titleColor = MQConfig.DEFAULT;
 	private int titleBarColor = MQConfig.DEFAULT;
+	private HashMap<String, String> clientInfoMap;
 
 	public UZMeiQia(UZWebView webView) {
 		super(webView);
@@ -37,25 +39,24 @@ public class UZMeiQia extends UZModule {
 		String appkey = moduleContext.optString("appkey");
 		String appKey = moduleContext.optString("appKey");
 		String realKey = TextUtils.isEmpty(appkey) ? appKey : appkey;
-		MQManager.init(moduleContext.getContext(), realKey,
-				new OnInitCallback() {
-					@Override
-					public void onFailure(int arg0, String arg1) {
-						callbackFail(moduleContext, arg0, arg1);
-					}
+		MQConfig.init(moduleContext.getContext(), realKey, new OnInitCallback() {
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				callbackFail(moduleContext, arg0, arg1);
+			}
 
-					@Override
-					public void onSuccess(String clientId) {
-						JSONObject result = new JSONObject();
-						try {
-							result.put("info", "success");
-							result.put("clientId", clientId);
-							moduleContext.success(result, true);
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
-					}
-				});
+			@Override
+			public void onSuccess(String clientId) {
+				JSONObject result = new JSONObject();
+				try {
+					result.put("info", "success");
+					result.put("clientId", clientId);
+					moduleContext.success(result, true);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	public void jsmethod_setClientInfo(final UZModuleContext moduleContext) {
@@ -76,13 +77,10 @@ public class UZMeiQia extends UZModule {
 			callback.onFailure(0, "param error");
 			return;
 		}
-		Map<String, String> clientInfoMap = parseJsonToMap(clientInfo);
-		MQManager.getInstance(moduleContext.getContext()).setClientInfo(
-				clientInfoMap, callback);
+		clientInfoMap = parseJsonToMap(clientInfo);
 	}
 
-	public void jsmethod_setScheduledAgentOrAgentGroup(
-			final UZModuleContext moduleContext) {
+	public void jsmethod_setScheduledAgentOrAgentGroup(final UZModuleContext moduleContext) {
 		String agentId = moduleContext.optString("agentId");
 		String agentGroup = moduleContext.optString("agentGroup");
 		String scheduleRuleStr = moduleContext.optString("scheduleRule");
@@ -92,13 +90,11 @@ public class UZMeiQia extends UZModule {
 		} else if ("group".equals(scheduleRuleStr)) {
 			scheduleRule = MQScheduleRule.REDIRECT_GROUP;
 		}
-		MQManager.getInstance(moduleContext.getContext())
-				.setScheduledAgentOrGroupWithId(agentId, agentGroup,
-						scheduleRule);
+		MQManager.getInstance(moduleContext.getContext()).setScheduledAgentOrGroupWithId(agentId, agentGroup,
+				scheduleRule);
 	}
 
-	public void jsmethod_setLoginCustomizedId(
-			final UZModuleContext moduleContext) {
+	public void jsmethod_setLoginCustomizedId(final UZModuleContext moduleContext) {
 		customizedId = moduleContext.optString("id");
 		clientId = null;
 	}
@@ -109,8 +105,7 @@ public class UZMeiQia extends UZModule {
 	}
 
 	public void jsmethod_show(final UZModuleContext moduleContext) {
-		Intent intent = new Intent(moduleContext.getContext(),
-				MQConversationActivity.class);
+		Intent intent = new Intent(moduleContext.getContext(), MQConversationActivity.class);
 		if (!TextUtils.isEmpty(customizedId)) {
 			intent.putExtra(MQConversationActivity.CUSTOMIZED_ID, customizedId);
 		}
@@ -120,6 +115,9 @@ public class UZMeiQia extends UZModule {
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putExtra("titleColor", titleColor);
 		intent.putExtra("titleBarColor", titleBarColor);
+		if (clientInfoMap != null) {
+			intent.putExtra(MQConversationActivity.CLIENT_INFO, clientInfoMap);
+		}
 		startActivity(intent);
 	}
 
@@ -133,8 +131,7 @@ public class UZMeiQia extends UZModule {
 		titleBarColor = Color.parseColor(color);
 	}
 
-	private void callbackFail(final UZModuleContext moduleContext, int code,
-			String response) {
+	private void callbackFail(final UZModuleContext moduleContext, int code, String response) {
 		JSONObject result = new JSONObject();
 		try {
 			result.put("code", code);
@@ -157,8 +154,8 @@ public class UZMeiQia extends UZModule {
 		Log.e("meiqia", "suc");
 	}
 
-	private Map<String, String> parseJsonToMap(JSONObject clientInfo) {
-		Map<String, String> map = new HashMap<>();
+	private HashMap<String, String> parseJsonToMap(JSONObject clientInfo) {
+		HashMap<String, String> map = new HashMap<>();
 		Iterator<String> keysItr = clientInfo.keys();
 		while (keysItr.hasNext()) {
 			String key = keysItr.next();

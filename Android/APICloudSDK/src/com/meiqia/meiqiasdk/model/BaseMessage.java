@@ -19,22 +19,32 @@ public class BaseMessage {
     public static final String TYPE_CONTENT_TEXT = "text";
     public static final String TYPE_CONTENT_PHOTO = "photo";
     public static final String TYPE_CONTENT_VOICE = "audio";
+    public static final String TYPE_CONTENT_FILE = "file";
+    public static final String TYPE_CONTENT_UNKNOWN = "unknown";
+    public static final String TYPE_CONTENT_RICH_TEXT = "rich_text";
 
     public static final int TYPE_CLIENT = 0;
     public static final int TYPE_AGENT = 1;
     public static final int TYPE_TIME = 2;
     public static final int TYPE_TIP = 3;
     public static final int TYPE_EVALUATE = 4;
+    public static final int TYPE_ROBOT = 5;
+    public static final int TYPE_NO_AGENT_TIP = 6;
+    public static final int TYPE_INITIATIVE_REDIRECT_TIP = 7;
+    public static final int TYPE_QUEUE_TIP = 8;
+    public static final int TYPE_RICH_TEXT = 9;
 
-    public static final int MAX_TYPE = 5;
+    public static final int MAX_TYPE = 10;
     private long createdOn;
     private String agentNickname;
     private String status;
     private long id;
     private String contentType;
+    private String type;
     private String content;
     private String avatar;
     private boolean isRead;
+    private long conversationId;
 
     public BaseMessage() {
         this.createdOn = System.currentTimeMillis();
@@ -90,6 +100,14 @@ public class BaseMessage {
         this.contentType = contentType;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getContent() {
         return content;
     }
@@ -112,6 +130,14 @@ public class BaseMessage {
 
     public void setIsRead(boolean isRead) {
         this.isRead = isRead;
+    }
+
+    public long getConversationId() {
+        return conversationId;
+    }
+
+    public void setConversationId(long conversationId) {
+        this.conversationId = conversationId;
     }
 
     @Override
