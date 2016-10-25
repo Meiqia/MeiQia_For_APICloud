@@ -144,6 +144,7 @@ public abstract class MQBaseBubbleItem extends MQBaseCustomCompositeView impleme
 
     private void fillContent(BaseMessage baseMessage, final int position, Activity activity) {
         if (!TextUtils.isEmpty(baseMessage.getAvatar())) {
+        	usAvatar.setCircle();
             MQImage.displayImage(activity, usAvatar, baseMessage.getAvatar(), MQResUtils.getResDrawableID("mq_ic_holder_avatar"), MQResUtils.getResDrawableID("mq_ic_holder_avatar"), 100, 100, null);
         }
 

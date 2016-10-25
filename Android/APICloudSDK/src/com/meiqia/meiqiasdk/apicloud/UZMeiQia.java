@@ -2,6 +2,7 @@ package com.meiqia.meiqiasdk.apicloud;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONException;
@@ -11,10 +12,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import com.meiqia.core.MQScheduleRule;
+import com.meiqia.core.bean.MQMessage;
 import com.meiqia.core.MQManager;
 import com.meiqia.core.callback.OnClientInfoCallback;
+import com.meiqia.core.callback.OnGetMessageListCallback;
 import com.meiqia.core.callback.OnInitCallback;
 import com.meiqia.meiqiasdk.activity.MQConversationActivity;
 import com.meiqia.meiqiasdk.imageloader.MQUILImageLoader;
@@ -29,6 +35,7 @@ public class UZMeiQia extends UZModule {
 	private String clientId;
 	private int titleColor = MQConfig.DEFAULT;
 	private int titleBarColor = MQConfig.DEFAULT;
+	private String preSendMessage;
 	private HashMap<String, String> clientInfoMap;
 
 	public UZMeiQia(UZWebView webView) {
@@ -112,6 +119,7 @@ public class UZMeiQia extends UZModule {
 		if (!TextUtils.isEmpty(clientId)) {
 			intent.putExtra(MQConversationActivity.CLIENT_ID, clientId);
 		}
+		intent.putExtra(MQConversationActivity.PRE_SEND_TEXT, preSendMessage);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putExtra("titleColor", titleColor);
 		intent.putExtra("titleBarColor", titleBarColor);
@@ -129,6 +137,59 @@ public class UZMeiQia extends UZModule {
 	public void jsmethod_setTitleBarColor(final UZModuleContext moduleContext) {
 		String color = moduleContext.optString("color");
 		titleBarColor = Color.parseColor(color);
+	}
+
+	public void jsmethod_setPreSendTextMessage(final UZModuleContext moduleContext) {
+		preSendMessage = moduleContext.optString("message");
+	}
+
+	public void jsmethod_setNavRightButton(final UZModuleContext moduleContext) {
+		String title = moduleContext.optString("title");
+		String image = moduleContext.optString("image");
+		MQConversationActivity.rightButtonText = title;
+		MQConversationActivity.rightButtonImageUrl = image;
+		MQConversationActivity.rightIconOnClickListener = new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				JSONObject result = new JSONObject();
+				try {
+					result.put("info", "success");
+					result.put("clientId", clientId);
+					moduleContext.success(result, true);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+	}
+
+	public void jsmethod_getUnreadMessageCount(final UZModuleContext moduleContext) {
+		MQManager.getInstance(moduleContext.getContext()).getUnreadMessages(new OnGetMessageListCallback() {
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				callbackFail(moduleContext, arg0, arg1);
+			}
+
+			@Override
+			public void onSuccess(List<MQMessage> arg0) {
+				JSONObject result = new JSONObject();
+				Iterator<MQMessage> messageIterator = arg0.iterator();
+				while (messageIterator.hasNext()) {
+					MQMessage message = messageIterator.next();
+					if (MQMessage.TYPE_FROM_CLIENT.equals(message.getFrom_type())) {
+						messageIterator.remove();
+					}
+				}
+				try {
+					result.put("info", "success");
+					result.put("count", arg0.size());
+					moduleContext.success(result, true);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	private void callbackFail(final UZModuleContext moduleContext, int code, String response) {
