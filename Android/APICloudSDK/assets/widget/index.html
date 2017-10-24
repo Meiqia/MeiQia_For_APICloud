@@ -46,6 +46,19 @@
 		function startActivityForResult(){
 			var param = {color:"#B452CD"};
 			meiQia.setTitleBarColor(param);
+
+			var buttonInfo = {
+			message:"presend message",
+		    title:"",
+		    image:"http://ico.ooopic.com/ajax/iconpng/?id=245643.png",
+		    };
+		    meiQia.setNavRightButton(buttonInfo, buttonTapCallback);
+		    // meiQia.setPreSendTextMessage(buttonInfo);
+		    // meiQia.getUnreadMessageCount(buttonTapCallback);
+		    function buttonTapCallback(ret, err){
+		    	var count = ret["count"];
+		        alert("button tapped"+count)
+		    }
 		}
 		
 		function vibrate(){
