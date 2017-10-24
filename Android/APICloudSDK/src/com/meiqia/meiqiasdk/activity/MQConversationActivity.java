@@ -325,6 +325,9 @@ public class MQConversationActivity extends Activity
 		}
 
 		MQConfig.getActivityLifecycleCallback().onActivityDestroyed(this);
+		rightTextTv.setOnClickListener(null);
+		rightIconIv.setOnClickListener(null);
+		rightIconOnClickListener = null;
 		super.onDestroy();
 	}
 

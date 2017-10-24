@@ -2,8 +2,13 @@ package com.meiqia.meiqiasdk.apicloud;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 
+import com.meiqia.core.MQManager;
+import com.meiqia.meiqiasdk.activity.MQConversationActivity;
+import com.meiqia.meiqiasdk.callback.MQActivityLifecycleCallback;
+import com.meiqia.meiqiasdk.util.MQConfig;
 import com.meiqia.meiqiasdk.util.MQEmotionUtil;
 import com.meiqia.meiqiasdk.util.MQResUtils;
 import com.nrs.utils.tools.CrashHandler;
@@ -27,10 +32,54 @@ public class EasDelegate extends ApplicationDelegate {
 	}
 
 	@Override
-	public void onApplicationCreate(Context context, AppInfo info) {
+	public void onApplicationCreate(final Context context, AppInfo info) {
 		//TODO 请在这个函数中初始化需要在Application的onCreate中初始化的东西
 		 MQResUtils.init(context); //必须在获取资源之前调用
 		 MQEmotionUtil.init();
+		 MQConfig.setActivityLifecycleCallback(new MQActivityLifecycleCallback() {
+			
+			@Override
+			public void onActivityStopped(MQConversationActivity activity) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onActivityStarted(MQConversationActivity activity) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onActivitySaveInstanceState(MQConversationActivity activity, Bundle outState) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onActivityResumed(MQConversationActivity activity) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onActivityPaused(MQConversationActivity activity) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onActivityDestroyed(MQConversationActivity activity) {
+				// TODO Auto-generated method stub
+				MQManager.getInstance(context).setClientOffline();
+			}
+			
+			@Override
+			public void onActivityCreated(MQConversationActivity activity, Bundle savedInstanceState) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		 CrashHandler.getInstance().init(context);
 		 Log.d("meiqia", "app init");
 	}

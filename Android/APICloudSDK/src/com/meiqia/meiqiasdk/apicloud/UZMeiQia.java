@@ -28,6 +28,7 @@ import com.meiqia.meiqiasdk.util.MQConfig;
 import com.uzmap.pkg.uzcore.UZWebView;
 import com.uzmap.pkg.uzcore.uzmodule.UZModule;
 import com.uzmap.pkg.uzcore.uzmodule.UZModuleContext;
+import com.uzmap.pkg.uzkit.UZUtility;
 
 public class UZMeiQia extends UZModule {
 
@@ -146,6 +147,7 @@ public class UZMeiQia extends UZModule {
 	public void jsmethod_setNavRightButton(final UZModuleContext moduleContext) {
 		String title = moduleContext.optString("title");
 		String image = moduleContext.optString("image");
+		image = makeRealPath(image);
 		MQConversationActivity.rightButtonText = title;
 		MQConversationActivity.rightButtonImageUrl = image;
 		MQConversationActivity.rightIconOnClickListener = new OnClickListener() {
@@ -156,7 +158,7 @@ public class UZMeiQia extends UZModule {
 				try {
 					result.put("info", "success");
 					result.put("clientId", clientId);
-					moduleContext.success(result, true);
+					moduleContext.success(result, false);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -196,7 +198,7 @@ public class UZMeiQia extends UZModule {
 		JSONObject result = new JSONObject();
 		try {
 			result.put("code", code);
-			result.put("info", response);
+			result.put("info", "error");
 			moduleContext.error(result, result, true);
 		} catch (JSONException e) {
 			e.printStackTrace();
